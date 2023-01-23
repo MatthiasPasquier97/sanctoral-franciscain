@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Projection Proof of Concept</title>
+  <meta name="description" content="Starter Template">
+  <meta name="author" content="Matthias Pasquier">
+  <!--link rel="stylesheet" href="css/styles.css?v=1.0"-->
+  <link rel="stylesheet" href="css/projection.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
+</head>
+
+<body>
+  <script src="js/jquery-3.6.0.js"></script>
+  <script src="js/psaumes_invitatoire.js"></script>
+  <script src="js/sanctoral_functions.js"></script>
+  <script src="js/breviaire.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/form.js"></script>
+  <script src='js/scroll.js'></script>
+  <div id="global">
+    <div class="main_site">
+      <div class="top_bar">
+        <select id="office" name="office">
+          <option value="lectures">Office des Lectures</option>
+          <option value="laudes">Laudes</option>
+          <option value="vepres">Vêpres</option>
+          <option value="complies">Complies</option>
+        </select>
+        <input type="date" id="date" name="date">
+        <input type="button" id="settings" value="Options">
+        <input type="button" id="projection" value="Projection">
+      </div>
+      <div class="settings_menu displayNone">
+        <select id="psaume_invitatoire_select" name="Psaume Invitatoire">
+          <option value="23">Psaume 23</option>
+          <option value="66">Psaume 66</option>
+          <option value="94" selected="selected">Psaume 94</option>
+          <option value="99">Psaume 99</option>
+        </select>
+        <input type="button" id="hymne_toggle" value="Afficher Hymne">
+      </div>
+      <div style="display: flex;" class="office_choice">
+  
+      </div>
+      <div class="main_content">
+        <div class="content_child container_site">
+          <div class="office_content">
+  
+          </div>
+        </div>
+        <div class="content_child container_menu_site">
+          <div class="office_titre">
+  
+          </div>
+          <div class = "office_sommaire">
+  
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="full_screen displayNone">
+      <input type="button" id="stop_projection" value="End Projection">
+      <div class="office_titre"></div>
+      <div class="office_content">
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
