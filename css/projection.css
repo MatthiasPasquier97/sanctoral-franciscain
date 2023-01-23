@@ -1,0 +1,87 @@
+body{
+  margin: 0px;
+}
+
+/*Projection and full screen styles*/
+
+.full_screen{
+  height: 100vh;
+  overflow: scroll;
+
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+
+  background:rgba(0, 0, 0, 0.5);
+}
+
+.full_screen::-webkit-scrollbar {
+  display: none;
+}
+
+.displayNone{
+  display: none;
+}
+
+
+
+/*Main page styles*/
+
+.main_content{
+  display: flex;
+}
+
+.content_child{
+  flex: 1;
+}
+
+.container_site{
+  height: 80vh;
+  overflow: scroll;
+  scroll-behavior: smooth;
+}
+
+
+
+/*Anchors styles*/
+
+.anchor_selected{
+  background-color: var(--liturgical-color);
+}
+
+
+
+/*Liturgical color changes*/
+
+.color_liturgy_white{
+  --liturgical-color: rgb(226, 154, 0);
+}
+
+.color_liturgy_green{
+  --liturgical-color: rgb(0, 126, 48);
+}
+
+.color_liturgy_red{
+  --liturgical-color: rgb(153, 42, 42);
+}
+
+.color_liturgy_purple{
+  --liturgical-color: rgb(97, 44, 102);
+}
+
+.color_liturgy_pink{
+  --liturgical-color: rgb(204, 53, 166);
+}
+
+.color_liturgy_default{
+  --liturgical-color: rgb(0, 0, 0);
+}
+
+.verse_number{
+  color: var(--liturgical-color);
+  font-size: small;
+}
+
+.liturgical_symbol{
+  color: var(--liturgical-color);
+}
+
