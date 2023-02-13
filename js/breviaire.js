@@ -50,7 +50,7 @@ var lectures_base = {
   "te_deum":{
     "display": false,
     "titre": "Te Deum",
-    "texte": "<p>À toi Dieu, notre louange !\n        Nous t'acclamons, tu es Seigneur !\n        À toi Père éternel,\n        L’hymne de l’univers.</p>\n\n        <p>Devant toi se prosternent les archanges,\n        les anges et les esprits des cieux ;\n        ils te rendent grâce ;\n        ils adorent et ils chantent :</p>\n\n        <p>Saint, Saint, Saint, le Seigneur,\n        Dieu de l'univers ;\n        le ciel et la terre sont remplis de ta gloire.</p>\n\n        <p>C'est toi que les Apôtres glorifient,\n        toi que proclament les prophètes,\n        toi dont témoignent les martyrs ;\n        c'est toi que par le monde entier\n        l'Église annonce et reconnaît.</p>\n\n        <p>Dieu, nous t'adorons :\n        Père infiniment saint,\n        Fils éternel et bien-aimé,\n        Esprit de puissance et de paix.</p>\n\n        <p>Christ, le Fils du Dieu vivant,\n        le Seigneur de la gloire,\n        tu n'as pas craint de prendre chair\n        dans le corps d'une vierge\n        pour libérer l'humanité captive.</p>\n\n        <p>Par ta victoire sur la mort,\n        tu as ouvert à tout croyant\n        les portes du Royaume ;\n        tu règnes à la droite du Père ;\n        tu viendras pour le jugement.</p>\n\n        <p>Montre-toi le défenseur et l'ami\n        des hommes sauvés par ton sang :\n        prends-les avec tous les saints\n        dans ta joie et dans ta lumière.</p>",
+    "texte": "<p>À toi Dieu, notre louange !\n<br />        Nous t'acclamons, tu es Seigneur !\n<br />        À toi Père éternel,\n<br />        L’hymne de l’univers.</p>\n\n        <p>Devant toi se prosternent les archanges,\n<br />        les anges et les esprits des cieux ;\n<br />        ils te rendent grâce ;\n<br />        ils adorent et ils chantent :</p>\n\n        <p>Saint, Saint, Saint, le Seigneur,\n<br />        Dieu de l'univers ;\n<br />        le ciel et la terre sont remplis de ta gloire.</p>\n\n        <p>C'est toi que les Apôtres glorifient,\n<br />        toi que proclament les prophètes,\n<br />        toi dont témoignent les martyrs ;\n<br />        c'est toi que par le monde entier\n<br />        l'Église annonce et reconnaît.</p>\n\n        <p>Dieu, nous t'adorons :\n<br />        Père infiniment saint,\n<br />        Fils éternel et bien-aimé,\n<br />        Esprit de puissance et de paix.</p>\n\n        <p>Christ, le Fils du Dieu vivant,\n<br />        le Seigneur de la gloire,\n<br />        tu n'as pas craint de prendre chair\n<br />        dans le corps d'une vierge\n<br />        pour libérer l'humanité captive.</p>\n\n        <p>Par ta victoire sur la mort,\n<br />        tu as ouvert à tout croyant\n<br />        les portes du Royaume ;\n<br />        tu règnes à la droite du Père ;\n<br />        tu viendras pour le jugement.</p>\n\n        <p>Montre-toi le défenseur et l'ami\n<br />        des hommes sauvés par ton sang :\n<br />        prends-les avec tous les saints\n<br />        dans ta joie et dans ta lumière.</p>",
   },
   "oraison": "",
 };
@@ -508,11 +508,11 @@ function create_laudes_html(contenu, infos, date_obj, hymne, invitatoire){
   sommaire = sommaire.concat("<li><a href='#cantique_zacharie'>Cantique de Zacharie</a></li>");
 
   texte_final = texte_final.concat("<div class='text_part' id='intercession'><h2>Intercession: </h2>");
-  texte_final = texte_final.concat(contenu['intercession'] + "</div>");
+  texte_final = texte_final.concat(contenu['intercession']);
   sommaire = sommaire.concat("<li><a href='#intercession'>Intercession</a></li>");
 
 
-  texte_final = texte_final.concat("<h2>Notre Père </h2>");
+  texte_final = texte_final.concat("<h2>Notre Père </h2>" + "</div>");
 
   texte_final = texte_final.concat("<div class='text_part' id='oraison'><h2>Oraison: </h2>");
   texte_final = texte_final.concat(contenu['oraison'] + "</div>");
@@ -575,11 +575,11 @@ function create_vepres_html(contenu, infos, date_obj, hymne){
   sommaire = sommaire.concat("<li><a href='#cantique_marie'>Cantique de Marie</a></li>");
 
   texte_final = texte_final.concat("<div class='text_part' id='intercession'><h2>Intercession: </h2>");
-  texte_final = texte_final.concat(contenu['intercession'] + "</div>");
+  texte_final = texte_final.concat(contenu['intercession']);
   sommaire = sommaire.concat("<li><a href='#intercession'>Intercession</a></li>");
 
 
-  texte_final = texte_final.concat("<h2>Notre Père </h2>");
+  texte_final = texte_final.concat("<h2>Notre Père </h2>" + "</div>");
 
   texte_final = texte_final.concat("<div class='text_part' id='oraison'><h2>Oraison: </h2>");
   texte_final = texte_final.concat(contenu['oraison'] + "</div>");
@@ -641,9 +641,9 @@ function create_complies_html(contenu, infos, date_obj, hymne){
 
 
   texte_final = texte_final.concat("<div class='text_part' id='oraison'><h2>Oraison: </h2>");
-  texte_final = texte_final.concat(contenu['oraison'] + "</div>");
+  texte_final = texte_final.concat(contenu['oraison']);
   texte_final = texte_final.concat("<h2>Benediction: </h2>");
-  texte_final = texte_final.concat(contenu['benediction']);
+  texte_final = texte_final.concat(contenu['benediction'] + "</div>");
   sommaire = sommaire.concat("<li><a href='#oraison'>Oraison</a></li>");
 
   texte_final = texte_final.concat("<div class='text_part' id='hymne_mariale'><h2>Hymne mariale: " + contenu["hymne_mariale"]["titre"] + " </h2>");
