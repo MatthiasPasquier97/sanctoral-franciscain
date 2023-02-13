@@ -21,6 +21,7 @@ $(document).ready(function(){
 function breviary_toggle_fullscreen(){
   $('.full_screen').toggleClass("displayNone");
   $('.main_site').toggleClass("displayNone");
+  update_anchors();
 }
 
 
