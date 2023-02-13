@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
 :root {
   --border: #E6E6E6;
   --grey: #888888;
@@ -19,7 +23,7 @@ input, select {
   box-shadow: rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(64 68 82 / 8%) 0px 0px 5px 0px;
   height: 33px;
   padding: 0 10px;
-  transition: background-color 0.24s ease 0s, box-shadow 0.24s ease 0s;
+  transition: background-color 0.24s ease 0s, box-shadow 0.24s ease 0s, border-color 0.24s ease 0s;
   font-family: 'Inter', sans-serif;
   outline: none;
 }
@@ -32,19 +36,31 @@ input:hover, select:hover {
   box-shadow: rgba(64, 68, 82, 0.05) 0px 3px 9px 0px, rgba(64, 68, 82, 0.05) 0px 0px 5px 0px;
 }
 
+input:focus, select:focus {
+  box-shadow: 0 0 0 0 transparent, rgb(64 68 82 / 16%) 0 0 0 1px, 0 0 0 3px rgba(0, 0, 0, 0.36), 0 0 0 0 transparent;
+  0 0 transparent;
+  border-color: #ffffff;
+}
+
 label {
   cursor: pointer;
 }
 
 /*Projection and full screen styles*/
 .full_screen {
-  height: 100vh;
+  height: 100%;
+  top: 0;
   overflow: scroll;
 
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 
-  background:rgba(0, 0, 0, 0.5);
+  padding: 60px;
+  padding-bottom: 300px;
+  color: #ffffff;
+  background: #000000;
+  z-index: 9999;
+  position: absolute;
 }
 
 .full_screen::-webkit-scrollbar {
@@ -55,9 +71,43 @@ label {
   display: none;
 }
 
+.full_screen .text_part {
+  font-family: 'Inter', sans-serif;
+  font-size: 40px;
+}
+
+.full_screen .verse_number {
+  font-size: 30px;
+  color: rgb(255 255 255 / 35%)!important;
+}
+
+.full_screen .liturgical_symbol {
+  color: rgb(255 255 255 / 35%)!important;
+}
+
+.full_screen .office_titre {
+  display: none;
+}
+
+#stop_projection {
+  opacity: .5;
+  cursor: pointer;
+  text-align: right;
+}
+
+#stop_projection span {
+  background-color: #fff;
+  color: black;
+  border-radius: 8px;
+  font-size: 12px;
+  padding: 5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 /*Main page styles*/
 .office_choice input[type="radio"] {
-  display: none;
+  display: none!important;
 }
 
 .office_choice p {
@@ -99,7 +149,7 @@ label {
   padding-top: 55px;
   padding-bottom: 70px;
   padding-right: 60px;
-  height: calc(100vh - 250px);
+  height: calc(100vh - 135px);
   overflow-y: scroll;
   scroll-behavior: smooth;
   width: 70%;
@@ -130,7 +180,7 @@ label {
 .office_titre h2 {
   margin-top: 5px;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--grey);
 }
 
@@ -210,27 +260,52 @@ label {
   margin-top: 60px;
 }
 
+.top_bar .right {
+  display: flex;
+}
+
+.top_bar .icon {
+  display: flex;
+  gap: 10px;
+  color: #000000;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 13px;
+  align-items: center;
+  transition: .3s opacity ease, .3s background-colorease;
+  opacity: .5;
+  border-left: 1px solid var(--border);
+  height: 64px;
+  padding: 0 25px;
+}
+
+.top_bar .icon:hover {
+  opacity: 1;
+}
+
 .office_choice {
   gap: 40px;
   padding: 0 20px;
   background-color: #F5F5F5;
   border-bottom: 1px solid var(--border);
   position: fixed;
-  top: 60px;
+  top: 64px;
   width: 100%;
 }
 
 .top_bar {
-  height: 30px;
+  height: 64px;
   border-bottom: 1px solid var(--border);
   background-color: #fff;
   display: flex;
   align-items: center;
-  padding: 15px;
+  padding: 0 15px;
   gap: 8px;
   position: fixed;
   top: 0;
   width: 100%;
+  justify-content: space-between;
+  padding-right: 0;
 }
 
 /*Anchors styles*/
