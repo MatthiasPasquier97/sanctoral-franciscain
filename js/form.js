@@ -151,6 +151,7 @@ function update_office(){
 				$(".office_content").html(html_text.texte);
         $(".office_titre").html(html_text.titre);
         $(".office_sommaire").html(html_text.sommaire);
+        window.scrollTo(0, 0);
         update_anchors();
         update_liturgical_color(html_text.couleur);
 		},
