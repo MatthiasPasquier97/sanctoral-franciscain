@@ -125,6 +125,37 @@ function update_liturgical_color(color){
   }
 }
 
+function update_office_class(office){
+  switch (office) {
+    case "lectures":
+      $("#global").addClass("office_lectures");
+      $("#global").removeClass("office_laudes");
+      $("#global").removeClass("office_vepres");
+      $("#global").removeClass("office_complies");
+      break;
+    case "laudes":
+      $("#global").addClass("office_laudes");
+      $("#global").removeClass("office_lectures");
+      $("#global").removeClass("office_vepres");
+      $("#global").removeClass("office_complies");
+      break;
+    case "vepres":
+      $("#global").addClass("office_vepres");
+      $("#global").removeClass("office_laudes");
+      $("#global").removeClass("office_lectures");
+      $("#global").removeClass("office_complies");
+      break;
+    case "complies":
+      $("#global").addClass("office_complies");
+      $("#global").removeClass("office_laudes");
+      $("#global").removeClass("office_vepres");
+      $("#global").removeClass("office_lectures");
+      break;
+    default:
+      break;
+  }
+}
+
 
 function update_office(){
   var date = $('#date').val();
@@ -154,6 +185,7 @@ function update_office(){
         window.scrollTo(0, 0);
         update_anchors();
         update_liturgical_color(html_text.couleur);
+        update_office_class(office);
 		},
 		error: function(result){
 			$(".office_content").html("<br><br><h1>Office non disponible</h1><br><br><br><br><br>")
