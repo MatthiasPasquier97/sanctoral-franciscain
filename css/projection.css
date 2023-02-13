@@ -1,10 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  --border: #E6E6E6;
+  --grey: #888888;
+}
+
 body{
+  font-family: 'Inter', sans-serif;
   margin: 0px;
+  overflow: hidden;
+}
+
+input, select {
+  cursor: pointer;
+  border-radius: 6px;
+  border: 1px solid rgb(64 68 82 / 16%);
+  box-shadow: rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(64 68 82 / 8%) 0px 0px 5px 0px;
+  height: 33px;
+  padding: 0 10px;
+  transition: background-color 0.24s ease 0s, box-shadow 0.24s ease 0s;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+}
+
+input[type="button"] {
+  background-color: #ffffff;
+}
+
+input:hover, select:hover {
+  box-shadow: rgba(64, 68, 82, 0.05) 0px 3px 9px 0px, rgba(64, 68, 82, 0.05) 0px 0px 5px 0px;
+}
+
+label {
+  cursor: pointer;
 }
 
 /*Projection and full screen styles*/
-
-.full_screen{
+.full_screen {
   height: 100vh;
   overflow: scroll;
 
@@ -22,36 +55,190 @@ body{
   display: none;
 }
 
-
-
 /*Main page styles*/
+.office_choice input[type="radio"] {
+  display: none;
+}
 
-.main_content{
+.office_choice p {
+  margin: 0;
+  font-style: italic;
+}
+
+.office_choice p:nth-child(1) {
+  text-transform: uppercase;
+  font-style: normal;
+}
+
+.office_choice label {
+  font-family: 'Source Serif Pro', Serif;
+  font-size: 14px;
+  opacity: .5;
+  padding: 20px 10px 17px 10px;
+  border-bottom: 3px solid #F5F5F5;
+  transition: .3s opacity ease;
+}
+
+.office_choice input:checked + label {
+  opacity: 1;
+  border-bottom: 3px solid #000;
+}
+
+.office_choice label:hover {
+  opacity: 1;
+}
+
+.main_content {
   display: flex;
+  max-width: 950px;
+  margin: auto;
 }
 
-.content_child{
-  flex: 1;
-}
-
-.container_site{
-  height: 80vh;
-  overflow: scroll;
+.container_site {
+  margin-top: 135px;
+  padding-top: 55px;
+  padding-bottom: 70px;
+  padding-right: 60px;
+  height: calc(100vh - 250px);
+  overflow-y: scroll;
   scroll-behavior: smooth;
+  width: 70%;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  border-right: 1px solid var(--border);
 }
 
+#introduction p:nth-child(1) {
+  margin-top: 0;
+}
 
+.container_site::-webkit-scrollbar {
+  display: none;
+}
+
+.container_menu_site {
+  width: 30%;
+  padding-left: 30px;
+  padding-top: 55px;
+  margin-top: 135px;
+}
+
+.office_titre h1 {
+  margin: 0;
+  font-size: 20px;
+}
+.office_titre h2 {
+  margin-top: 5px;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--grey);
+}
+
+.office_sommaire ul {
+  margin-top: 45px;
+  list-style: none;
+  padding: 0;
+}
+
+.office_sommaire a.anchor_selected {
+  color: #ffffff;
+}
+
+.office_sommaire a.anchor_selected::after {
+  width: 30px;
+  height: 100%;
+  position: absolute;
+  left: -30px;
+  content: '';
+  background-color: var(--liturgical-color);
+  top: 0;
+}
+
+.color_liturgy_white .office_sommaire a.anchor_selected::before{
+  background-image: url("../img/polygon_white.svg");
+}
+
+.color_liturgy_green .office_sommaire a.anchor_selected::before{
+  background-image: url("../img/polygon_green.svg");
+}
+
+.color_liturgy_red .office_sommaire a.anchor_selected::before{
+  background-image: url("../img/polygon_red.svg");
+}
+
+.color_liturgy_purple .office_sommaire a.anchor_selected::before{
+  background-image: url("../img/polygon_purple.svg");
+}
+
+.color_liturgy_pink.office_sommaire a.anchor_selected::before {
+  background-image: url("../img/polygon_pink.svg");
+}
+
+.color_liturgy_default .office_sommaire a.anchor_selected::before {
+  background-image: url("../img/polygon_default.svg");
+}
+
+.office_sommaire a.anchor_selected::before {
+  content: '';
+  height: 100%;
+  width: 40px;
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+  left: -70px;
+  top: 0;
+}
+
+.office_sommaire a {
+  font-family: 'Source Serif Pro', Serif;
+  font-size: 16px;
+  padding: 15px 0;
+  display: block;
+  color: var(--grey);
+  text-decoration: none;
+  position: relative;
+}
+
+.text_part {
+  font-family: 'Source Serif Pro', Serif;
+  font-size: 20px;
+}
+
+.text_part h2 {
+  font-family: 'Inter', sans-serif;
+  margin-top: 60px;
+}
+
+.office_choice {
+  gap: 40px;
+  padding: 0 20px;
+  background-color: #F5F5F5;
+  border-bottom: 1px solid var(--border);
+  position: fixed;
+  top: 60px;
+  width: 100%;
+}
+
+.top_bar {
+  height: 30px;
+  border-bottom: 1px solid var(--border);
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  gap: 8px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
 
 /*Anchors styles*/
-
 .anchor_selected{
   background-color: var(--liturgical-color);
 }
 
-
-
 /*Liturgical color changes*/
-
 .color_liturgy_white{
   --liturgical-color: rgb(226, 154, 0);
 }

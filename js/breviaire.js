@@ -1,5 +1,5 @@
 var lectures_base = {
-  "introduction": "<p>V/ Dieu, viens à mon aide,\n        <br />R/ Seigneur, à notre secours.</p>\n        <p>Gloire au Père, et au Fils et au Saint-Esprit,\n        <br/>au Dieu qui est, qui était et qui vient,\n        <br/>pour les siècles des siècles.\n        <br/>Amen. (Alléluia.)</p>",
+  "introduction": "<p>V/ Dieu, viens à mon aide,\n        <br />R/ Seigneur, à notre secours.</p>\n        <p>Gloire au Père, et au Fils et au Saint-Esprit,\n        au Dieu qui est, qui était et qui vient,\n        pour les siècles des siècles.\n        Amen. (Alléluia.)</p>",
   "hymne": {
     "titre": "",
     "texte": "",
@@ -50,7 +50,7 @@ var lectures_base = {
   "te_deum":{
     "display": false,
     "titre": "Te Deum",
-    "texte": "<p>À toi Dieu, notre louange !\n        <br/>Nous t'acclamons, tu es Seigneur !\n        <br/>À toi Père éternel,\n        <br/>L’hymne de l’univers.</p>\n\n        <br><p>Devant toi se prosternent les archanges,\n        <br/>les anges et les esprits des cieux ;\n        <br/>ils te rendent grâce ;\n        <br/>ils adorent et ils chantent :</p>\n\n        <br><p>Saint, Saint, Saint, le Seigneur,\n        <br/>Dieu de l'univers ;\n        <br/>le ciel et la terre sont remplis de ta gloire.</p>\n\n        <br><p>C'est toi que les Apôtres glorifient,\n        <br/>toi que proclament les prophètes,\n        <br/>toi dont témoignent les martyrs ;\n        <br/>c'est toi que par le monde entier\n        <br/>l'Église annonce et reconnaît.</p>\n\n        <br><p>Dieu, nous t'adorons :\n        <br/>Père infiniment saint,\n        <br/>Fils éternel et bien-aimé,\n        <br/>Esprit de puissance et de paix.</p>\n\n        <br><p>Christ, le Fils du Dieu vivant,\n        <br/>le Seigneur de la gloire,\n        <br/>tu n'as pas craint de prendre chair\n        <br/>dans le corps d'une vierge\n        <br/>pour libérer l'humanité captive.</p>\n\n        <br><p>Par ta victoire sur la mort,\n        <br/>tu as ouvert à tout croyant\n        <br/>les portes du Royaume ;\n        <br/>tu règnes à la droite du Père ;\n        <br/>tu viendras pour le jugement.</p>\n\n        <br><p>Montre-toi le défenseur et l'ami\n        <br/>des hommes sauvés par ton sang :\n        <br/>prends-les avec tous les saints\n        <br/>dans ta joie et dans ta lumière.</p>",
+    "texte": "<p>À toi Dieu, notre louange !\n        Nous t'acclamons, tu es Seigneur !\n        À toi Père éternel,\n        L’hymne de l’univers.</p>\n\n        <p>Devant toi se prosternent les archanges,\n        les anges et les esprits des cieux ;\n        ils te rendent grâce ;\n        ils adorent et ils chantent :</p>\n\n        <p>Saint, Saint, Saint, le Seigneur,\n        Dieu de l'univers ;\n        le ciel et la terre sont remplis de ta gloire.</p>\n\n        <p>C'est toi que les Apôtres glorifient,\n        toi que proclament les prophètes,\n        toi dont témoignent les martyrs ;\n        c'est toi que par le monde entier\n        l'Église annonce et reconnaît.</p>\n\n        <p>Dieu, nous t'adorons :\n        Père infiniment saint,\n        Fils éternel et bien-aimé,\n        Esprit de puissance et de paix.</p>\n\n        <p>Christ, le Fils du Dieu vivant,\n        le Seigneur de la gloire,\n        tu n'as pas craint de prendre chair\n        dans le corps d'une vierge\n        pour libérer l'humanité captive.</p>\n\n        <p>Par ta victoire sur la mort,\n        tu as ouvert à tout croyant\n        les portes du Royaume ;\n        tu règnes à la droite du Père ;\n        tu viendras pour le jugement.</p>\n\n        <p>Montre-toi le défenseur et l'ami\n        des hommes sauvés par ton sang :\n        prends-les avec tous les saints\n        dans ta joie et dans ta lumière.</p>",
   },
   "oraison": "",
 };
@@ -114,7 +114,7 @@ var laudes_base = {
 };
 
 var vepres_base = {
-  "introduction": "<p>V/ Dieu, viens à mon aide,\n        <br />R/ Seigneur, à notre secours.</p>\n        <p>Gloire au Père, et au Fils et au Saint-Esprit,\n        <br/>au Dieu qui est, qui était et qui vient,\n        <br/>pour les siècles des siècles.\n        <br/>Amen. (Alléluia.)</p>",
+  "introduction": "<p>V/ Dieu, viens à mon aide,\n        <br />R/ Seigneur, à notre secours.</p>\n        <p>Gloire au Père, et au Fils et au Saint-Esprit,\n        au Dieu qui est, qui était et qui vient,\n        pour les siècles des siècles.\n        Amen. (Alléluia.)</p>",
   "hymne": {
     "titre": "",
     "texte": "",
@@ -168,7 +168,7 @@ var vepres_base = {
 };
 
 var complies_base = {
-  "introduction": "<p>V/ Dieu, viens à mon aide,\n        <br />R/ Seigneur, à notre secours.</p>\n        <p>Gloire au Père, et au Fils et au Saint-Esprit,\n        <br/>au Dieu qui est, qui était et qui vient,\n        <br/>pour les siècles des siècles.\n        <br/>Amen. (Alléluia.)</p>",
+  "introduction": "<p>V/ Dieu, viens à mon aide,\n        <br />R/ Seigneur, à notre secours.</p>\n        <p>Gloire au Père, et au Fils et au Saint-Esprit,\n        au Dieu qui est, qui était et qui vient,\n        pour les siècles des siècles.\n        Amen. (Alléluia.)</p>",
   "hymne": {
     "titre": "",
     "texte": "",
@@ -211,12 +211,12 @@ function create_office_html(office, date, zone, hymne, invitatoire, contenu_aelf
 
   var sous_titre = ""
   if (contenu_franciscain != null) {
-    sous_titre =  "<h2>" + contenu_franciscain["informations"]["titre"] + "</h2><br><br>";
+    sous_titre =  "<h2>" + contenu_franciscain["informations"]["titre"] + "</h2>";
   }else {
     if (contenu_aelf["informations"]["jour_liturgique_nom"] != "de la férie") {
-      sous_titre = "<h2>" + contenu_aelf["informations"]['jour_liturgique_nom'] + "</h2><br><br>"
+      sous_titre = "<h2>" + contenu_aelf["informations"]['jour_liturgique_nom'] + "</h2>"
     } else if (contenu_aelf["informations"]["fete"] != "de la férie") {
-      sous_titre = "<h2>" + contenu_aelf["informations"]['ligne1'].charAt(0).toUpperCase() + contenu_aelf["informations"]['ligne1'].slice(1) + "</h2><br><br>"
+      sous_titre = "<h2>" + contenu_aelf["informations"]['ligne1'].charAt(0).toUpperCase() + contenu_aelf["informations"]['ligne1'].slice(1) + "</h2>"
     }
   }
 
@@ -410,19 +410,19 @@ function create_lectures_html(contenu, infos, date_obj, hymne){
 
   texte_final = texte_final.concat("<div class='text_part' id='lecture_biblique'><h2>" + contenu['lecture_biblique']['titre'] + "</h2>");
   texte_final = texte_final.concat(contenu['lecture_biblique']['texte']);
-  sommaire = sommaire.concat("<li><a href='#lecture_biblique'>" + contenu['lecture_biblique']['titre'] + "</a></li>");
+  sommaire = sommaire.concat("<li><a href='#lecture_biblique'>Lecture</a></li>");
 
-  texte_final = texte_final.concat("<br><h2>Répons: </h2>");
+  texte_final = texte_final.concat("<h2>Répons: </h2>");
   texte_final = texte_final.concat(contenu['repons_bible'] + "</div>");
 
   texte_final = texte_final.concat("<div class='text_part' id='lecture_patristique'><h2>" + contenu['lecture_patristique']['titre'] + "</h2>");
   if (contenu['lecture_patristique']['sous_titre'] != "") {
     texte_final = texte_final.concat("<h3>" + contenu['lecture_patristique']['sous_titre'] + "</h3>");
   }
-  sommaire = sommaire.concat("<li><a href='#lecture_patristique'>" + contenu['lecture_patristique']['titre'] + "</a></li>");
+  sommaire = sommaire.concat("<li><a href='#lecture_patristique'>Lecture hagiographique</a></li>");
   texte_final = texte_final.concat(contenu['lecture_patristique']['texte']);
 
-  texte_final = texte_final.concat("<br><h2>Répons: </h2>");
+  texte_final = texte_final.concat("<h2>Répons: </h2>");
   texte_final = texte_final.concat(contenu['repons_patristique'] + "</div>");
 
 
@@ -438,7 +438,7 @@ function create_lectures_html(contenu, infos, date_obj, hymne){
   sommaire = sommaire.concat("</ul></div>");
 
 
-  texte_final = texte_final.concat('<br/><br/></div>');
+  texte_final = texte_final.concat('</div>');
 
   texte_final = add_symbol_span(texte_final);
 
@@ -468,7 +468,7 @@ function create_laudes_html(contenu, infos, date_obj, hymne, invitatoire){
     texte_final = texte_final.concat("<i>" + contenu["antienne_invitatoire"]["antienne_A"] + "</i>");
   }
 
-  texte_final = texte_final.concat("<br/><h2> Psaume Invitatoire: " + invitatoire + "</h2>");
+  texte_final = texte_final.concat("<h2> Psaume Invitatoire: " + invitatoire + "</h2>");
   texte_final = texte_final.concat(psaume_invitatoire_from_reference(invitatoire) + "</div>");
   sommaire = sommaire.concat("<li><a href='#psaume_invitatoire'>Psaume " + invitatoire + "</a></li>");
 
@@ -488,7 +488,7 @@ function create_laudes_html(contenu, infos, date_obj, hymne, invitatoire){
   texte_final = texte_final.concat("<div class='text_part' id='pericope'><h2>Parole de Dieu: " + contenu['pericope']['reference'] + "</h2>");
   texte_final = texte_final.concat(contenu['pericope']['texte']);
 
-  texte_final = texte_final.concat("<br><h2>Répons: </h2>");
+  texte_final = texte_final.concat("<h2>Répons: </h2>");
   texte_final = texte_final.concat(contenu['repons']+ "</div>");
   sommaire = sommaire.concat("<li><a href='#pericope'>Péricope</a></li>");
 
@@ -496,14 +496,14 @@ function create_laudes_html(contenu, infos, date_obj, hymne, invitatoire){
   if (contenu["antienne_zacharie"]["antienne_B"] != "") {
     texte_final = texte_final.concat("<div class='text_part' id='cantique_zacharie'><h2>Antienne A</h2>");
     texte_final = texte_final.concat("<i>" + contenu["antienne_zacharie"]["antienne_A"] + "</i>");
-    texte_final = texte_final.concat("<br><h2>Antienne B</h2>");
+    texte_final = texte_final.concat("<h2>Antienne B</h2>");
     texte_final = texte_final.concat("<i>" + contenu["antienne_zacharie"]["antienne_B"] + "</i>");
   } else if (contenu["antienne_zacharie"]["antienne_A"] != "") {
     texte_final = texte_final.concat("<div class='text_part' id='cantique_zacharie'><h2>Antienne: </h2>");
     texte_final = texte_final.concat("<i>" + contenu["antienne_zacharie"]["antienne_A"] + "</i>");
   }
 
-  texte_final = texte_final.concat("<br><h2> " + contenu["cantique_zacharie"]['titre'] + "</h2>");
+  texte_final = texte_final.concat("<h2> " + contenu["cantique_zacharie"]['titre'] + "</h2>");
   texte_final = texte_final.concat(contenu["cantique_zacharie"]['texte'] + "</div>");
   sommaire = sommaire.concat("<li><a href='#cantique_zacharie'>Cantique de Zacharie</a></li>");
 
@@ -519,7 +519,7 @@ function create_laudes_html(contenu, infos, date_obj, hymne, invitatoire){
   sommaire = sommaire.concat("<li><a href='#oraison'>Conclusion</a></li>");
   sommaire = sommaire.concat("</ul></div>");
 
-  texte_final = texte_final.concat('<br/><br/></div>');
+  texte_final = texte_final.concat('</div>');
 
   texte_final = add_symbol_span(texte_final);
 
@@ -555,7 +555,7 @@ function create_vepres_html(contenu, infos, date_obj, hymne){
   texte_final = texte_final.concat("<div class='text_part' id='pericope'><h2>Parole de Dieu: " + contenu['pericope']['reference'] + "</h2>");
   texte_final = texte_final.concat(contenu['pericope']['texte']);
 
-  texte_final = texte_final.concat("<br><h2>Répons: </h2>");
+  texte_final = texte_final.concat("<h2>Répons: </h2>");
   texte_final = texte_final.concat(contenu['repons']+ "</div>");
   sommaire = sommaire.concat("<li><a href='#pericope'>Péricope</a></li>");
 
@@ -570,7 +570,7 @@ function create_vepres_html(contenu, infos, date_obj, hymne){
     texte_final = texte_final.concat("<i>" + contenu["antienne_marie"]["antienne_A"] + "</i>");
   }
 
-  texte_final = texte_final.concat("<br><h2> " + contenu["cantique_marie"]['titre'] + "</h2>");
+  texte_final = texte_final.concat("<h2> " + contenu["cantique_marie"]['titre'] + "</h2>");
   texte_final = texte_final.concat(contenu["cantique_marie"]['texte'] + "</div>");
   sommaire = sommaire.concat("<li><a href='#cantique_marie'>Cantique de Marie</a></li>");
 
@@ -586,7 +586,7 @@ function create_vepres_html(contenu, infos, date_obj, hymne){
   sommaire = sommaire.concat("<li><a href='#oraison'>Conclusion</a></li>");
   sommaire = sommaire.concat("</ul></div>");
 
-  texte_final = texte_final.concat('<br/><br/></div>');
+  texte_final = texte_final.concat('</div>');
 
   texte_final = add_symbol_span(texte_final);
 
@@ -620,7 +620,7 @@ function create_complies_html(contenu, infos, date_obj, hymne){
   texte_final = texte_final.concat("<div class='text_part' id='psaume_1'><h2>Antienne: </h2>");
   texte_final = texte_final.concat("<i>" + contenu["antienne_1"] + "</i>");
 
-  texte_final = texte_final.concat("<br/><h2> " + titre_psaume(contenu["psaume_1"]['reference']) + "</h2>");
+  texte_final = texte_final.concat("<h2> " + titre_psaume(contenu["psaume_1"]['reference']) + "</h2>");
   texte_final = texte_final.concat(contenu["psaume_1"]['texte'] + "</div>");
   sommaire = sommaire.concat("<li><a href='#psaume_1'>" + titre_psaume(contenu["psaume_1"]['reference']) + "</a></li>");
 
@@ -628,7 +628,7 @@ function create_complies_html(contenu, infos, date_obj, hymne){
   texte_final = texte_final.concat("<div class='text_part' id='pericope'><h2>Parole de Dieu: " + contenu['pericope']['reference'] + "</h2>");
   texte_final = texte_final.concat(contenu['pericope']['texte']);
 
-  texte_final = texte_final.concat("<br><h2>Répons: </h2>");
+  texte_final = texte_final.concat("<h2>Répons: </h2>");
   texte_final = texte_final.concat(contenu['repons']+ "</div>");
   sommaire = sommaire.concat("<li><a href='#pericope'>Péricope</a></li>");
 
@@ -676,7 +676,7 @@ function create_psaumes_html(contenu){
     texte_final = texte_final.concat("<i>" + contenu["antienne_1"]["antienne_A"] + "</i>");
   }
 
-  texte_final = texte_final.concat("<br/><h2> " + contenu["psaume_1"]['reference'] + "</h2>");
+  texte_final = texte_final.concat("<h2> " + contenu["psaume_1"]['reference'] + "</h2>");
   texte_final = texte_final.concat(contenu["psaume_1"]['texte']);
 
   texte_final = texte_final.concat("</div><div class='text_part' id='psaume_2'>");
@@ -697,7 +697,7 @@ function create_psaumes_html(contenu){
     texte_final = texte_final.concat("<i>" + contenu["antienne_2"]["antienne_A"] + "</i>");
   }
 
-  texte_final = texte_final.concat("<br/><h2> " + contenu["psaume_2"]['reference'] + "</h2>");
+  texte_final = texte_final.concat("<h2> " + contenu["psaume_2"]['reference'] + "</h2>");
   texte_final = texte_final.concat(contenu["psaume_2"]['texte']);
 
 
@@ -718,7 +718,7 @@ function create_psaumes_html(contenu){
     texte_final = texte_final.concat("<i>" + contenu["antienne_3"]["antienne_A"] + "</i>");
   }
 
-  texte_final = texte_final.concat("<br/><h2> " + contenu["psaume_3"]['reference'] + "</h2>");
+  texte_final = texte_final.concat("<h2> " + contenu["psaume_3"]['reference'] + "</h2>");
   texte_final = texte_final.concat(contenu["psaume_3"]['texte']);
 
   texte_final = texte_final.concat("</div>");
