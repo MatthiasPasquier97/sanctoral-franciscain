@@ -278,6 +278,18 @@ label {
   opacity: .3;
 }
 
+.top_bar .option {
+  margin-right: 10px;
+}
+
+#psaume_invitatoire_select {
+  display: none;
+}
+
+.office_laudes #psaume_invitatoire_select {
+  display: inline-block;
+}
+
 .top_bar .icon {
   display: flex;
   gap: 10px;

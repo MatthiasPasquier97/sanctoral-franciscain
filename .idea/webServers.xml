@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="73725818-1607-47bd-8fde-bac56dbfc651" name="reparemoneglise.com" url="http://ftp.ascx9319.odns.fr">
+        <fileTransfer rootFolder="/reparemoneglise.com/wp-content/themes/reparemoneglise" host="ftp.ascx9319.odns.fr" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
