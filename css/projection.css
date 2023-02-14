@@ -3,6 +3,7 @@
 
 * {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 :root {
@@ -13,7 +14,6 @@
 body{
   font-family: 'Inter', sans-serif;
   margin: 0px;
-  overflow: hidden;
 }
 
 input, select {
@@ -149,13 +149,12 @@ label {
   padding-top: 55px;
   padding-bottom: 70px;
   padding-right: 60px;
-  height: calc(100vh - 135px);
   overflow-y: scroll;
-  scroll-behavior: smooth;
   width: 70%;
   -ms-overflow-style: none;
   scrollbar-width: none;
   border-right: 1px solid var(--border);
+  height: 100%;
 }
 
 #introduction p:nth-child(1) {
@@ -171,6 +170,9 @@ label {
   padding-left: 30px;
   padding-top: 55px;
   margin-top: 135px;
+  top: 135px;
+  position: sticky;
+  height: 100%;
 }
 
 .office_titre h1 {
@@ -253,6 +255,7 @@ label {
 .text_part {
   font-family: 'Source Serif Pro', Serif;
   font-size: 20px;
+  scroll-margin-top: calc(155px + 30px);
 }
 
 .text_part h2 {
@@ -262,6 +265,17 @@ label {
 
 .top_bar .right {
   display: flex;
+  align-items: center;
+}
+
+.top_bar .left {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+#logo {
+  opacity: .3;
 }
 
 .top_bar .icon {
