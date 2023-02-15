@@ -81,10 +81,6 @@ label {
   color: rgb(255 255 255 / 35%)!important;
 }
 
-.full_screen .liturgical_symbol {
-  color: rgb(255 255 255 / 35%)!important;
-}
-
 .full_screen .office_titre {
   display: none;
 }
@@ -266,20 +262,59 @@ label {
 .top_bar .right {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .top_bar .left {
   align-items: center;
   display: flex;
   gap: 10px;
+  position: relative;
 }
 
-#logo {
-  opacity: .3;
+#plus {
+  position: relative;
+}
+
+.dropdown {
+  display: none;
+  position: fixed;
+  top: 64px;
+  background-color: #ffffff;
+  right: 0;
+  width: 170px;
+  box-shadow: 0 5px 16px 0px #0000000d;
+  border-radius: 0px 0px 6px 6px;
+  padding: 10px;
+}
+
+.dropdown.active {
+  display: block;
+}
+
+.dropdown a {
+  padding: 10px;
+  display: block;
+  text-decoration: none;
+  color: black;
+  font-weight: 400;
+  border-radius: 6px;
+}
+
+.dropdown a:hover {
+  background-color: whitesmoke;
+}
+
+#plus svg {
+  user-select: none;
+}
+
+.full_screen .liturgical_symbol {
+  color: #ffffff;
 }
 
 .top_bar .option {
-  margin-right: 10px;
+  margin-right: 20px;
 }
 
 #psaume_invitatoire_select {
@@ -298,11 +333,22 @@ label {
   cursor: pointer;
   font-size: 13px;
   align-items: center;
-  transition: .3s opacity ease, .3s background-colorease;
-  opacity: .5;
   border-left: 1px solid var(--border);
   height: 64px;
   padding: 0 25px;
+}
+
+.top_bar .icon .name, .top_bar .icon svg {
+  opacity: .5;
+  transition: .3s opacity ease, .3s background-color ease;
+}
+
+.top_bar .icon:hover .name, .top_bar .icon:hover svg {
+  opacity: 1;
+}
+
+.top_bar .icon#plus {
+  padding: 0 10px;
 }
 
 .top_bar .icon:hover {
@@ -332,6 +378,7 @@ label {
   width: 100%;
   justify-content: space-between;
   padding-right: 0;
+  z-index: 10;
 }
 
 /*Anchors styles*/

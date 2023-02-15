@@ -58,3 +58,17 @@ function zoom_out(){
   var topVal = parseFloat(obj.style.fontSize, 10);
   obj.style.fontSize = (topVal * 0.9) + "vw";
 }
+
+
+// menu sub-menu
+$(document).ready(function() {
+  $("#plus").click(function(){
+    $(".dropdown").toggleClass("active");
+  });
+
+  $(document).on("click", function(a) {
+    if ($(a.target).is(".dropdown, #plus, #submenu") === false) {
+      $(".dropdown").removeClass("active");
+    }
+  });
+});
