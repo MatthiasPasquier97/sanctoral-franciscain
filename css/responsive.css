@@ -1,8 +1,18 @@
-.menu-mobile, .sous-menu-mobile {
+.menu-mobile, .sous-menu-mobile, .main_content .container_site .office_titre {
     display: none;
 }
 
 @media (max-width: 767px) {
+
+    .container_site .office_titre {
+        display: block!important;
+        margin-bottom: 60px;
+    }
+
+    .office_titre h1 {
+        font-size: 28px;
+    }
+
     .menu-mobile {
         height: 50px;
         width: 100%;
@@ -28,6 +38,7 @@
     .container_site {
         width: 100%;
         padding: 35px;
+        margin-top: 130px;
     }
 
     .sous-menu-mobile {
