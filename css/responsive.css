@@ -1,3 +1,205 @@
-@media (max-width: 767px) {
+.menu-mobile, .sous-menu-mobile {
+    display: none;
+}
 
+@media (max-width: 767px) {
+    .menu-mobile {
+        height: 50px;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        background: #FFFFFF;
+        box-shadow: 0px 1px 0px rgba(235, 235, 235, 0.96);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        z-index: 10;
+    }
+
+    .top_bar {
+        display: none;
+    }
+
+    .office_choice, .container_menu_site {
+        display: none!important;
+    }
+
+    .container_site {
+        width: 100%;
+        padding: 35px;
+    }
+
+    .sous-menu-mobile {
+        position: fixed;
+        top: 50px;
+        display: block;
+        height: 50px;
+        background: #FFFFFF;
+        box-shadow: 0px 1px 0px rgba(235, 235, 235, 0.96);
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .office_sommaire {
+        overflow-x: scroll;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+
+    .office_sommaire::-webkit-scrollbar {
+        display: none;
+    }
+
+    .sous-menu-mobile ul {
+        display: flex;
+        width: 100%;
+        margin: 0;
+    }
+
+    .menu-mobile .left {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .menu-mobile .options {
+        display: flex;
+    }
+
+    .options select {
+        max-width: 115px;
+    }
+
+    .menu-mobile .right svg {
+        opacity: .5;
+    }
+
+    .menu-mobile .right {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .office_sommaire a {
+        padding: 15px 10px 12px 10px;
+        white-space: nowrap;
+    }
+
+    .color_liturgy_green .office_sommaire a.anchor_selected::before, .color_liturgy_green .office_sommaire a.anchor_selected::after {
+        display: none;
+    }
+
+    .anchor_selected {
+        background-color: #FFFFFF;
+    }
+
+    .office_sommaire a {
+        border-bottom: 4px solid transparent;
+    }
+
+    .office_sommaire a.anchor_selected {
+        color: #000000;
+        border-color: var(--liturgical-color);
+    }
+
+    #background {
+        position: fixed;
+        z-index: 9998;
+        background-color: #000000;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        opacity: .7;
+        display: none;
+    }
+
+    .popup {
+        position: fixed;
+        bottom: 0;
+        z-index: 9999;
+        background-color: #fff;
+        width: 100%;
+        padding: 40px;
+        border-radius: 12px 12px 0px 0;
+    }
+
+    .popup h4 {
+        margin-top: 0;
+    }
+
+    .popup input {
+        width: 100%;
+    }
+
+    aside.popup {
+        transition: .3s transform ease;
+        transform: translateY(100%);
+    }
+
+    body.calendar-open aside#calendar-pop, body.setting-open aside#setting-pop {
+        transform: translateY(0%);
+    }
+
+    body.background-open #background{
+        display: block;
+    }
+
+    #menu-pop {
+        top: 0;
+        right: 0;
+        transform: translate(100%, 0);
+        width: 80%;
+        border-radius: 0px;
+        padding: 0;
+    }
+
+    #menu-pop svg {
+        width: 70px;
+        height: auto;
+        margin: 20px;
+    }
+
+    #menu-pop a {
+        display: block;
+        color: #000;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+        margin: 10px 0;
+    }
+
+    #menu-pop ul {
+        border-top: 1px solid #d1d1d1;
+        padding: 0;
+        list-style: none;
+        margin: 0;
+    }
+
+    #menu-pop ul li {
+        border-bottom: 1px solid #d1d1d1;
+    }
+
+    #menu-pop ul li a {
+        padding: 5px 20px;
+    }
+
+    body.menu-open #menu-pop {
+        transform: translate(0%, 0);
+    }
+
+    span.close {
+        background-image: url('../img/close.svg');
+        background-size: contain;
+        height: 30px;
+        width: 30px;
+        content: '';
+        cursor: pointer;
+        display: block;
+        opacity: .5;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+
+    }
 }

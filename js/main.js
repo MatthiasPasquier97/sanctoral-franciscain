@@ -72,3 +72,29 @@ $(document).ready(function() {
     }
   });
 });
+
+// menu mobile
+$(document).ready(function() {
+  $("#calendar").click(function(){
+    $("body").addClass("calendar-open");
+    $('body').addClass("background-open")
+  });
+
+  $("#setting").click(function(){
+    $("body").addClass("setting-open");
+    $('body').addClass("background-open")
+  });
+
+  $("#menu-mobile").click(function(){
+    $("body").addClass("menu-open");
+    $('body').addClass("background-open")
+  });
+
+  $("#background, span.close").click(function(){
+    $("body").removeClass("calendar-open");
+    $("body").removeClass("setting-open");
+    $("body").removeClass("menu-open");
+    $('body').removeClass("background-open")
+  });
+
+});
