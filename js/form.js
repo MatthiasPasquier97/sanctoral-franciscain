@@ -2,26 +2,44 @@
 
 $(document).ready(function(){
   $('#date').val(new Date().toDateInputValue());
-
   var date = $('#date').val();
   var office = $('#office').val();
   update_office_list(office, date);
   $('#date').change(function(){
     date = $(this).val();
+    $('#dateMob').val(date);
+    zone =  update_office_list(office, date); 
+  });
+  $('#dateMob').change(function(){
+    date = $(this).val();
+    $('#date').val(date);
     zone =  update_office_list(office, date); 
   });
   $('#office').change(function(){
     office = $(this).val();
+    $('#officeMob').val(office);
+    zone = update_office_list(office, date);
+  });
+  $('#officeMob').change(function(){
+    office = $(this).val();
+    $('#office').val(office);
     zone = update_office_list(office, date);
   });
   $('.office_choice').change(function(){
     zone = $("input[type='radio'][name='radio_office']:checked").val();
     update_office();
-  })
+  });
   $('#psaume_invitatoire_select').change(function(){
+    $('#psaume_invitatoire_selectMob').val($("#psaume_invitatoire_select").val());
+    zone =  update_office_list(office, date); 
+  });
+  $('#psaume_invitatoire_selectMob').change(function(){
+    $('#psaume_invitatoire_select').val($("#psaume_invitatoire_selectMob").val());
     zone =  update_office_list(office, date); 
   });
 });
+
+
 
 Date.prototype.toDateInputValue = (function() {
     var local = new Date(this);
@@ -179,9 +197,9 @@ function update_office(){
 			//var textes = result[office];
 			var html_text = create_office_html(office, date, zone, hymne, invitatoire, result, contenu_franciscain);
 
-				$(".office_content").html(html_text.texte);
-        $(".office_titre").html(html_text.titre);
-        $(".office_sommaire").html(html_text.sommaire);
+				$(".office_content").each(function(){$(this).html(html_text.texte)});
+        $(".office_titre").each(function(){$(this).html(html_text.titre)});
+        $(".office_sommaire").each(function(){$(this).html(html_text.sommaire)});
         window.scrollTo(0, 0);
         update_anchors();
         update_liturgical_color(html_text.couleur);

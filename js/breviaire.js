@@ -276,7 +276,6 @@ function combine_lectures(contenu_aelf, contenu_franciscain){
   contenu_final["lecture_patristique"]["texte"] = (contenu_franciscain["lecture_patristique"]["texte"] == "") ? contenu_aelf["texte_patristique"] : contenu_franciscain["lecture_patristique"]["texte"];
   contenu_final["repons_patristique"] = (contenu_franciscain["repons_patristique"] == "") ? contenu_aelf["repons_patristique"] : contenu_franciscain["repons_patristique"];
 
-  console.log(contenu_aelf["te_deum"]);
   if (!Array.isArray(contenu_aelf["te_deum"]) || (contenu_franciscain["te_deum"] == true)) { // to update with franciscan office
     contenu_final["te_deum"]["display"] = true;
   }

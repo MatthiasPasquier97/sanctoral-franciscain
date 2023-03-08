@@ -16,6 +16,11 @@ $(document).ready(function(){
       $(this).toggleClass("displayNone");
     })
   });
+  $("#hymne_toggleMob").click(function(){
+    $("[id=hymne]").each(function(){
+      $(this).toggleClass("displayNone");
+    })
+  });
 });
 
 function breviary_toggle_fullscreen(){

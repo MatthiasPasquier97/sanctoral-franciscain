@@ -2,18 +2,22 @@
 $(document).ready(function(){
     $(window).scroll(function() {
         update_anchors();
+        update_scroll_menu();
     }); 
 });
 
 function update_anchors(){
     //var docViewTop = $(window).offset().top;
-    var docViewTop = 155;
+    var docViewTop = 150;
+    if (window.matchMedia("(max-width: 767px)").matches) {
+        docViewTop = 100;
+    }
+    console.log($("top_bar").hasClass(""));
     var docViewBottom = docViewTop + $(window).height();
     var firstElement = false;
-    var windowScroll = window.scrollY + 155;
+    var windowScroll = window.scrollY + docViewTop;
     var nbTextParts = $(".text_part").length/2
     $(".text_part").each(function(index){
-        console.log(index);
         var elemTop = $(this).offset().top;
         var elemBottom = elemTop + $(this).height();
         if ((elemTop != 0)) {
@@ -49,4 +53,10 @@ function update_anchors(){
             }
         }*/
     });
+}
+
+function update_scroll_menu(){
+    const container = document.getElementsByClassName("office_sommaire")[1];
+    const selected = document.getElementsByClassName("anchor_selected")[0];
+    container.scrollTo(selected.offsetLeft - (container.clientWidth/2) + (selected.scrollWidth/2), 0);
 }

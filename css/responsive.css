@@ -221,4 +221,8 @@ aside {
         top: 20px;
 
     }
+
+    .text_part{
+        scroll-margin-top: calc(150px);
+    }
 }
