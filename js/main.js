@@ -95,11 +95,17 @@ $(document).ready(function() {
     $('body').addClass("background-open")
   });
 
+  $("#multiple-choice").click(function(){
+    $("body").addClass("multiple-choice-open");
+    $('body').addClass("background-open")
+  });
+
   $("#background, span.close").click(function(){
     $("body").removeClass("calendar-open");
     $("body").removeClass("setting-open");
     $("body").removeClass("menu-open");
-    $('body').removeClass("background-open")
+    $('body').removeClass("background-open");
+    $('body').removeClass("multiple-choice-open");
   });
 
 });

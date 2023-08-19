@@ -418,7 +418,7 @@ function create_lectures_html(contenu, infos, date_obj, hymne){
   if (contenu['lecture_patristique']['sous_titre'] != "") {
     texte_final = texte_final.concat("<h3>" + contenu['lecture_patristique']['sous_titre'] + "</h3>");
   }
-  sommaire = sommaire.concat("<li><a href='#lecture_patristique'>Lecture hagiographique</a></li>");
+  sommaire = sommaire.concat("<li><a href='#lecture_patristique'>Lecture patristique</a></li>");
   texte_final = texte_final.concat(contenu['lecture_patristique']['texte']);
 
   texte_final = texte_final.concat("<h2>Répons: </h2>");

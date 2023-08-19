@@ -188,6 +188,8 @@ label {
   padding: 0;
 }
 
+@media (min-width: 767px) {
+
 .office_sommaire a.anchor_selected {
   color: #ffffff;
 }
@@ -201,6 +203,8 @@ label {
   background-color: var(--liturgical-color);
   top: 0;
 }
+
+
 
 .color_liturgy_white .office_sommaire a.anchor_selected::before{
   background-image: url("../img/polygon_white.svg");
@@ -226,6 +230,9 @@ label {
   background-image: url("../img/polygon_default.svg");
 }
 
+}
+
+
 .office_sommaire a.anchor_selected::before {
   content: '';
   height: 100%;
@@ -247,6 +254,8 @@ label {
   text-decoration: none;
   position: relative;
 }
+
+
 
 .text_part {
   font-family: 'Source Serif Pro', Serif;

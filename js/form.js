@@ -1,7 +1,19 @@
 //import {date_disponible, resume_du, office_du} from "./sanctoral_functions.js";
 
 $(document).ready(function(){
-  $('#date').val(new Date().toDateInputValue());
+  var date = new Date();
+  $('#date').val(date.toDateInputValue());
+  $('#dateMob').val(date.toDateInputValue());
+  if (date.getHours() < 9){
+    $('#office').val("laudes");
+    $('#officeMob').val("laudes");
+  }else if (date.getHours() < 19){
+    $('#office').val("vepres");
+    $('#officeMob').val("vepres");
+  }else {
+    $('#office').val("complies");
+    $('#officeMob').val("complies");
+  }
   var date = $('#date').val();
   var office = $('#office').val();
   update_office_list(office, date);
@@ -27,8 +39,17 @@ $(document).ready(function(){
   });
   $('.office_choice').change(function(){
     zone = $("input[type='radio'][name='radio_office']:checked").val();
+    var index = $("input[type='radio'][name='radio_office']:checked").index('input[name=radio_office]');
+    $("input[type='radio'][name='radio_office_mob']")[index].checked=true;
     update_office();
   });
+  $('.office_choice_mob').change(function(){
+    zone = $("input[type='radio'][name='radio_office_mob']:checked").val();
+    var index = $("input[type='radio'][name='radio_office_mob']:checked").index('input[name=radio_office_mob]');
+    $("input[type='radio'][name='radio_office']")[index].checked=true;
+    update_office();
+  });
+
   $('#psaume_invitatoire_select').change(function(){
     $('#psaume_invitatoire_selectMob').val($("#psaume_invitatoire_select").val());
     zone =  update_office_list(office, date); 
@@ -92,16 +113,26 @@ function update_office_list(office, date){
 
 function display_office_list(offices_disponibles){
   var innerHtml = "";
+  var innerHtmlMob = "";
   var id = 1;
   var firstZone = ""
+  if (offices_disponibles.length > 1) {
+    $('#multiple-choice').attr('stroke', '#fc5a03');
+    $('#multiple-choice').css('opacity', '.9');
+  } else {
+    $('#multiple-choice').attr('stroke', '#000000');
+    $('#multiple-choice').css('opacity', '.5');
+  }
   for (office of offices_disponibles){
     innerHtml = innerHtml + "<input type=\"radio\" id=\"" + id + "\" value=\""+ office.zone + "\" name=\"radio_office\" " + (id==1?"checked":"") + " /><label for=\"" + id + "\" ><span class=\"office_button\"><p>" + office.ligne1 + "<\/p><p>" + office.ligne2 + "<\/p><p>" + office.ligne3  + "<\/p></span></label>";
+    innerHtmlMob = innerHtmlMob + "<input type=\"radio\" id=\"" + id + "\" value=\""+ office.zone + "\" name=\"radio_office_mob\" " + (id==1?"checked":"") + " /><label for=\"" + id + "\" ><span class=\"office_button\"><p>" + office.ligne1 + "<\/p><p>" + office.ligne2 + "<\/p><p>" + office.ligne3  + "<\/p></span></label>";
     if (id == 1){
       firstZone = office.zone;
     }
     id++;
   }
   $('.office_choice').html(innerHtml);
+  $('.office_choice_mob').html(innerHtmlMob);
   update_office();
 }
 
