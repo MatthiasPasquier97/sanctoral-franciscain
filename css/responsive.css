@@ -13,12 +13,11 @@ aside {
     }
 
     .text_part {
-        font-size: 16px;
-        scroll-margin-top: 0px;
+        scroll-margin-top: 100px;
       }
       
       .text_part h2 {
-        margin-top: 50px;
+        margin-top: 60px;
       }
 
     .container_site .office_titre {
@@ -217,19 +216,41 @@ aside {
         padding: 0;
     }
 
-    #menu-pop svg {
+    #menu-pop #logo {
         width: 70px;
         height: auto;
         margin: 20px;
     }
 
-    #menu-pop a {
+    #menu-pop span {
         display: block;
         color: #000;
+        padding: 5px 20px;
         font-size: 16px;
         font-weight: bold;
         text-decoration: none;
-        margin: 10px 0;
+        margin: 8px 0;
+    }
+
+    #menu-pop p {
+        color: #000;
+        display: block;
+        padding: 5px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+        margin: 8px 0;
+    }
+
+    .topMenu {
+        margin: 10px 10px;
+        
+    }
+
+    .menuZoom {
+        display: grid;
+        grid-template-columns: 64% 18% 18%;
+        grid-template-rows: auto;
     }
 
     #menu-pop ul {

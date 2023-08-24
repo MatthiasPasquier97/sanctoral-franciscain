@@ -407,6 +407,10 @@ function create_lectures_html(contenu, infos, date_obj, hymne){
   texte_final = texte_final.concat(psaumes_content.texte);
   sommaire = sommaire.concat(psaumes_content.sommaire);
 
+  texte_final = texte_final.concat("<div class='text_part' id='verset'><h2>Verset</h2>");
+  texte_final = texte_final.concat(contenu['verset_psaume'] + "</div>");
+  sommaire = sommaire.concat("<li><a href='#verset'>Verset</a></li>");
+
   texte_final = texte_final.concat("<div class='text_part' id='lecture_biblique'><h2>" + contenu['lecture_biblique']['titre'] + "</h2>");
   texte_final = texte_final.concat(contenu['lecture_biblique']['texte']);
   sommaire = sommaire.concat("<li><a href='#lecture_biblique'>Lecture</a></li>");
@@ -726,17 +730,27 @@ function create_psaumes_html(contenu){
 }
 
 function add_symbol_span(texte){
+  /*Replace some " " with to nbsp to avoid too small line returns*/
+  texte = texte.replaceAll(" *", "&nbsp*"); 
+  texte = texte.replaceAll(" :", "&nbsp:"); 
+  texte = texte.replaceAll(" +", "&nbsp+"); 
+  texte = texte.replaceAll(" ;", "&nbsp;"); 
+
+
   texte = texte.replaceAll("*", '<span class="liturgical_symbol">*</span>');
   texte = texte.replaceAll("+", '<span class="liturgical_symbol">+</span>');
   texte = texte.replaceAll("R/", '<span class="liturgical_symbol">R/</span>');
   texte = texte.replaceAll("V/", '<span class="liturgical_symbol">V/</span>');
+  
+
   return texte;
 }
 
 
 function titre_psaume(aelf_reference){
   if (isNaN(parseInt(aelf_reference, 10))) {
-     return aelf_reference;
+      aelf_reference = aelf_reference.replaceAll("CANTIQUE", "Cantique")
+      return aelf_reference;
   }else {
     return "Psaume " + aelf_reference;
   }

@@ -169,6 +169,7 @@ label {
   top: 135px;
   position: sticky;
   height: 100%;
+
 }
 
 .office_titre h1 {
@@ -257,9 +258,13 @@ label {
 
 
 
-.text_part {
+.office_text {
   font-family: 'Source Serif Pro', Serif;
-  font-size: 20px;
+  /*font-size: 20px;*/
+}
+
+
+.text_part {
   scroll-margin-top: calc(155px + 30px);
 }
 
@@ -291,7 +296,7 @@ label {
   top: 64px;
   background-color: #ffffff;
   right: 0;
-  width: 170px;
+  width: 200px;
   box-shadow: 0 5px 16px 0px #0000000d;
   border-radius: 0px 0px 6px 6px;
   padding: 10px;
@@ -301,7 +306,7 @@ label {
   display: block;
 }
 
-.dropdown a {
+.dropdown_element {
   padding: 10px;
   display: block;
   text-decoration: none;
@@ -310,8 +315,12 @@ label {
   border-radius: 6px;
 }
 
-.dropdown a:hover {
+.dropdown_element:hover {
   background-color: whitesmoke;
+}
+
+.dropdown_element p {
+  margin: 4px 0px;
 }
 
 #plus svg {
@@ -372,6 +381,7 @@ label {
   position: fixed;
   top: 64px;
   width: 100%;
+  z-index: 1;
 }
 
 .top_bar {
@@ -388,6 +398,17 @@ label {
   justify-content: space-between;
   padding-right: 0;
   z-index: 10;
+}
+
+.menuZoom {
+  display: grid;
+  grid-template-columns: 64% 18% 18%;
+  grid-template-rows: auto;
+}
+
+.topMenu {
+  margin: 0px 10px;
+  opacity: 1;
 }
 
 /*Anchors styles*/
@@ -422,7 +443,7 @@ label {
 
 .verse_number{
   color: var(--liturgical-color);
-  font-size: small;
+  font-size: 60%;
 }
 
 .liturgical_symbol{

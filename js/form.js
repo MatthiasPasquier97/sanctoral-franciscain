@@ -37,13 +37,13 @@ $(document).ready(function(){
     $('#office').val(office);
     zone = update_office_list(office, date);
   });
-  $('.office_choice').change(function(){
+  $('.office_choice').click(function(){
     zone = $("input[type='radio'][name='radio_office']:checked").val();
     var index = $("input[type='radio'][name='radio_office']:checked").index('input[name=radio_office]');
     $("input[type='radio'][name='radio_office_mob']")[index].checked=true;
     update_office();
   });
-  $('.office_choice_mob').change(function(){
+  $('.office_choice_mob').click(function(){
     zone = $("input[type='radio'][name='radio_office_mob']:checked").val();
     var index = $("input[type='radio'][name='radio_office_mob']:checked").index('input[name=radio_office_mob]');
     $("input[type='radio'][name='radio_office']")[index].checked=true;
@@ -65,12 +65,13 @@ $(document).ready(function(){
 Date.prototype.toDateInputValue = (function() {
     var local = new Date(this);
     local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
-    console.log(local.toJSON().slice(11,13));
+    //console.log(local.toJSON().slice(11,13));
     return local.toJSON().slice(0,10);
 });
 
 
 function update_office_list(office, date){
+  var fulldate = new Date(date);
   offices_disponibles = [];
   if (office_disponible(office, date2slashedDate(date))) {
     offices_disponibles = resumes_du(office, date2slashedDate(date));
@@ -84,10 +85,14 @@ function update_office_list(office, date){
         ligne2 = ligne2 + " - " + result.informations.ligne3
       }
       if (result.informations.zone == "romain"){
-        offices_disponibles.push({"ligne1": result.informations.ligne1.charAt(0).toUpperCase() + result.informations.ligne1.slice(1), "ligne2": ligne2, "ligne3": "Office Romain", "zone": "romain"});
+        if (fulldate.getDay() == 0 || result.informations.degre != ""){
+          offices_disponibles.push({"ligne1": result.informations.ligne1.charAt(0).toUpperCase() + result.informations.ligne1.slice(1), "ligne2": ligne2, "ligne3": "Office Romain", "zone": "romain", "rang": "haut"});
+        } else {
+          offices_disponibles.push({"ligne1": result.informations.ligne1.charAt(0).toUpperCase() + result.informations.ligne1.slice(1), "ligne2": ligne2, "ligne3": "Office Romain", "zone": "romain", "rang": "bas"});
+        }
         display_office_list(offices_disponibles);
       } else {
-        offices_disponibles.push({"ligne1": result.informations.ligne1.charAt(0).toUpperCase() + result.informations.ligne1.slice(1), "ligne2": ligne2, "ligne3": "Office Français", "zone": "france"});
+        offices_disponibles.push({"ligne1": result.informations.ligne1.charAt(0).toUpperCase() + result.informations.ligne1.slice(1), "ligne2": ligne2, "ligne3": "Office Français", "zone": "france", "rang": "bas"});
         var urlAelfRomain = "https://api.aelf.org/v1/" + office + "/" + date + "/romain";
         $.ajax({url: urlAelfRomain,
           success: function(result2){
@@ -95,7 +100,11 @@ function update_office_list(office, date){
             if (result2.informations.ligne3 != "") {
               ligne2 = ligne2 + " - " + result2.informations.ligne3
             }
-            offices_disponibles.push({"ligne1": result2.informations.ligne1.charAt(0).toUpperCase() + result2.informations.ligne1.slice(1), "ligne2": ligne2, "ligne3": "Office Romain", "zone": "romain"});
+            if (fulldate.getDay() == 0 || result.informations.degre != ""){
+              offices_disponibles.push({"ligne1": result2.informations.ligne1.charAt(0).toUpperCase() + result2.informations.ligne1.slice(1), "ligne2": ligne2, "ligne3": "Office Romain", "zone": "romain", "rang": "haut"});
+            } else {
+              offices_disponibles.push({"ligne1": result2.informations.ligne1.charAt(0).toUpperCase() + result2.informations.ligne1.slice(1), "ligne2": ligne2, "ligne3": "Office Romain", "zone": "romain", "rang": "bas"});
+            }
             display_office_list(offices_disponibles);
             update_office()
           },
@@ -115,6 +124,7 @@ function display_office_list(offices_disponibles){
   var innerHtml = "";
   var innerHtmlMob = "";
   var id = 1;
+  var topOffice = 1;
   var firstZone = ""
   if (offices_disponibles.length > 1) {
     $('#multiple-choice').attr('stroke', '#fc5a03');
@@ -124,8 +134,18 @@ function display_office_list(offices_disponibles){
     $('#multiple-choice').css('opacity', '.5');
   }
   for (office of offices_disponibles){
-    innerHtml = innerHtml + "<input type=\"radio\" id=\"" + id + "\" value=\""+ office.zone + "\" name=\"radio_office\" " + (id==1?"checked":"") + " /><label for=\"" + id + "\" ><span class=\"office_button\"><p>" + office.ligne1 + "<\/p><p>" + office.ligne2 + "<\/p><p>" + office.ligne3  + "<\/p></span></label>";
-    innerHtmlMob = innerHtmlMob + "<input type=\"radio\" id=\"" + id + "\" value=\""+ office.zone + "\" name=\"radio_office_mob\" " + (id==1?"checked":"") + " /><label for=\"" + id + "\" ><span class=\"office_button\"><p>" + office.ligne1 + "<\/p><p>" + office.ligne2 + "<\/p><p>" + office.ligne3  + "<\/p></span></label>";
+    if (office.rang == "haut"){
+      topOffice = id;
+    }
+    if (office.rang == "Mémoire facultative") {
+      topOffice++;
+    }
+    id++;
+  }
+  id = 1;
+  for (office of offices_disponibles){
+    innerHtml = innerHtml + "<input type=\"radio\" id=\"" + id + "\" value=\""+ office.zone + "\" name=\"radio_office\" " + (id==topOffice?"checked":"") + " /><label for=\"" + id + "\" ><span class=\"office_button\"><p>" + office.ligne1 + "<\/p><p>" + office.ligne2 + "<\/p><p>" + office.ligne3  + "<\/p></span></label>";
+    innerHtmlMob = innerHtmlMob + "<input type=\"radio\" id=\"" + id + "\" value=\""+ office.zone + "\" name=\"radio_office_mob\" " + (id==topOffice?"checked":"") + " /><label for=\"" + id + "\" ><span class=\"office_button\"><p>" + office.ligne1 + "<\/p><p>" + office.ligne2 + "<\/p><p>" + office.ligne3  + "<\/p></span></label>";
     if (id == 1){
       firstZone = office.zone;
     }
@@ -240,4 +260,48 @@ function update_office(){
 			$(".office_content").html("<br><br><h1>Office non disponible</h1><br><br><br><br><br>")
 		}
 	});
+}
+
+function update_office_credits(){
+  var texte_final = '<div class="office_text" id="office_text">';
+  var sommaire = '<div class="office_sommaire" id="office_sommaire"><ul>';
+  var titre = '<div class="office_titre" id="office_titre">';
+  titre = titre.concat("<h1>Informations</h1></div>")
+ 
+  texte_final = texte_final.concat("<div class='text_part' id='credits'>");
+  sommaire = sommaire.concat("<li><a href='#credits'>Crédits</a></li>");
+
+  texte_final = texte_final.concat("<h2> Crédits </h2>");
+  texte_final = texte_final.concat("Application développée par Matthias Pasquier et Thibaut Chourré.<br><br>");
+  texte_final = texte_final.concat("Textes Liturgiques issus de <a href='http://aelf.org'>AELF</a> pour les offices romains et francais. <br>Textes liturgiques issus du Sanctoral Franciscain (© Éditions franciscaines 2016) pour les offices franciscains.<br><br>");
+  texte_final = texte_final.concat("Remerciements à Alexandre, Benoît, Clara, Clémence, Hugo et Matthieu pour leur aide dans la retranscription du sanctoral franciscain.  <br><br>");
+  texte_final = texte_final.concat("Remerciements à Fr. Jean-François Marie Auclair et Françoise Costa pour leur aide dans les choix liturgique et dans la compréhension du bréviaire. <br><br>");
+  texte_final = texte_final.concat("<br>À Dieu toute la gloire. <br>");
+
+  texte_final = texte_final.concat("</div>");
+
+  texte_final = texte_final.concat("<div class='text_part' id='installation'>");
+  sommaire = sommaire.concat("<li><a href='#installation'>Installation</a></li>");
+
+  texte_final = texte_final.concat("<h2> Installation </h2>");
+  texte_final = texte_final.concat("Guide pour l'installation de cette application sur votre téléphone. <br><br>");
+  texte_final = texte_final.concat("<h3> IOS </h3>");
+  texte_final = texte_final.concat('<ul><li>Naviguer jusqu\'à cette page dans Safari <li> Appuyer sur le bouton "Partage" (<span class="material-symbols-outlined">ios_share</span>)<li>Appuyer sur "Ajouter à l\'écran d\'accueil" (<span class="material-symbols-outlined">add_box</span>)<li>Appuyer sur "Ajouter"</ul>');
+
+  texte_final = texte_final.concat("<h3> Android </h3>");
+  texte_final = texte_final.concat('<ul><li>Naviguer jusqu\'à cette page dans Chrome <li> Appuyer sur le bouton "Plus d\'informations" (<span class="material-symbols-outlined">more_vert</span>)<li>Appuyer sur "Installer l\'application" (<span class="material-symbols-outlined">install_mobile</span>)<li>Appuyer sur "Installer"</ul>');
+
+  texte_final = texte_final.concat("</div>");
+
+
+
+  texte_final = texte_final.concat("</div>");
+
+  $(".office_content").each(function(){$(this).html(texte_final)});
+  $(".office_titre").each(function(){$(this).html(titre)});
+  $(".office_sommaire").each(function(){$(this).html(sommaire)});
+  window.scrollTo(0, 0);
+  update_anchors();
+  update_liturgical_color("vert");
+  update_office_class(office);
 }

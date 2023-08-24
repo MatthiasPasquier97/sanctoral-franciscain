@@ -1,4 +1,13 @@
 $(document).ready(function(){
+  //window.location.reload();
+  const cookieValue = document.cookie.split('; ').find((row) => row.startsWith('fontSize='))?.split('=')[1];
+  if (cookieValue != undefined) {
+    document.getElementById("global_container").style.fontSize = cookieValue + "px";
+  }
+});
+
+
+$(document).ready(function(){
   $("#projection").click(function(){
     toggleFullScreen();
   });
@@ -53,27 +62,37 @@ function toggleFullScreen() {
 }
 
 function zoom_in(){
-  var obj = document.getElementById("office_text");
-  var topVal = parseFloat(obj.style.fontSize, 10);
-  obj.style.fontSize = (topVal * 1.1) + "vw";
+  var obj = document.getElementById("global_container");
+  var newVal = Math.min((parseFloat(obj.style.fontSize, 10) + 1), 40);
+  obj.style.fontSize = newVal + "px";
+  document.cookie = "fontSize=" + newVal + "; SameSite=Lax; Secure";
 }
 
 function zoom_out(){
-  var obj = document.getElementById("office_text");
-  var topVal = parseFloat(obj.style.fontSize, 10);
-  obj.style.fontSize = (topVal * 0.9) + "vw";
+  var obj = document.getElementById("global_container");
+  var newVal = Math.max((parseFloat(obj.style.fontSize, 10) - 1), 10);
+  obj.style.fontSize = newVal + "px";
+  document.cookie = "fontSize=" + newVal + "; SameSite=Lax; Secure";
 }
 
 
 // menu sub-menu
 $(document).ready(function() {
   $("#plus").click(function(){
-    $(".dropdown").toggleClass("active");
+    $(".dropdown").addClass("active");
   });
 
+/*  $("#submenu").click(function(){
+    $(".dropdown").addClass("active");
+  });
+*/
+
   $(document).on("click", function(a) {
-    if ($(a.target).is(".dropdown, #plus, #submenu") === false) {
-      $(".dropdown").removeClass("active");
+    if ($(a.target).is("#plus, #submenu") === false) {
+      if (!(document.getElementById('menuZoom').contains(a.target))){
+        $(".dropdown").removeClass("active");
+      }
+
     }
   });
 });
