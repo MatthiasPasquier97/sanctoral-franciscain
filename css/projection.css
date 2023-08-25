@@ -81,8 +81,13 @@ label {
   color: rgb(255 255 255 / 35%)!important;
 }
 
-.full_screen .office_titre {
-  display: none;
+.full_screen .office_titre h1 {
+  font-size: 100px;
+}
+
+.full_screen .office_titre h2 {
+  font-size: 40px;
+  padding-bottom: 80px;
 }
 
 #stop_projection {

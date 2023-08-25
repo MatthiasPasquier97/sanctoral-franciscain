@@ -45,7 +45,7 @@ function resumes_du(office, date_string){
     var demain = lendemain_du(date_string);
     if (office == "vepres") {
       if (sanctoral[demain]["vepres_veille"]["oraison"]){
-        offices.push({"ligne1": sanctoral[demain]["titre"] + " (Veille)", "ligne2": sanctoral[demain]["sous_titre"] + " - " + sanctoral[demain]["rang"], "ligne3": "Office Franciscain",  "zone": "franciscain;v", "rang": sanctoral[new_date]["rang"]});
+        offices.push({"ligne1": sanctoral[demain]["titre"] + " (Veille)", "ligne2": sanctoral[demain]["sous_titre"] + " - " + sanctoral[demain]["rang"], "ligne3": "Office Franciscain",  "zone": "franciscain;v", "rang": sanctoral[demain]["rang"]});
       }
     }
   }
