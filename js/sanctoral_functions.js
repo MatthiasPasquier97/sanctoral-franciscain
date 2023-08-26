@@ -10,8 +10,10 @@ var sanctoral = {"03/01":{"date":"03/01","titre":"SAINT NOM DE JÉSUS","sous_tit
 function office_disponible(office, date_string){
   if (date_string in sanctoral){
     if (sanctoral[date_string][office] != undefined) {
-      if (sanctoral[date_string][office]["oraison"] != "") {
-        return true;
+      if (sanctoral[date_string][office]["oraison"] != undefined) {
+        if (sanctoral[date_string][office]["oraison"] != "") {
+          return true;
+        }
       }
     }
   } else if (lendemain_du(date_string) in sanctoral)  {
@@ -28,7 +30,7 @@ function office_disponible(office, date_string){
 }*/
 
 function resumes_du(office, date_string){
-  offices = [];
+  var offices = [];
   var new_date = date_string;
   var index = 1;
   while (new_date in sanctoral){

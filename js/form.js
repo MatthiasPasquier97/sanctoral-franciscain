@@ -4,10 +4,19 @@ $(document).ready(function(){
   var date = new Date();
   $('#date').val(date.toDateInputValue());
   $('#dateMob').val(date.toDateInputValue());
-  if (date.getHours() < 9){
+  if (date.getHours() < 10){
     $('#office').val("laudes");
     $('#officeMob').val("laudes");
-  }else if (date.getHours() < 19){
+  }else if (date.getHours() < 12){
+    $('#office').val("tierce");
+    $('#officeMob').val("tierce");
+  }else if (date.getHours() < 14){
+    $('#office').val("sexte");
+    $('#officeMob').val("sexte");
+  }else if (date.getHours() < 16){
+    $('#office').val("none");
+    $('#officeMob').val("none");
+  }else if (date.getHours() < 20){
     $('#office').val("vepres");
     $('#officeMob').val("vepres");
   }else {

@@ -113,6 +113,52 @@ var laudes_base = {
   "benediction": ""
 };
 
+var petite_heures_base = {
+  "introduction": "<i><p>Nous t’adorons, très saint Seigneur Jésus-Christ, ici et dans toutes les Églises du monde entier, et nous te bénissons d’avoir racheté le monde par ta sainte Croix</p></i> \n <p>V/ Dieu, viens à mon aide,\n        <br />R/ Seigneur, à notre secours.</p>\n        <p>Gloire au Père, et au Fils et au Saint-Esprit,\n        au Dieu qui est, qui était et qui vient,\n        pour les siècles des siècles.\n        Amen. (Alléluia.)</p>",
+  "hymne": {
+    "titre": "",
+    "texte": "",
+  },
+  "antienne_1": {
+    "additionel": "",
+    "antienne_A": "",
+    "antienne_B": "",
+  },
+  "psaume_1": {
+    "reference": "",
+    "titre": "",
+    "texte": ""
+  },
+  "antienne_2": {
+    "additionel": "",
+    "antienne_A": "",
+    "antienne_B": "",
+  },
+  "psaume_2": {
+    "reference": "",
+    "titre": "",
+    "texte": ""
+  },
+  "antienne_3": {
+    "additionel": "",
+    "antienne_A": "",
+    "antienne_B": "",
+  },
+  "psaume_3": {
+    "reference": "",
+    "titre": "",
+    "texte": ""
+  },
+  "pericope": {
+    "reference": "",
+    "texte": ""
+  },
+  "repons": "",
+  "oraison": "",
+  "benediction": ""
+};
+
+
 var vepres_base = {
   "introduction": "<i><p>Nous t’adorons, très saint Seigneur Jésus-Christ, ici et dans toutes les Églises du monde entier, et nous te bénissons d’avoir racheté le monde par ta sainte Croix</p></i> \n <p>V/ Dieu, viens à mon aide,\n        <br />R/ Seigneur, à notre secours.</p>\n        <p>Gloire au Père, et au Fils et au Saint-Esprit,\n        au Dieu qui est, qui était et qui vient,\n        pour les siècles des siècles.\n        Amen. (Alléluia.)</p>",
   "hymne": {
@@ -232,6 +278,15 @@ function create_office_html(office, date, zone, hymne, invitatoire, contenu_aelf
       break;
     case "complies": //no need to combine with another office, as complies are always the same
       return create_complies_html(contenu_aelf["complies"], contenu_aelf["informations"], date_obj, hymne)
+      break;
+    case "tierce":
+      return create_tierce_html(combine_petite_heure(contenu_aelf["tierce"]), contenu_aelf["informations"], date_obj, hymne)
+      break;
+    case "sexte":
+      return create_sexte_html(combine_petite_heure(contenu_aelf["sexte"]), contenu_aelf["informations"], date_obj, hymne)
+      break;
+    case "none":
+      return create_none_html(combine_petite_heure(contenu_aelf["none"]), contenu_aelf["informations"], date_obj, hymne)
       break;
     default:
   }
@@ -377,6 +432,46 @@ function combine_vepres(contenu_aelf, contenu_franciscain=null){
   return contenu_final;
 }
 
+function combine_petite_heure(contenu_aelf, contenu_franciscain=null){
+  var contenu_final = JSON.parse(JSON.stringify(petite_heures_base));
+  if (contenu_franciscain == null){
+    contenu_franciscain = JSON.parse(JSON.stringify(petite_heures_base));
+  }
+  //contenu_final["hymne"]["titre"] = (contenu_franciscain["hymne"]["titre"] == "") ? contenu_aelf["hymne"]["titre"] : contenu_franciscain["hymne"]["titre"];
+  //contenu_final["hymne"]["texte"] = (contenu_franciscain["hymne"]["texte"] == "") ? contenu_aelf["hymne"]["texte"] : contenu_franciscain["hymne"]["texte"];
+
+  contenu_final["hymne"]["titre"] = contenu_aelf["hymne"]["titre"];
+  contenu_final["hymne"]["texte"] = contenu_aelf["hymne"]["texte"];
+
+  contenu_final["antienne_1"]["additionel"] = contenu_franciscain["antienne_1"]["additionel"];
+  contenu_final["antienne_1"]["antienne_B"] = contenu_franciscain["antienne_1"]["antienne_B"];
+  contenu_final["antienne_1"]["antienne_A"] = (contenu_franciscain["antienne_1"]["antienne_A"] == "") ? (contenu_aelf["antienne_1"] == undefined ? "" : contenu_aelf["antienne_1"]) : contenu_franciscain["antienne_1"]["antienne_A"];
+  contenu_final["psaume_1"]["reference"] = (contenu_franciscain["psaume_1"]["reference"] == "") ? titre_psaume(contenu_aelf["psaume_1"]["reference"]) : contenu_franciscain["psaume_1"]["reference"];
+  contenu_final["psaume_1"]["texte"] = (contenu_franciscain["psaume_1"]["texte"] == "") ? contenu_aelf["psaume_1"]["texte"] : contenu_franciscain["psaume_1"]["texte"];
+
+  contenu_final["antienne_2"]["additionel"] = contenu_franciscain["antienne_2"]["additionel"];
+  contenu_final["antienne_2"]["antienne_B"] = contenu_franciscain["antienne_2"]["antienne_B"];
+  contenu_final["antienne_2"]["antienne_A"] = (contenu_franciscain["antienne_2"]["antienne_A"] == "") ? (contenu_aelf["antienne_2"] == undefined ? "" : contenu_aelf["antienne_2"]) : contenu_franciscain["antienne_2"]["antienne_A"];
+  contenu_final["psaume_2"]["reference"] = (contenu_franciscain["psaume_2"]["reference"] == "") ? titre_psaume(contenu_aelf["psaume_2"]["reference"]) : contenu_franciscain["psaume_2"]["reference"];
+  contenu_final["psaume_2"]["texte"] = (contenu_franciscain["psaume_2"]["texte"] == "") ? contenu_aelf["psaume_2"]["texte"] : contenu_franciscain["psaume_2"]["texte"];
+
+  contenu_final["antienne_3"]["additionel"] = contenu_franciscain["antienne_3"]["additionel"];
+  contenu_final["antienne_3"]["antienne_B"] = contenu_franciscain["antienne_3"]["antienne_B"];
+  contenu_final["antienne_3"]["antienne_A"] = (contenu_franciscain["antienne_3"]["antienne_A"] == "") ? (contenu_aelf["antienne_3"] == undefined ? "" : contenu_aelf["antienne_3"]) : contenu_franciscain["antienne_3"]["antienne_A"];
+  contenu_final["psaume_3"]["reference"] = (contenu_franciscain["psaume_3"]["reference"] == "") ? titre_psaume(contenu_aelf["psaume_3"]["reference"]) : contenu_franciscain["psaume_3"]["reference"];
+  contenu_final["psaume_3"]["texte"] = (contenu_franciscain["psaume_3"]["texte"] == "") ? contenu_aelf["psaume_3"]["texte"] : contenu_franciscain["psaume_3"]["texte"];
+
+  contenu_final["pericope"]["reference"] = (contenu_franciscain["pericope"]["reference"] == "") ? contenu_aelf["pericope"]["reference"] : contenu_franciscain["pericope"]["reference"];
+  contenu_final["pericope"]["texte"] = (contenu_franciscain["pericope"]["texte"] == "") ? contenu_aelf["pericope"]["texte"] : contenu_franciscain["pericope"]["texte"];
+
+  contenu_final["repons"] = (contenu_franciscain["repons"] == "") ? contenu_aelf["repons"] : contenu_franciscain["repons"];
+
+  contenu_final["oraison"] = (contenu_franciscain["oraison"] == "") ? contenu_aelf["oraison"] : contenu_franciscain["oraison"];
+
+  //contenu_final["benediction"] = (contenu_franciscain["benediction"] == "") ? (contenu_aelf["benediction"] == undefined ? "" : contenu_aelf["benediction"]) : contenu_franciscain["benediction"];
+
+  return contenu_final;
+}
 
 function create_lectures_html(contenu, infos, date_obj, hymne){
   //console.log(contenu['lecture_patristique']['texte']);
@@ -596,6 +691,89 @@ function create_vepres_html(contenu, infos, date_obj, hymne){
   return {texte: texte_final, titre: titre, sommaire: sommaire, couleur: infos['couleur']};
 }
 
+function create_tierce_html(contenu, infos, date_obj, hymne){
+
+  var titre = '<div class="office_titre" id="office_titre">';
+  titre = titre.concat("<h1>Office de Tierce du " + date_obj.getDate() + " " + tab_mois[date_obj.getMonth()] + "</h1>")
+  var beautiful_name = infos['ligne1']
+  titre = titre.concat("<h2>" + beautiful_name.charAt(0).toUpperCase() + beautiful_name.slice(1) + "</h2></div>")
+
+  var retValue = create_petite_heure_html(contenu, infos, date_obj, hymne);
+  retValue.titre = titre;
+
+  return retValue;
+}
+
+function create_sexte_html(contenu, infos, date_obj, hymne){
+
+  var titre = '<div class="office_titre" id="office_titre">';
+  titre = titre.concat("<h1>Office de Sexte du " + date_obj.getDate() + " " + tab_mois[date_obj.getMonth()] + "</h1>")
+  var beautiful_name = infos['ligne1']
+  titre = titre.concat("<h2>" + beautiful_name.charAt(0).toUpperCase() + beautiful_name.slice(1) + "</h2></div>")
+
+  var retValue = create_petite_heure_html(contenu, infos, date_obj, hymne);
+  retValue.titre = titre;
+
+  return retValue;
+}
+
+function create_none_html(contenu, infos, date_obj, hymne){
+
+  var titre = '<div class="office_titre" id="office_titre">';
+  titre = titre.concat("<h1>Office de None du " + date_obj.getDate() + " " + tab_mois[date_obj.getMonth()] + "</h1>")
+  var beautiful_name = infos['ligne1']
+  titre = titre.concat("<h2>" + beautiful_name.charAt(0).toUpperCase() + beautiful_name.slice(1) + "</h2></div>")
+
+  var retValue = create_petite_heure_html(contenu, infos, date_obj, hymne);
+  retValue.titre = titre;
+
+  return retValue;
+}
+
+function create_petite_heure_html(contenu, infos, date_obj, hymne){
+
+  var titre = "";
+
+  var sommaire = '<div class="office_sommaire" id="office_sommaire"><ul>';
+
+  var texte_final = '<div class="office_text" id="office_text">';
+  texte_final = texte_final.concat('<div class="text_part" id="introduction">'+ contenu["introduction"] + "</div>");
+  sommaire = sommaire.concat("<li><a href='#introduction'>Introduction</a></li>");
+
+  if (hymne) {
+    texte_final = texte_final.concat("<div class='text_part' id='hymne'><h2>Hymne: " + contenu["hymne"]["titre"] + " </h2>");
+    texte_final = texte_final.concat(contenu["hymne"]["texte"] + "</div>");
+
+  } else {
+    texte_final = texte_final.concat("<div class='text_part' id='hymne'><h2>Hymne</h2></div>");
+  }
+  sommaire = sommaire.concat("<li><a href='#hymne'>Hymne</a></li>");
+
+  var psaumes_content = create_psaumes_html(contenu);
+  texte_final = texte_final.concat(psaumes_content.texte);
+  sommaire = sommaire.concat(psaumes_content.sommaire);
+
+  texte_final = texte_final.concat("<div class='text_part' id='pericope'><h2>Parole de Dieu: " + contenu['pericope']['reference'] + "</h2>");
+  texte_final = texte_final.concat(contenu['pericope']['texte']);
+
+  texte_final = texte_final.concat("<h2>Répons: </h2>");
+  texte_final = texte_final.concat(contenu['repons']+ "</div>");
+  sommaire = sommaire.concat("<li><a href='#pericope'>Péricope</a></li>");
+
+
+  texte_final = texte_final.concat("<div class='text_part' id='oraison'><h2>Oraison: </h2>");
+  texte_final = texte_final.concat(contenu['oraison'] + "</div>");
+  sommaire = sommaire.concat("<li><a href='#oraison'>Conclusion</a></li>");
+  sommaire = sommaire.concat("</ul></div>");
+
+  texte_final = texte_final.concat('</div>');
+
+  texte_final = add_symbol_span(texte_final);
+
+  return {texte: texte_final, titre: titre, sommaire: sommaire, couleur: infos['couleur']};
+}
+
+
 function create_complies_html(contenu, infos, date_obj, hymne){
 
   var titre = '<div class="office_titre" id="office_titre">';
@@ -606,7 +784,7 @@ function create_complies_html(contenu, infos, date_obj, hymne){
   var sommaire = '<div class="office_sommaire" id="office_sommaire"><ul>';
 
   var texte_final = '<div class="office_text" id="office_text">';
-  texte_final = texte_final.concat('<div class="text_part" id="introduction">'+ contenu["introduction"] + "</div>");
+  texte_final = texte_final.concat('<div class="text_part" id="introduction"><i><p>Nous t’adorons, très saint Seigneur Jésus-Christ, ici et dans toutes les Églises du monde entier, et nous te bénissons d’avoir racheté le monde par ta sainte Croix</p></i> \n'+ contenu["introduction"] + "</div>");
   sommaire = sommaire.concat("<li><a href='#introduction'>Introduction</a></li>");
 
   if (hymne) {
