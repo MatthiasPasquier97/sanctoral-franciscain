@@ -85,8 +85,8 @@ function update_office_list(office, date){
   if (office_disponible(office, date2slashedDate(date))) {
     offices_disponibles = resumes_du(office, date2slashedDate(date));
   }
-  var urlAelf = "https://api.aelf.org/v1/informations/" + date + "/france"
-
+  if (office != "messes") {
+    var urlAelf = "https://api.aelf.org/v1/informations/" + date + "/france"
     $.ajax({url: urlAelf,
     success: function(result){
       var ligne2 = result.informations.ligne2;
@@ -115,7 +115,7 @@ function update_office_list(office, date){
               offices_disponibles.push({"ligne1": result2.informations.ligne1.charAt(0).toUpperCase() + result2.informations.ligne1.slice(1), "ligne2": ligne2, "ligne3": "Office Romain", "zone": "romain", "rang": "bas"});
             }
             display_office_list(offices_disponibles);
-            update_office()
+            update_office();
           },
           error: function(result){
             display_office_error();
@@ -127,6 +127,23 @@ function update_office_list(office, date){
       display_office_error();
     }
   });
+  } else {
+    var urlAelf = "https://api.aelf.org/v1/messes/" + date + "/romain"
+    $.ajax({url: urlAelf,
+      success: function(result){
+        var index = 0;
+        for (const iterator of result.messes) {
+          offices_disponibles.push({"ligne1": result.informations.ligne1.charAt(0).toUpperCase() + result.informations.ligne1.slice(1), "ligne2": iterator["nom"] == "Messe du jour" ? result.informations.ligne2 : iterator["nom"], "ligne3": "Office Romain", "zone": "romain;" + index , "rang": "haut"});
+          index++;
+        }
+        display_office_list(offices_disponibles);
+        update_office();
+      },
+      error: function(result){
+        display_office_error();
+      }
+    });
+  }
 }
 
 function display_office_list(offices_disponibles){
@@ -242,7 +259,9 @@ function update_office(){
 	const hymne = true;
 	var invitatoire = $("#psaume_invitatoire_select").val();
 
-	var urlAelf = "https://api.aelf.org/v1/" + office + "/" + date + "/" + zone
+  //zone = zone.split(";")[0]
+
+	var urlAelf = "https://api.aelf.org/v1/" + office + "/" + date + "/" + zone.split(";")[0];
 
 	var contenu_franciscain = null;
 	if (zone.startsWith("franciscain")) {

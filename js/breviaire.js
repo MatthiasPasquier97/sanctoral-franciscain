@@ -288,6 +288,9 @@ function create_office_html(office, date, zone, hymne, invitatoire, contenu_aelf
     case "none":
       return create_none_html(combine_petite_heure(contenu_aelf["none"]), contenu_aelf["informations"], date_obj, hymne)
       break;
+    case "messes":
+      return create_messe_html(contenu_aelf["messes"][zone.split(";")[1]], contenu_aelf["informations"], date_obj);
+      break;
     default:
   }
 }
@@ -907,6 +910,81 @@ function create_psaumes_html(contenu){
   return {texte: texte_final, sommaire: sommaire};
 }
 
+function create_messe_html(contenu, infos, date_obj){
+
+  var titre = '<div class="office_titre" id="office_titre">';
+  titre = titre.concat("<h1>Messe du " + date_obj.getDate() + " " + tab_mois[date_obj.getMonth()] + "</h1>")
+  var beautiful_name = infos['ligne1']
+  titre = titre.concat("<h2>" + beautiful_name.charAt(0).toUpperCase() + beautiful_name.slice(1) + "</h2></div>");
+  
+  var sommaire = '<div class="office_sommaire" id="office_sommaire"><ul>';
+
+  var texte_final = '<div class="office_text" id="office_text">';
+
+  var cardinaux = {1: "Première", 2: "Deuxième", 3: "Troisième", 4: "Quatrième", 5: "Cinquième", 6: "Sixième", 7: "Septième"}
+  
+  var id = 1;
+
+  for (const iterator of contenu["lectures"]) {
+    if (iterator["type"].startsWith('lecture')) {
+      var titre_loc = cardinaux[iterator["type"].split("_")[1]] + " Lecture";
+
+      texte_final = texte_final.concat("<div class='text_part' id='lecture" + id + "'><h2>" + titre_loc + "  (" + iterator["ref"] + ")</h2>");
+      texte_final = texte_final.concat("<h3>" + iterator["titre"] + "</h3>");
+      texte_final = texte_final.concat("<i>" + iterator["intro_lue"] + "</i>");
+    
+      texte_final = texte_final.concat(iterator["contenu"] + "</div>");
+      sommaire = sommaire.concat("<li><a href='#lecture" + id + "'>" + titre_loc + "</a></li>");
+      
+    } else if (iterator["type"].startsWith('epitre')) {
+
+      texte_final = texte_final.concat("<div class='text_part' id='lecture" + id + "'><h2>Épitre (" + iterator["ref"] + ")</h2>");
+      texte_final = texte_final.concat("<h3>" + iterator["titre"] + "</h3>");
+      texte_final = texte_final.concat("<i>" + iterator["intro_lue"] + "</i>");
+    
+      texte_final = texte_final.concat(iterator["contenu"] + "</div>");
+      sommaire = sommaire.concat("<li><a href='#lecture" + id + "'>Épitre</a></li>");
+      
+    } else if (iterator["type"].startsWith('psaume')) {
+      texte_final = texte_final.concat("<div class='text_part' id='psaume" + id + "'><h2>Cantique (" + iterator["ref"] + ")</h2>");
+      texte_final = texte_final.concat("<b>" + iterator["refrain_psalmique"] + "</b>");
+    
+      texte_final = texte_final.concat(iterator["contenu"] + "</div>");
+      sommaire = sommaire.concat("<li><a href='#psaume" + id + "'>Psaume</a></li>");
+    } else if (iterator["type"].startsWith('cantique')) {
+      texte_final = texte_final.concat("<div class='text_part' id='cantique" + id + "'><h2>Cantique (" + iterator["ref"] + ")</h2>");
+      texte_final = texte_final.concat("<b>" + iterator["refrain_psalmique"] + "</b>");
+    
+      texte_final = texte_final.concat(iterator["contenu"] + "</div>");
+      sommaire = sommaire.concat("<li><a href='#cantique" + id + "'>Cantique</a></li>");
+    } else if (iterator["type"].startsWith('sequence')) {
+      texte_final = texte_final.concat("<div class='text_part' id='sequence" + id + "'><h2>Séquence</h2>");
+    
+      texte_final = texte_final.concat(iterator["contenu"] + "</div>");
+      sommaire = sommaire.concat("<li><a href='#sequence" + id + "'>Séquence</a></li>");
+    } else if (iterator["type"].startsWith('evangile')) {
+
+      texte_final = texte_final.concat("<div class='text_part' id='evangile" + id + "'><h2>Évangile (" + iterator["ref"] + ")</h2>");
+      texte_final = texte_final.concat("<h3>" + iterator["titre"] + "</h3>");
+
+      texte_final = texte_final.concat("<p>" + iterator["verset_evangile"] + "</p>");
+
+      texte_final = texte_final.concat("<i>" + iterator["intro_lue"] + "</i>");
+    
+      texte_final = texte_final.concat(iterator["contenu"] + "</div>");
+      sommaire = sommaire.concat("<li><a href='#evangile" + id + "'>Évangile</a></li>");
+    }
+    id++;
+  }
+
+  sommaire = sommaire.concat("</ul></div>");
+  //console.log(texte_final);
+  //texte_final = add_symbol_span(texte_final);
+
+  return {texte: texte_final, titre: titre, sommaire: sommaire, couleur: infos['couleur']};
+}
+
+
 function add_symbol_span(texte){
   /*Replace some " " with to nbsp to avoid too small line returns*/
   texte = texte.replaceAll(" *", "&nbsp*"); 
@@ -940,6 +1018,58 @@ var vepres_aelf = {"introduction":"\u003Cp\u003EV\/ Dieu, viens \u00e0 mon aide,
 
 var vepres_franciscaines = {"antienne_1":{"additionel":"","antienne_A":"","antienne_B":""},"psaume_1":{"reference":"","titre":"","texte":""},"antienne_2":{"additionel":"","antienne_A":"","antienne_B":""},"psaume_2":{"reference":"","titre":"","texte":""},"antienne_3":{"additionel":"","antienne_A":"","antienne_B":""},"psaume_3":{"reference":"","titre":"","texte":""},"pericope":{"reference":"","texte":""},"repons":"","antienne_marie":{"antienne_A":"Je considère tout comme une perte à cause de ce bien qui dépasse tout : la connaissance du Christ Jésus, mon Seigneur.","antienne_B":""},"intercession":{"introduction":"","refrain":"","texte":""},"oraison":"Répands sur nous, Seigneur, cet esprit de contemplation et d’amour dont tu as comblé ta servante Angèle de Foligno ; puissions-nous, en cherchant à te servir comme elle, croire et vivre de manière à te plaire. Par Jésus Christ.","benediction":""};
 
+var messeTest = {
+  "nom": "Messe du jour",
+  "lectures": [
+    {
+      "type": "lecture_1",
+      "refrain_psalmique": null,
+      "ref_refrain": null,
+      "titre": "La royauté de David subsistera toujours devant le Seigneur",
+      "contenu": "<p>Le roi David habitait enfin dans sa maison.<br />\nLe Seigneur lui avait accordé la tranquillité<br />\nen le délivrant de tous les ennemis qui l’entouraient.<br />\nLe roi dit alors au prophète Nathan :<br />\n« Regarde ! J’habite dans une maison de cèdre,<br />\net l’arche de Dieu habite sous un abri de toile ! »<br />\nNathan répondit au roi :<br />\n« Tout ce que tu as l’intention de faire,<br />\nfais-le, car le Seigneur est avec toi. »<br />\nMais, cette nuit-là,<br />\nla parole du Seigneur fut adressée à Nathan :<br />\n« Va dire à mon serviteur David :<br />\nAinsi parle le Seigneur :<br />\nEst-ce toi qui me bâtiras une maison<br />\npour que j’y habite ?<br />\nC’est moi qui t’ai pris au pâturage,<br />\nderrière le troupeau,<br />\npour que tu sois le chef de mon peuple Israël.<br />\nJ’ai été avec toi partout où tu es allé,<br />\nj’ai abattu devant toi tous tes ennemis.<br />\nJe t’ai fait un nom aussi grand<br />\nque celui des plus grands de la terre.<br />\nJe fixerai en ce lieu mon peuple Israël,<br />\nje l’y planterai, il s’y établira<br />\net ne tremblera plus,<br />\net les méchants ne viendront plus l’humilier,<br />\ncomme ils l’ont fait autrefois,<br />\ndepuis le jour où j’ai institué des juges<br />\npour conduire mon peuple Israël.<br />\nOui, je t’ai accordé la tranquillité<br />\nen te délivrant de tous tes ennemis.</p>\n\n<p>Le Seigneur t’annonce<br />\nqu’il te fera lui-même une maison.<br />\nQuand tes jours seront accomplis<br />\net que tu reposeras auprès de tes pères,<br />\nje te susciterai dans ta descendance un successeur,<br />\nqui naîtra de toi,<br />\net je rendrai stable sa royauté.<br />\nMoi, je serai pour lui un père ;<br />\net lui sera pour moi un fils.<br />\nTa maison et ta royauté subsisteront toujours devant moi,<br />\nton trône sera stable pour toujours. »</p>\n\n<p>– Parole du Seigneur.</p>",
+      "ref": "2 S 7, 1-5.8b-12.14a.16",
+      "intro_lue": "Lecture du deuxième livre de Samuel",
+      "verset_evangile": null,
+      "ref_verset": null
+    },
+    {
+      "type": "psaume",
+      "refrain_psalmique": "<p>Ton amour, Seigneur,<br />\nsans fin je le chante !<br />\n </p>",
+      "ref_refrain": "cf. 88, 2a",
+      "titre": null,
+      "contenu": "<p>L’amour du Seigneur, sans fin je le chante ;<br />\nta fidélité, je l’annonce d’âge en âge.<br />\nJe le dis : c’est un amour bâti pour toujours ;<br />\nta fidélité est plus stable que les cieux.</p>\n\n<p>« Avec mon élu, j’ai fait une alliance,<br />\nj’ai juré à David, mon serviteur :<br />\nJ’établirai ta dynastie pour toujours,<br />\nje te bâtis un trône pour la suite des âges. »</p>\n\n<p>« Il me dira : ‘Tu es mon Père,<br />\nmon Dieu, mon roc et mon salut !’<br />\nSans fin je lui garderai mon amour,<br />\nmon alliance avec lui sera fidèle. »</p>",
+      "ref": "88 (89), 2-3, 4-5, 27.29",
+      "intro_lue": null,
+      "verset_evangile": null,
+      "ref_verset": null
+    },
+    {
+      "type": "lecture_2",
+      "refrain_psalmique": null,
+      "ref_refrain": null,
+      "titre": "Le mystère gardé depuis toujours dans le silence est maintenant manifesté",
+      "contenu": "<p>Frères,<br />\nà Celui qui peut vous rendre forts<br />\nselon mon Évangile qui proclame Jésus Christ :<br />\nrévélation d’un mystère<br />\ngardé depuis toujours dans le silence,<br />\nmystère maintenant manifesté<br />\nau moyen des écrits prophétiques,<br />\nselon l’ordre du Dieu éternel,<br />\nmystère porté à la connaissance de toutes les nations<br />\npour les amener à l’obéissance de la foi,<br />\nà Celui qui est le seul sage, Dieu, par Jésus Christ,<br />\nà lui la gloire pour les siècles. Amen.</p>\n\n<p>– Parole du Seigneur.</p>",
+      "ref": "Rm 16, 25-27",
+      "intro_lue": "Lecture de la lettre de saint Paul apôtre aux Romains",
+      "verset_evangile": null,
+      "ref_verset": null
+    },
+    {
+      "type": "evangile",
+      "refrain_psalmique": null,
+      "ref_refrain": null,
+      "titre": "« Voici que tu vas concevoir et enfanter un fils »",
+      "contenu": "<p>En ce temps-là,<br />\nl’ange Gabriel fut envoyé par Dieu<br />\ndans une ville de Galilée, appelée Nazareth,<br />\nà une jeune fille vierge,<br />\naccordée en mariage à un homme de la maison de David,<br />\nappelé Joseph ;<br />\net le nom de la jeune fille était Marie.<br />\nL’ange entra chez elle et dit :<br />\n« Je te salue, Comblée-de-grâce,<br />\nle Seigneur est avec toi. »<br />\nÀ cette parole, elle fut toute bouleversée,<br />\net elle se demandait ce que pouvait signifier cette salutation.<br />\nL’ange lui dit alors :<br />\n« Sois sans crainte, Marie,<br />\ncar tu as trouvé grâce auprès de Dieu.<br />\nVoici que tu vas concevoir et enfanter un fils ;<br />\ntu lui donneras le nom de Jésus.<br />\nIl sera grand,<br />\nil sera appelé Fils du Très-Haut ;<br />\nle Seigneur Dieu<br />\nlui donnera le trône de David son père ;<br />\nil régnera pour toujours sur la maison de Jacob,<br />\net son règne n’aura pas de fin. »<br />\nMarie dit à l’ange :<br />\n« Comment cela va-t-il se faire,<br />\npuisque je ne connais pas d’homme ? »<br />\nL’ange lui répondit :<br />\n« L’Esprit Saint viendra sur toi,<br />\net la puissance du Très-Haut<br />\nte prendra sous son ombre ;<br />\nc’est pourquoi celui qui va naître sera saint,<br />\nil sera appelé Fils de Dieu.<br />\nOr voici que, dans sa vieillesse, Élisabeth, ta parente,<br />\na conçu, elle aussi, un fils<br />\net en est à son sixième mois,<br />\nalors qu’on l’appelait la femme stérile.<br />\nCar rien n’est impossible à Dieu. »<br />\nMarie dit alors :<br />\n« Voici la servante du Seigneur ;<br />\nque tout m’advienne selon ta parole. »</p>\n\n<p>Alors l’ange la quitta.</p>\n\n<p>– Acclamons la Parole de Dieu.</p>",
+      "ref": "Lc 1, 26-38",
+      "intro_lue": "Évangile de Jésus Christ selon saint Luc",
+      "verset_evangile": "<p><strong>Alléluia. Alléluia.</strong><br />\nVoici la servante du Seigneur ;<br />\nque tout m’advienne selon ta parole.<br /><strong>Alléluia.</strong></p>",
+      "ref_verset": "Lc 1, 38"
+    }
+  ]
+};
+
 function main(){
-  console.log(combine_vepres(vepres_aelf, vepres_franciscaines));
+  //console.log(create_messe_html(messeTest, "a", "b"));
 }
+
+//main();

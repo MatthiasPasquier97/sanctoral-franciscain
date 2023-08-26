@@ -49,6 +49,7 @@ label {
 /*Projection and full screen styles*/
 .full_screen {
   height: 100%;
+  width: 100%;
   top: 0;
   overflow: scroll;
 
