@@ -65,7 +65,7 @@ function zoom_in(){
   var obj = document.getElementById("global_container");
   var newVal = Math.min((parseFloat(obj.style.fontSize, 10) + 1), 40);
   obj.style.fontSize = newVal + "px";
-  var exp = new Date(new Date().setDate(new Date().getDate() + 90));
+  var exp = new Date(new Date().setDate(new Date().getDate() + 1000));
   document.cookie = "fontSize=" + newVal + "; SameSite=Lax; Expires=" + exp.toUTCString() + " Secure";
 }
 
@@ -73,7 +73,7 @@ function zoom_out(){
   var obj = document.getElementById("global_container");
   var newVal = Math.max((parseFloat(obj.style.fontSize, 10) - 1), 10);
   obj.style.fontSize = newVal + "px";
-  var exp = new Date(new Date().setDate(new Date().getDate() + 90));
+  var exp = new Date(new Date().setDate(new Date().getDate() + 1000));
   document.cookie = "fontSize=" + newVal + "; SameSite=Lax; Expires=" + exp.toUTCString() + " Secure";
 }
 
