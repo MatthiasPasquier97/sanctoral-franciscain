@@ -301,8 +301,8 @@ function combine_lectures(contenu_aelf, contenu_franciscain){
     contenu_franciscain = JSON.parse(JSON.stringify(lectures_base));
   }
 
-  contenu_final["hymne"]["titre"] = contenu_aelf["hymne"]["titre"];
-  contenu_final["hymne"]["texte"] = contenu_aelf["hymne"]["texte"];
+  contenu_final["hymne"]["titre"] = (contenu_franciscain["hymne"]["titre"] == "") ? contenu_aelf["hymne"]["titre"] : contenu_franciscain["hymne"]["titre"];
+  contenu_final["hymne"]["texte"] = (contenu_franciscain["hymne"]["texte"] == "") ? contenu_aelf["hymne"]["texte"] : contenu_franciscain["hymne"]["texte"];
 
   contenu_final["antienne_1"]["additionel"] = contenu_franciscain["antienne_1"]["additionel"];
   contenu_final["antienne_1"]["antienne_B"] = contenu_franciscain["antienne_1"]["antienne_B"];
@@ -352,8 +352,8 @@ function combine_laudes(contenu_aelf, contenu_franciscain){
   contenu_final["antienne_invitatoire"]["antienne_B"] = contenu_franciscain["antienne_invitatoire"]["antienne_B"];
   contenu_final["antienne_invitatoire"]["antienne_A"] = (contenu_franciscain["antienne_invitatoire"]["antienne_A"] == "") ? (contenu_aelf["antienne_invitatoire"] == undefined ? "" : contenu_aelf["antienne_invitatoire"]) : contenu_franciscain["antienne_invitatoire"]["antienne_A"];
 
-  contenu_final["hymne"]["titre"] = contenu_aelf["hymne"]["titre"];
-  contenu_final["hymne"]["texte"] = contenu_aelf["hymne"]["texte"];
+  contenu_final["hymne"]["titre"] = (contenu_franciscain["hymne"]["titre"] == "") ? contenu_aelf["hymne"]["titre"] : contenu_franciscain["hymne"]["titre"];
+  contenu_final["hymne"]["texte"] = (contenu_franciscain["hymne"]["texte"] == "") ? contenu_aelf["hymne"]["texte"] : contenu_franciscain["hymne"]["texte"];
 
   contenu_final["antienne_1"]["additionel"] = contenu_franciscain["antienne_1"]["additionel"];
   contenu_final["antienne_1"]["antienne_B"] = contenu_franciscain["antienne_1"]["antienne_B"];
@@ -397,8 +397,8 @@ function combine_vepres(contenu_aelf, contenu_franciscain=null){
   //contenu_final["hymne"]["titre"] = (contenu_franciscain["hymne"]["titre"] == "") ? contenu_aelf["hymne"]["titre"] : contenu_franciscain["hymne"]["titre"];
   //contenu_final["hymne"]["texte"] = (contenu_franciscain["hymne"]["texte"] == "") ? contenu_aelf["hymne"]["texte"] : contenu_franciscain["hymne"]["texte"];
 
-  contenu_final["hymne"]["titre"] = contenu_aelf["hymne"]["titre"];
-  contenu_final["hymne"]["texte"] = contenu_aelf["hymne"]["texte"];
+  contenu_final["hymne"]["titre"] = (contenu_franciscain["hymne"]["titre"] == "") ? contenu_aelf["hymne"]["titre"] : contenu_franciscain["hymne"]["titre"];
+  contenu_final["hymne"]["texte"] = (contenu_franciscain["hymne"]["texte"] == "") ? contenu_aelf["hymne"]["texte"] : contenu_franciscain["hymne"]["texte"];
 
   contenu_final["antienne_1"]["additionel"] = contenu_franciscain["antienne_1"]["additionel"];
   contenu_final["antienne_1"]["antienne_B"] = contenu_franciscain["antienne_1"]["antienne_B"];
@@ -967,7 +967,7 @@ function create_messe_html(contenu, infos, date_obj){
       texte_final = texte_final.concat("<div class='text_part' id='evangile" + id + "'><h2>Évangile (" + iterator["ref"] + ")</h2>");
       texte_final = texte_final.concat("<h3>" + iterator["titre"] + "</h3>");
 
-      texte_final = texte_final.concat("<p>" + iterator["verset_evangile"] + "</p>");
+      texte_final = texte_final.concat(iterator["verset_evangile"] != null ? "<p>" + iterator["verset_evangile"] + "</p>" : "");
 
       texte_final = texte_final.concat("<i>" + iterator["intro_lue"] + "</i>");
     

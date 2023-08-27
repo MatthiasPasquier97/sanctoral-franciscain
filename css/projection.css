@@ -11,6 +11,10 @@
   --grey: #888888;
 }
 
+html {
+  overscroll-behavior: contain;
+}
+
 body{
   font-family: 'Inter', sans-serif;
   margin: 0px;
