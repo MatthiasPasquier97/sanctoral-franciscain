@@ -1,5 +1,5 @@
 var lectures_base = {
-  "introduction": "<i><p>Nous t’adorons, très saint Seigneur Jésus-Christ, ici et dans toutes les Églises du monde entier, et nous te bénissons d’avoir racheté le monde par ta sainte Croix</p></i> \n <p>V/ Dieu, viens à mon aide,\n        <br />R/ Seigneur, à notre secours.</p>\n        <p>Gloire au Père, et au Fils et au Saint-Esprit,\n        au Dieu qui est, qui était et qui vient,\n        pour les siècles des siècles.\n        Amen. (Alléluia.)</p>",
+  "introduction": "<i><p>Nous t’adorons, très saint Seigneur Jésus-Christ, ici et dans toutes les Églises du monde entier, et nous te bénissons d’avoir racheté le monde par ta sainte Croix</p></i><br/> \n <p>V/ Dieu, viens à mon aide,\n        <br />R/ Seigneur, à notre secours.</p>\n        <p>Gloire au Père, et au Fils et au Saint-Esprit,\n        au Dieu qui est, qui était et qui vient,\n        pour les siècles des siècles.\n        Amen. (Alléluia.)</p>",
   "hymne": {
     "titre": "",
     "texte": "",
@@ -60,7 +60,7 @@ var laudes_base = {
     "antienne_A": "",
     "antienne_B": "",
   },
-  "introduction": "<i><p>Nous t’adorons, très saint Seigneur Jésus-Christ, ici et dans toutes les Églises du monde entier, et nous te bénissons d’avoir racheté le monde par ta sainte Croix</p></i> \n <p>V/ Seigneur, ouvre mes lèvres,\n <br />R/ et ma bouche publiera ta louange.</p>",
+  "introduction": "<i><p>Nous t’adorons, très saint Seigneur Jésus-Christ, ici et dans toutes les Églises du monde entier, et nous te bénissons d’avoir racheté le monde par ta sainte Croix</p></i><br/> \n <p>V/ Seigneur, ouvre mes lèvres,\n <br />R/ et ma bouche publiera ta louange.</p>",
   "hymne": {
     "titre": "",
     "texte": "",
@@ -114,7 +114,7 @@ var laudes_base = {
 };
 
 var petite_heures_base = {
-  "introduction": "<i><p>Nous t’adorons, très saint Seigneur Jésus-Christ, ici et dans toutes les Églises du monde entier, et nous te bénissons d’avoir racheté le monde par ta sainte Croix</p></i> \n <p>V/ Dieu, viens à mon aide,\n        <br />R/ Seigneur, à notre secours.</p>\n        <p>Gloire au Père, et au Fils et au Saint-Esprit,\n        au Dieu qui est, qui était et qui vient,\n        pour les siècles des siècles.\n        Amen. (Alléluia.)</p>",
+  "introduction": "<i><p>Nous t’adorons, très saint Seigneur Jésus-Christ, ici et dans toutes les Églises du monde entier, et nous te bénissons d’avoir racheté le monde par ta sainte Croix</p></i><br/> \n <p>V/ Dieu, viens à mon aide,\n        <br />R/ Seigneur, à notre secours.</p>\n        <p>Gloire au Père, et au Fils et au Saint-Esprit,\n        au Dieu qui est, qui était et qui vient,\n        pour les siècles des siècles.\n        Amen. (Alléluia.)</p>",
   "hymne": {
     "titre": "",
     "texte": "",
@@ -160,7 +160,7 @@ var petite_heures_base = {
 
 
 var vepres_base = {
-  "introduction": "<i><p>Nous t’adorons, très saint Seigneur Jésus-Christ, ici et dans toutes les Églises du monde entier, et nous te bénissons d’avoir racheté le monde par ta sainte Croix</p></i> \n <p>V/ Dieu, viens à mon aide,\n        <br />R/ Seigneur, à notre secours.</p>\n        <p>Gloire au Père, et au Fils et au Saint-Esprit,\n        au Dieu qui est, qui était et qui vient,\n        pour les siècles des siècles.\n        Amen. (Alléluia.)</p>",
+  "introduction": "<i><p>Nous t’adorons, très saint Seigneur Jésus-Christ, ici et dans toutes les Églises du monde entier, et nous te bénissons d’avoir racheté le monde par ta sainte Croix</p></i><br/> \n <p>V/ Dieu, viens à mon aide,\n        <br />R/ Seigneur, à notre secours.</p>\n        <p>Gloire au Père, et au Fils et au Saint-Esprit,\n        au Dieu qui est, qui était et qui vient,\n        pour les siècles des siècles.\n        Amen. (Alléluia.)</p>",
   "hymne": {
     "titre": "",
     "texte": "",
@@ -214,7 +214,7 @@ var vepres_base = {
 };
 
 var complies_base = {
-  "introduction": "<i><p>Nous t’adorons, très saint Seigneur Jésus-Christ, ici et dans toutes les Églises du monde entier, et nous te bénissons d’avoir racheté le monde par ta sainte Croix</p></i> \n <p>V/ Dieu, viens à mon aide,\n        <br />R/ Seigneur, à notre secours.</p>\n        <p>Gloire au Père, et au Fils et au Saint-Esprit,\n        au Dieu qui est, qui était et qui vient,\n        pour les siècles des siècles.\n        Amen. (Alléluia.)</p>",
+  "introduction": "<i><p>Nous t’adorons, très saint Seigneur Jésus-Christ, ici et dans toutes les Églises du monde entier, et nous te bénissons d’avoir racheté le monde par ta sainte Croix</p></i><br/> \n <p>V/ Dieu, viens à mon aide,\n        <br />R/ Seigneur, à notre secours.</p>\n        <p>Gloire au Père, et au Fils et au Saint-Esprit,\n        au Dieu qui est, qui était et qui vient,\n        pour les siècles des siècles.\n        Amen. (Alléluia.)</p>",
   "hymne": {
     "titre": "",
     "texte": "",
@@ -257,14 +257,18 @@ function create_office_html(office, date, zone, hymne, invitatoire, contenu_aelf
 
   var sous_titre = ""
   if (contenu_franciscain != null) {
-    sous_titre =  "<h2>" + contenu_franciscain["informations"]["titre"] + "</h2>";
+    sous_titre =  "<h2>" + toTitleCase(contenu_franciscain["informations"]["titre"]) + "</h2>";
   }else {
     if (contenu_aelf["informations"]["jour_liturgique_nom"] != "de la férie") {
       sous_titre = "<h2>" + contenu_aelf["informations"]['jour_liturgique_nom'] + "</h2>"
     } else if (contenu_aelf["informations"]["fete"] != "de la férie") {
+      sous_titre = "<h2>" + contenu_aelf["informations"]['fete'].charAt(0).toUpperCase() + contenu_aelf["informations"]['fete'].slice(1) + "</h2>"
+    } else {
       sous_titre = "<h2>" + contenu_aelf["informations"]['ligne1'].charAt(0).toUpperCase() + contenu_aelf["informations"]['ligne1'].slice(1) + "</h2>"
     }
   }
+
+  contenu_aelf["informations"]["ligne1"] = sous_titre;
 
   switch (office) {
     case "lectures":
@@ -289,7 +293,11 @@ function create_office_html(office, date, zone, hymne, invitatoire, contenu_aelf
       return create_none_html(combine_petite_heure(contenu_aelf["none"]), contenu_aelf["informations"], date_obj, hymne)
       break;
     case "messes":
-      return create_messe_html(contenu_aelf["messes"][zone.split(";")[1]], contenu_aelf["informations"], date_obj);
+      if (contenu_franciscain != null) {
+        return create_messe_html(contenu_franciscain, contenu_aelf["informations"], date_obj);
+      } else {
+        return create_messe_html(contenu_aelf["messes"][zone.split(";")[1]], contenu_aelf["informations"], date_obj);
+      }
       break;
     default:
   }
@@ -482,8 +490,7 @@ function create_lectures_html(contenu, infos, date_obj, hymne){
 
   var titre = '<div class="office_titre" id="office_titre">';
   titre = titre.concat("<h1>Office des Lectures du " + date_obj.getDate() + " " + tab_mois[date_obj.getMonth()] + "</h1>")
-  var beautiful_name = infos['ligne1']
-  titre = titre.concat("<h2>" + beautiful_name.charAt(0).toUpperCase() + beautiful_name.slice(1) + "</h2></div>")
+  titre = titre.concat(infos['ligne1'] + "</div>")
 
   var sommaire = '<div class="office_sommaire" id="office_sommaire"><ul>';
 
@@ -509,8 +516,13 @@ function create_lectures_html(contenu, infos, date_obj, hymne){
   texte_final = texte_final.concat(contenu['verset_psaume'] + "</div>");
   sommaire = sommaire.concat("<li><a href='#verset'>Verset</a></li>");
 
-  texte_final = texte_final.concat("<div class='text_part' id='lecture_biblique'><h2>" + contenu['lecture_biblique']['titre'] + "</h2>");
-  texte_final = texte_final.concat(contenu['lecture_biblique']['texte']);
+  texte_final = texte_final.concat("<div class='text_part' id='lecture_biblique'><h2>" + contenu['lecture_biblique']['titre'] + " (" + contenu['lecture_biblique']['reference'] + ")</h2>");
+  if (contenu['lecture_biblique']['texte'].includes("verse_number")) {
+    texte_final = texte_final.concat(contenu['lecture_biblique']['texte']);
+  } else {
+    texte_final = texte_final.concat(contenu['lecture_biblique']['texte'].replaceAll(/([0-9]([0-9]|\.)+)/g, "<span class=\"verse_number\">\$1</span>"));
+  }
+
   sommaire = sommaire.concat("<li><a href='#lecture_biblique'>Lecture</a></li>");
 
   texte_final = texte_final.concat("<h2>Répons: </h2>");
@@ -534,7 +546,7 @@ function create_lectures_html(contenu, infos, date_obj, hymne){
   }
 
   texte_final = texte_final.concat("<div class='text_part' id='oraison'><h2>Oraison: </h2>");
-  texte_final = texte_final.concat(contenu['oraison'] + "</div>");
+  texte_final = texte_final.concat(contenu['oraison'] + "</div><br/>");
   sommaire = sommaire.concat("<li><a href='#oraison'>Conclusion</a></li>");
   sommaire = sommaire.concat("</ul></div>");
 
@@ -547,12 +559,11 @@ function create_lectures_html(contenu, infos, date_obj, hymne){
 }
 
 function create_laudes_html(contenu, infos, date_obj, hymne, invitatoire){
-  
+
   var titre = '<div class="office_titre" id="office_titre">';
   titre = titre.concat("<h1>Laudes du " + date_obj.getDate() + " " + tab_mois[date_obj.getMonth()] + "</h1>")
-  var beautiful_name = infos['ligne1']
-  titre = titre.concat("<h2>" + beautiful_name.charAt(0).toUpperCase() + beautiful_name.slice(1) + "</h2></div>")
-  
+  titre = titre.concat(infos['ligne1'] + "</div>")
+
   var sommaire = '<div class="office_sommaire" id="office_sommaire"><ul>';
 
   var texte_final = '<div class="office_text" id="office_text">';
@@ -586,7 +597,7 @@ function create_laudes_html(contenu, infos, date_obj, hymne, invitatoire){
   texte_final = texte_final.concat(psaumes_content.texte);
   sommaire = sommaire.concat(psaumes_content.sommaire);
 
-  texte_final = texte_final.concat("<div class='text_part' id='pericope'><h2>Parole de Dieu: " + contenu['pericope']['reference'] + "</h2>");
+  texte_final = texte_final.concat("<div class='text_part' id='pericope'><h2>Parole de Dieu (" + contenu['pericope']['reference'] + ")</h2>");
   texte_final = texte_final.concat(contenu['pericope']['texte']);
 
   texte_final = texte_final.concat("<h2>Répons: </h2>");
@@ -616,7 +627,7 @@ function create_laudes_html(contenu, infos, date_obj, hymne, invitatoire){
   texte_final = texte_final.concat("<h2>Notre Père </h2>" + "</div>");
 
   texte_final = texte_final.concat("<div class='text_part' id='oraison'><h2>Oraison: </h2>");
-  texte_final = texte_final.concat(contenu['oraison'] + "</div>");
+  texte_final = texte_final.concat(contenu['oraison'] + "</div><br/>");
   sommaire = sommaire.concat("<li><a href='#oraison'>Conclusion</a></li>");
   sommaire = sommaire.concat("</ul></div>");
 
@@ -631,8 +642,7 @@ function create_vepres_html(contenu, infos, date_obj, hymne){
 
   var titre = '<div class="office_titre" id="office_titre">';
   titre = titre.concat("<h1>Vêpres du " + date_obj.getDate() + " " + tab_mois[date_obj.getMonth()] + "</h1>")
-  var beautiful_name = infos['ligne1']
-  titre = titre.concat("<h2>" + beautiful_name.charAt(0).toUpperCase() + beautiful_name.slice(1) + "</h2></div>")
+  titre = titre.concat(infos['ligne1'] + "</div>")
 
   var sommaire = '<div class="office_sommaire" id="office_sommaire"><ul>';
 
@@ -653,7 +663,7 @@ function create_vepres_html(contenu, infos, date_obj, hymne){
   texte_final = texte_final.concat(psaumes_content.texte);
   sommaire = sommaire.concat(psaumes_content.sommaire);
 
-  texte_final = texte_final.concat("<div class='text_part' id='pericope'><h2>Parole de Dieu: " + contenu['pericope']['reference'] + "</h2>");
+  texte_final = texte_final.concat("<div class='text_part' id='pericope'><h2>Parole de Dieu (" + contenu['pericope']['reference'] + ")</h2>");
   texte_final = texte_final.concat(contenu['pericope']['texte']);
 
   texte_final = texte_final.concat("<h2>Répons: </h2>");
@@ -683,7 +693,7 @@ function create_vepres_html(contenu, infos, date_obj, hymne){
   texte_final = texte_final.concat("<h2>Notre Père </h2>" + "</div>");
 
   texte_final = texte_final.concat("<div class='text_part' id='oraison'><h2>Oraison: </h2>");
-  texte_final = texte_final.concat(contenu['oraison'] + "</div>");
+  texte_final = texte_final.concat(contenu['oraison'] + "</div><br/>");
   sommaire = sommaire.concat("<li><a href='#oraison'>Conclusion</a></li>");
   sommaire = sommaire.concat("</ul></div>");
 
@@ -698,8 +708,7 @@ function create_tierce_html(contenu, infos, date_obj, hymne){
 
   var titre = '<div class="office_titre" id="office_titre">';
   titre = titre.concat("<h1>Office de Tierce du " + date_obj.getDate() + " " + tab_mois[date_obj.getMonth()] + "</h1>")
-  var beautiful_name = infos['ligne1']
-  titre = titre.concat("<h2>" + beautiful_name.charAt(0).toUpperCase() + beautiful_name.slice(1) + "</h2></div>")
+  titre = titre.concat(infos['ligne1'] + "</div>")
 
   var retValue = create_petite_heure_html(contenu, infos, date_obj, hymne);
   retValue.titre = titre;
@@ -711,8 +720,7 @@ function create_sexte_html(contenu, infos, date_obj, hymne){
 
   var titre = '<div class="office_titre" id="office_titre">';
   titre = titre.concat("<h1>Office de Sexte du " + date_obj.getDate() + " " + tab_mois[date_obj.getMonth()] + "</h1>")
-  var beautiful_name = infos['ligne1']
-  titre = titre.concat("<h2>" + beautiful_name.charAt(0).toUpperCase() + beautiful_name.slice(1) + "</h2></div>")
+  titre = titre.concat(infos['ligne1'] + "</div>")
 
   var retValue = create_petite_heure_html(contenu, infos, date_obj, hymne);
   retValue.titre = titre;
@@ -724,8 +732,7 @@ function create_none_html(contenu, infos, date_obj, hymne){
 
   var titre = '<div class="office_titre" id="office_titre">';
   titre = titre.concat("<h1>Office de None du " + date_obj.getDate() + " " + tab_mois[date_obj.getMonth()] + "</h1>")
-  var beautiful_name = infos['ligne1']
-  titre = titre.concat("<h2>" + beautiful_name.charAt(0).toUpperCase() + beautiful_name.slice(1) + "</h2></div>")
+  titre = titre.concat(infos['ligne1'] + "</div>")
 
   var retValue = create_petite_heure_html(contenu, infos, date_obj, hymne);
   retValue.titre = titre;
@@ -756,7 +763,7 @@ function create_petite_heure_html(contenu, infos, date_obj, hymne){
   texte_final = texte_final.concat(psaumes_content.texte);
   sommaire = sommaire.concat(psaumes_content.sommaire);
 
-  texte_final = texte_final.concat("<div class='text_part' id='pericope'><h2>Parole de Dieu: " + contenu['pericope']['reference'] + "</h2>");
+  texte_final = texte_final.concat("<div class='text_part' id='pericope'><h2>Parole de Dieu (" + contenu['pericope']['reference'] + ")</h2>");
   texte_final = texte_final.concat(contenu['pericope']['texte']);
 
   texte_final = texte_final.concat("<h2>Répons: </h2>");
@@ -765,7 +772,7 @@ function create_petite_heure_html(contenu, infos, date_obj, hymne){
 
 
   texte_final = texte_final.concat("<div class='text_part' id='oraison'><h2>Oraison: </h2>");
-  texte_final = texte_final.concat(contenu['oraison'] + "</div>");
+  texte_final = texte_final.concat(contenu['oraison'] + "</div><br/>");
   sommaire = sommaire.concat("<li><a href='#oraison'>Conclusion</a></li>");
   sommaire = sommaire.concat("</ul></div>");
 
@@ -781,13 +788,12 @@ function create_complies_html(contenu, infos, date_obj, hymne){
 
   var titre = '<div class="office_titre" id="office_titre">';
   titre = titre.concat("<h1>Complies du " + date_obj.getDate() + " " + tab_mois[date_obj.getMonth()] + "</h1>")
-  var beautiful_name = infos['ligne1']
-  titre = titre.concat("<h2>" + beautiful_name.charAt(0).toUpperCase() + beautiful_name.slice(1) + "</h2></div>")
-  
+  titre = titre.concat(infos['ligne1'] + "</div>")
+
   var sommaire = '<div class="office_sommaire" id="office_sommaire"><ul>';
 
   var texte_final = '<div class="office_text" id="office_text">';
-  texte_final = texte_final.concat('<div class="text_part" id="introduction"><i><p>Nous t’adorons, très saint Seigneur Jésus-Christ, ici et dans toutes les Églises du monde entier, et nous te bénissons d’avoir racheté le monde par ta sainte Croix</p></i> \n'+ contenu["introduction"] + "</div>");
+  texte_final = texte_final.concat('<div class="text_part" id="introduction"><i><p>Nous t’adorons, très saint Seigneur Jésus-Christ, ici et dans toutes les Églises du monde entier, et nous te bénissons d’avoir racheté le monde par ta sainte Croix</p></i><br/> \n'+ contenu["introduction"] + "</div>");
   sommaire = sommaire.concat("<li><a href='#introduction'>Introduction</a></li>");
 
   if (hymne) {
@@ -809,7 +815,20 @@ function create_complies_html(contenu, infos, date_obj, hymne){
   sommaire = sommaire.concat("<li><a href='#psaume_1'>" + titre_psaume(contenu["psaume_1"]['reference']) + "</a></li>");
 
 
-  texte_final = texte_final.concat("<div class='text_part' id='pericope'><h2>Parole de Dieu: " + contenu['pericope']['reference'] + "</h2>");
+  if (contenu["psaume_2"].length != 0) {
+
+    texte_final = texte_final.concat("<div class='text_part' id='psaume_2'><h2>Antienne: </h2>");
+    texte_final = texte_final.concat("<i>" + contenu["antienne_2"] + "</i>");
+
+    texte_final = texte_final.concat("<h2> " + titre_psaume(contenu["psaume_2"]['reference']) + "</h2>");
+    texte_final = texte_final.concat(contenu["psaume_2"]['texte'] + "</div>");
+    sommaire = sommaire.concat("<li><a href='#psaume_2'>" + titre_psaume(contenu["psaume_2"]['reference']) + "</a></li>");
+  }
+
+
+
+
+  texte_final = texte_final.concat("<div class='text_part' id='pericope'><h2>Parole de Dieu (" + contenu['pericope']['reference'] + ")</h2>");
   texte_final = texte_final.concat(contenu['pericope']['texte']);
 
   texte_final = texte_final.concat("<h2>Répons: </h2>");
@@ -831,7 +850,7 @@ function create_complies_html(contenu, infos, date_obj, hymne){
   sommaire = sommaire.concat("<li><a href='#oraison'>Oraison</a></li>");
 
   texte_final = texte_final.concat("<div class='text_part' id='hymne_mariale'><h2>Hymne mariale: " + contenu["hymne_mariale"]["titre"] + " </h2>");
-  texte_final = texte_final.concat(contenu["hymne_mariale"]["texte"] + "</div>");
+  texte_final = texte_final.concat(contenu["hymne_mariale"]["texte"] + "</div><br/>");
   sommaire = sommaire.concat("<li><a href='#hymne_mariale'>" + contenu["hymne_mariale"]["titre"] + "</a></li>");
 
   sommaire = sommaire.concat("</ul></div>");
@@ -848,7 +867,7 @@ function create_psaumes_html(contenu){
   sommaire = sommaire.concat("<li><a href='#psaume_1'>" + contenu["psaume_1"]['reference'] + "</a></li>");
 
   if (contenu["antienne_1"]["additionel"] != "") {
-    texte_final = texte_final.concat("<i>" + contenu["antienne_1"]["additionel"] + "</i>");
+    texte_final = texte_final.concat("<i class=\"contenu_additionnel\">" + contenu["antienne_1"]["additionel"] + "</i>");
   }
   if (contenu["antienne_1"]["antienne_B"] != "") {
     texte_final = texte_final.concat("<h2>Antienne A</h2>");
@@ -869,7 +888,7 @@ function create_psaumes_html(contenu){
 
 
   if (contenu["antienne_2"]["additionel"] != "") {
-    texte_final = texte_final.concat("<i>" + contenu["antienne_2"]["additionel"] + "</i>");
+    texte_final = texte_final.concat("<i class=\"contenu_additionnel\">" + contenu["antienne_2"]["additionel"] + "</i>");
   }
   if (contenu["antienne_2"]["antienne_B"] != "") {
     texte_final = texte_final.concat("<h2>Antienne A</h2>");
@@ -887,10 +906,10 @@ function create_psaumes_html(contenu){
 
   texte_final = texte_final.concat("</div><div class='text_part' id='psaume_3'>");
   sommaire = sommaire.concat("<li><a href='#psaume_3'>" + contenu["psaume_3"]['reference'] + "</a></li>");
-  
+
 
   if (contenu["antienne_3"]["additionel"] != "") {
-    texte_final = texte_final.concat("<i>" + contenu["antienne_3"]["additionel"] + "</i>");
+    texte_final = texte_final.concat("<i class=\"contenu_additionnel\">" + contenu["antienne_3"]["additionel"] + "</i>");
   }
   if (contenu["antienne_3"]["antienne_B"] != "") {
     texte_final = texte_final.concat("<h2>Antienne A</h2>");
@@ -914,64 +933,64 @@ function create_messe_html(contenu, infos, date_obj){
 
   var titre = '<div class="office_titre" id="office_titre">';
   titre = titre.concat("<h1>Messe du " + date_obj.getDate() + " " + tab_mois[date_obj.getMonth()] + "</h1>")
-  var beautiful_name = infos['ligne1']
-  titre = titre.concat("<h2>" + beautiful_name.charAt(0).toUpperCase() + beautiful_name.slice(1) + "</h2></div>");
-  
+  titre = titre.concat(infos['ligne1'] + "</div>")
+
   var sommaire = '<div class="office_sommaire" id="office_sommaire"><ul>';
 
   var texte_final = '<div class="office_text" id="office_text">';
 
   var cardinaux = {1: "Première", 2: "Deuxième", 3: "Troisième", 4: "Quatrième", 5: "Cinquième", 6: "Sixième", 7: "Septième"}
-  
+
   var id = 1;
 
   for (const iterator of contenu["lectures"]) {
     if (iterator["type"].startsWith('lecture')) {
       var titre_loc = cardinaux[iterator["type"].split("_")[1]] + " Lecture";
 
-      texte_final = texte_final.concat("<div class='text_part' id='lecture" + id + "'><h2>" + titre_loc + "  (" + iterator["ref"] + ")</h2>");
-      texte_final = texte_final.concat("<h3>" + iterator["titre"] + "</h3>");
+      texte_final = texte_final.concat("<div class='text_part' id='lecture" + id + "'><h2>" + titre_loc + "</h2>");
+      texte_final = texte_final.concat("<h3>" + iterator["titre"] + "  (" + iterator["ref"] +  ")</h3>");
       texte_final = texte_final.concat("<i>" + iterator["intro_lue"] + "</i>");
-    
+
       texte_final = texte_final.concat(iterator["contenu"] + "</div>");
       sommaire = sommaire.concat("<li><a href='#lecture" + id + "'>" + titre_loc + "</a></li>");
-      
+
     } else if (iterator["type"].startsWith('epitre')) {
 
-      texte_final = texte_final.concat("<div class='text_part' id='lecture" + id + "'><h2>Épitre (" + iterator["ref"] + ")</h2>");
-      texte_final = texte_final.concat("<h3>" + iterator["titre"] + "</h3>");
+      texte_final = texte_final.concat("<div class='text_part' id='lecture" + id + "'><h2>Épitre</h2>");
+      texte_final = texte_final.concat("<h3>" + iterator["titre"] + "  (" + iterator["ref"] +  ")</h3>");
       texte_final = texte_final.concat("<i>" + iterator["intro_lue"] + "</i>");
-    
+
       texte_final = texte_final.concat(iterator["contenu"] + "</div>");
       sommaire = sommaire.concat("<li><a href='#lecture" + id + "'>Épitre</a></li>");
-      
+
     } else if (iterator["type"].startsWith('psaume')) {
-      texte_final = texte_final.concat("<div class='text_part' id='psaume" + id + "'><h2>Cantique (" + iterator["ref"] + ")</h2>");
+      texte_final = texte_final.concat("<div class='text_part' id='psaume" + id + "'><div style='margin-top:50px;'></div><h2 style='display:inline-block; margin-top:0px'>Psaume </h2><h3 style='display:inline-block; margin-top:0px'>\&nbsp(" + iterator["ref"] +  ")</h3>");
+
       texte_final = texte_final.concat("<b>" + iterator["refrain_psalmique"] + "</b>");
-    
+
       texte_final = texte_final.concat(iterator["contenu"] + "</div>");
       sommaire = sommaire.concat("<li><a href='#psaume" + id + "'>Psaume</a></li>");
     } else if (iterator["type"].startsWith('cantique')) {
-      texte_final = texte_final.concat("<div class='text_part' id='cantique" + id + "'><h2>Cantique (" + iterator["ref"] + ")</h2>");
+      texte_final = texte_final.concat("<div class='text_part' id='psaume" + id + "'><div style='margin-top:50px;'></div><h2 style='display:inline-block; margin-top:0px'>Cantique </h2><h3 style='display:inline-block; margin-top:0px'>\&nbsp(" + iterator["ref"] +  ")</h3>");
       texte_final = texte_final.concat("<b>" + iterator["refrain_psalmique"] + "</b>");
-    
+
       texte_final = texte_final.concat(iterator["contenu"] + "</div>");
       sommaire = sommaire.concat("<li><a href='#cantique" + id + "'>Cantique</a></li>");
     } else if (iterator["type"].startsWith('sequence')) {
       texte_final = texte_final.concat("<div class='text_part' id='sequence" + id + "'><h2>Séquence</h2>");
-    
+
       texte_final = texte_final.concat(iterator["contenu"] + "</div>");
       sommaire = sommaire.concat("<li><a href='#sequence" + id + "'>Séquence</a></li>");
     } else if (iterator["type"].startsWith('evangile')) {
 
-      texte_final = texte_final.concat("<div class='text_part' id='evangile" + id + "'><h2>Évangile (" + iterator["ref"] + ")</h2>");
-      texte_final = texte_final.concat("<h3>" + iterator["titre"] + "</h3>");
+      texte_final = texte_final.concat("<div class='text_part' id='evangile" + id + "'><h2>Évangile</h2>");
+      texte_final = texte_final.concat("<h3>" + iterator["titre"] + "  (" + iterator["ref"] +  ")</h3>");
 
       texte_final = texte_final.concat(iterator["verset_evangile"] != null ? "<p>" + iterator["verset_evangile"] + "</p>" : "");
 
       texte_final = texte_final.concat("<i>" + iterator["intro_lue"] + "</i>");
-    
-      texte_final = texte_final.concat(iterator["contenu"] + "</div>");
+
+      texte_final = texte_final.concat(iterator["contenu"] + "</div><br/>");
       sommaire = sommaire.concat("<li><a href='#evangile" + id + "'>Évangile</a></li>");
     }
     id++;
@@ -987,19 +1006,28 @@ function create_messe_html(contenu, infos, date_obj){
 
 function add_symbol_span(texte){
   /*Replace some " " with to nbsp to avoid too small line returns*/
-  texte = texte.replaceAll(" *", "&nbsp*"); 
-  texte = texte.replaceAll(" :", "&nbsp:"); 
-  texte = texte.replaceAll(" +", "&nbsp+"); 
-  texte = texte.replaceAll(" ;", "&nbsp;"); 
+  texte = texte.replaceAll(" *", "&nbsp*");
+  texte = texte.replaceAll(" :", "&nbsp:");
+  texte = texte.replaceAll(" +", "&nbsp+");
+  texte = texte.replaceAll(" ;", "&nbsp;");
 
 
   texte = texte.replaceAll("*", '<span class="liturgical_symbol">*</span>');
   texte = texte.replaceAll("+", '<span class="liturgical_symbol">+</span>');
   texte = texte.replaceAll("R/", '<span class="liturgical_symbol">R/</span>');
   texte = texte.replaceAll("V/", '<span class="liturgical_symbol">V/</span>');
-  
+
 
   return texte;
+}
+
+function toTitleCase(str) {
+  return str.replace(
+    /\w\S*/g,
+    function(txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    }
+  );
 }
 
 

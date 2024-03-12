@@ -1,10 +1,10 @@
 {
-    "name": "Sanctoral Franciscain",
-    "short_name": "Sancto",
-    "description": "Tentative to make a PWA work",
+    "name": "Bréviaire Franciscain",
+    "short_name": "Bréviaire Franciscain",
+    "description": "Bréviaire et liturgie de la famille franciscaine",
     "icons": [
       {
-        "src": "img/favicon.png",
+        "src": "img/app-icon.png",
         "sizes": "352x352",
         "type": "image/png"
       }
@@ -14,4 +14,3 @@
     "theme_color": "#FFFFFF",
     "background_color": "#FFFFFF"
   }
-  

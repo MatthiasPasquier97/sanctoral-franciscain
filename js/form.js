@@ -128,12 +128,16 @@ function update_office_list(office, date){
     }
   });
   } else {
+    if (messe_disponible(date2slashedDate(date))) {
+      offices_disponibles = messe_resume_du(date2slashedDate(date));
+    }
+
     var urlAelf = "https://api.aelf.org/v1/messes/" + date + "/romain"
     $.ajax({url: urlAelf,
       success: function(result){
         var index = 0;
         for (const iterator of result.messes) {
-          offices_disponibles.push({"ligne1": result.informations.ligne1.charAt(0).toUpperCase() + result.informations.ligne1.slice(1), "ligne2": iterator["nom"] == "Messe du jour" ? result.informations.ligne2 : iterator["nom"], "ligne3": "Office Romain", "zone": "romain;" + index , "rang": "haut"});
+          offices_disponibles.push({"ligne1": result.informations.ligne1.charAt(0).toUpperCase() + result.informations.ligne1.slice(1), "ligne2": iterator["nom"] == "Messe du jour" ? result.informations.ligne2 : iterator["nom"], "ligne3": "Office Romain", "zone": "romain;" + index , "rang": "bas"});
           index++;
         }
         display_office_list(offices_disponibles);
@@ -264,10 +268,18 @@ function update_office(){
 	var urlAelf = "https://api.aelf.org/v1/" + office + "/" + date + "/" + zone.split(";")[0];
 
 	var contenu_franciscain = null;
-	if (zone.startsWith("franciscain")) {
-		contenu_franciscain = office_du(office, date2slashedDate(date), zone.split(";")[1]);
-		urlAelf = "https://api.aelf.org/v1/" + office + "/" + date + "/romain"
-		zone = "franciscain";
+	if (office != "messes") {
+    if (zone.startsWith("franciscain")) {
+		  contenu_franciscain = office_du(office, date2slashedDate(date), zone.split(";")[1]);
+		  urlAelf = "https://api.aelf.org/v1/" + office + "/" + date + "/romain"
+		  zone = "franciscain";
+    }
+  } else {
+    if (zone.startsWith("franciscain")) {
+		  contenu_franciscain = messe_du(date2slashedDate(date));
+		  urlAelf = "https://api.aelf.org/v1/" + office + "/" + date + "/romain"
+		  zone = "franciscain";
+    }
 	}
 
 	$.ajax({url: urlAelf,

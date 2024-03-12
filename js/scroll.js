@@ -16,7 +16,7 @@ function handleScroll() {
     //update_anchors();
     update_scroll_menu();
   }
-  
+
 
 function update_anchors(){
     var docViewTop = 150;

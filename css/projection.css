@@ -50,6 +50,11 @@ label {
   cursor: pointer;
 }
 
+p {
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
 /*Projection and full screen styles*/
 .full_screen {
   height: 100%;
@@ -91,8 +96,9 @@ label {
 }
 
 .full_screen .office_titre h2 {
-  font-size: 40px;
+  font-size: 50px;
   padding-bottom: 80px;
+  color: gray;
 }
 
 #stop_projection {
@@ -146,7 +152,7 @@ label {
 
 .main_content {
   display: flex;
-  max-width: 950px;
+  max-width: 980px;
   margin: auto;
 }
 
@@ -189,8 +195,8 @@ label {
 .office_titre h2 {
   margin-top: 5px;
   font-weight: 400;
-  font-size: 13px;
-  color: var(--grey);
+  font-size: 16px;
+  color: #6e6e6e;
 }
 
 .office_sommaire ul {
@@ -280,13 +286,21 @@ label {
 
 .text_part h2 {
   font-family: 'Inter', sans-serif;
-  margin-top: 60px;
+  margin-top: 50px;
+}
+
+.text_part h3 {
+  font-family: 'Inter', sans-serif;
 }
 
 .top_bar .right {
   display: flex;
   align-items: center;
   position: relative;
+}
+
+.contenu_additionnel p{
+  margin-top: 50px;
 }
 
 .top_bar .left {
@@ -459,4 +473,3 @@ label {
 .liturgical_symbol{
   color: var(--liturgical-color);
 }
-
