@@ -162,7 +162,7 @@ p {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: url(/img/dropdown.svg) 98% / 6% no-repeat;
+  background: url('../img/dropdown.svg') 98% / 6% no-repeat;
   background-color: inherit;
   color: inherit;
 }
