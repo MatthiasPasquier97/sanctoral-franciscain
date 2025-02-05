@@ -34,18 +34,28 @@ const urlsToCache = [
     './css/freeSansBold.woff2',
 ];
 
-self.addEventListener('install', event => {
+self.addEventListener('install', (event) => {
+    console.log('Service Worker installing...');
+  
     event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then(cache => {
-                console.log('Opened cache');
-                cache.addAll(urlsToCache);                
-            }).then(() => {
-                //preloadAPIDays(7);
-                //cleanOldAPICache(7)
-            })
+      (async () => {
+        // Open caches for static assets and API data
+        const staticCache = await caches.open(CACHE_NAME);
+        const apiCache = await caches.open(API_CACHE);
+  
+        // Cache static assets
+        await staticCache.addAll(urlsToCache);
+  
+        console.log('Static assets cached.');
+        // Preload future API data (e.g., next 7 days)
+        await preloadFutureData(apiCache, 7);
+        console.log('Preloaded API data for the next 7 days.');
+        // Force activation immediately
+        self.skipWaiting();
+      })()
     );
-});
+  });
+  
 
 self.addEventListener('activate', event => {
     const cacheWhitelist = [CACHE_NAME];
@@ -134,18 +144,6 @@ self.addEventListener('activate', event => {
         cache.put(LAST_UPDATE_KEY, new Response(JSON.stringify({ timestamp: now })));
       }
     });
-  
-    // Always attempt to update the specific request in the background
-    fetch(request)
-      .then((networkResponse) => {
-        if (networkResponse.ok) {
-          cache.put(request, networkResponse.clone());
-          console.log(`Cache updated for request: ${request.url}`);
-        }
-      })
-      .catch((error) => {
-        console.error(`Failed to update cache for ${request.url}:`, error);
-      });
   }
 
 // Clean API data older than specified days
