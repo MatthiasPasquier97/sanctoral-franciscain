@@ -43,12 +43,6 @@
         </div>
         <div class="right">
           <div class="option">
-            <select id="psaume_invitatoire_select" name="Psaume Invitatoire">
-              <option value="23">Psaume 23</option>
-              <option value="66">Psaume 66</option>
-              <option value="94" selected="selected">Psaume 94</option>
-              <option value="99">Psaume 99</option>
-            </select>
             <input type="button" id="hymne_toggle" value="Afficher Hymne">
           </div>
           <div class="icon" id="projection">
@@ -135,16 +129,6 @@
       <h4>Choisir un office :</h4>
       <div class="office_choice_mob"></div>
     </aside>
-    <aside id="setting-pop" class="popup">
-      <span class="close"></span>
-      <h4>Options :</h4>
-      <select id="psaume_invitatoire_selectMob" name="Psaume Invitatoire">
-        <option value="23">Psaume 23</option>
-        <option value="66">Psaume 66</option>
-        <option value="94" selected="selected">Psaume 94</option>
-        <option value="99">Psaume 99</option>
-      </select>
-    </aside>
     <aside id="menu-pop" class="popup">
       <span class="close"></span>
       <svg id="logo" width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -153,11 +137,11 @@
 
       <ul>
         <li><span class="dropdown_element" onclick="update_office_credits()">Informations</span></li>
-        <!--li><a href="#">Conditions générales d'utilisation</a></li-->
-        <!--li><a href="#">Mentions légales</a></li-->
+        <li><span class="dropdown_element" onclick="install_prompt()">Installer</span></li>
+
         <li class="menuZoom"><p>Taille du texte </p>
-          <svg xmlns="http://www.w3.org/2000/svg" onclick="zoom_in()" class="topMenu" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
-          <svg xmlns="http://www.w3.org/2000/svg" onclick="zoom_out()" class="topMenu" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" onclick="zoom_in()" class="topMenu" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" onclick="zoom_out()" class="topMenu" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
         </li>
       </ul>
 

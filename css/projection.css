@@ -150,6 +150,24 @@ p {
   opacity: 1;
 }
 
+.psaume_invitatoire_select {
+  /*display: none;*/
+  font-family: 'Inter', sans-serif;
+  font-weight: inherit;
+  padding: 0px;
+  padding-right: 45px;
+  height: auto;
+  font-size: inherit;
+  border: 0px solid #ffffff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(/img/dropdown.svg) 98% / 6% no-repeat;
+  background-color: inherit;
+  color: inherit;
+}
+
+
 .main_content {
   display: flex;
   max-width: 980px;
@@ -161,6 +179,7 @@ p {
   padding-top: 55px;
   padding-bottom: 70px;
   padding-right: 60px;
+  padding-left: 10px;
   overflow-y: scroll;
   width: 70%;
   -ms-overflow-style: none;
@@ -359,13 +378,13 @@ p {
   margin-right: 20px;
 }
 
-#psaume_invitatoire_select {
+/*#psaume_invitatoire_select {
   display: none;
-}
+}*/
 
-.office_laudes #psaume_invitatoire_select {
+/*.office_laudes #psaume_invitatoire_select {
   display: inline-block;
-}
+}*/
 
 .top_bar .icon {
   display: flex;

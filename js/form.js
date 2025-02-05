@@ -59,16 +59,24 @@ $(document).ready(function(){
     update_office();
   });
 
-  $('#psaume_invitatoire_select').change(function(){
+ /* $('#psaume_invitatoire_select').change(function(){
     $('#psaume_invitatoire_selectMob').val($("#psaume_invitatoire_select").val());
     zone =  update_office_list(office, date); 
   });
   $('#psaume_invitatoire_selectMob').change(function(){
     $('#psaume_invitatoire_select').val($("#psaume_invitatoire_selectMob").val());
     zone =  update_office_list(office, date); 
-  });
+  });*/
 });
 
+
+function invitatoire_update(invit_select){
+  let elements = document.getElementsByClassName("psaume_invitatoire_select");
+  for (let i = 0; i < elements.length; i++) {
+    elements[i].value = invit_select.value;
+  }
+  update_office_list($('#office').val(), $('#date').val()); 
+}
 
 
 Date.prototype.toDateInputValue = (function() {
@@ -261,8 +269,8 @@ function update_office(){
   var office = $('#office').val();
   var zone = $("input[type='radio'][name='radio_office']:checked").val();
 	const hymne = true;
-	var invitatoire = $("#psaume_invitatoire_select").val();
-
+  let elements = document.getElementsByClassName("psaume_invitatoire_select");
+	var invitatoire = elements.length > 0 ? elements[0].value : 94;  
   //zone = zone.split(";")[0]
 
 	var urlAelf = "https://api.aelf.org/v1/" + office + "/" + date + "/" + zone.split(";")[0];
@@ -295,6 +303,12 @@ function update_office(){
         update_anchors();
         update_liturgical_color(html_text.couleur);
         update_office_class(office);
+        if (office == "laudes") {
+          let elements = document.getElementsByClassName("psaume_invitatoire_select");
+          for (let i = 0; i < elements.length; i++) {
+            elements[i].value = invitatoire;
+          }
+        }
 		},
 		error: function(result){
 			$(".office_content").html("<br><br><h1>Office non disponible</h1><br><br><br><br><br>")

@@ -1,5 +1,17 @@
 var screenLock;
 
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then((registration) => {
+        console.log('Service Worker enregistré avec succès :', registration);
+      })
+      .catch((error) => {
+        console.error('Échec de l’enregistrement du Service Worker :', error);
+      });
+  });
+}
+
 $(document).ready(function(){
   //window.location.reload();
   const cookieValue = document.cookie.split('; ').find((row) => row.startsWith('fontSize='))?.split('=')[1];
@@ -153,3 +165,21 @@ $(document).ready(function() {
   });
 
 });
+
+
+// PWA install prompt
+
+let deferredEvent;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // prevent the browser from displaying the default install dialog
+  e.preventDefault();  
+  // Stash the event so it can be triggered later when the user clicks the button
+  deferredEvent = e;
+});
+
+function install_prompt(){
+  if(deferredEvent) {
+    deferredEvent.prompt();
+  }
+}
