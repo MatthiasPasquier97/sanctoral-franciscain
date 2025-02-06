@@ -9,7 +9,69 @@
 :root {
   --border: #E6E6E6;
   --grey: #888888;
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --filter-value: 0;
+  --shadow-color: #ebebebf5;
+  --menu-color: #ffffff;
+  --alt-menu-color: #f5f5f5;
+  --hover-color: #dadada;
+  --liturgical-white: rgb(226, 154, 0);
+  --liturgical-green: rgb(0, 126, 48);
+  --liturgical-red: rgb(171, 44, 44);
+  --liturgical-purple: rgb(97, 44, 102);
+  --liturgical-pink: rgb(204, 53, 166);
+  --liturgical-default: rgb(0, 0, 0);
 }
+
+[data-theme="dark"] {
+  --border: #303030; 
+  --background-color: #121212;
+  --text-color: #e0e0e0;
+  --filter-value: 1;
+  --shadow-color: #404040f5; 
+  --menu-color: #333333;
+  --alt-menu-color: #1f1f1f;
+  --hover-color: #2c2c2c;
+  --liturgical-white: rgb(255, 175, 55);
+  --liturgical-green: rgb(12, 210, 109);
+  --liturgical-red: rgb(225, 69, 69);
+  --liturgical-purple: rgb(209, 49, 209);
+  --liturgical-pink: rgb(255, 75, 255);
+  --liturgical-default: rgb(217, 217, 217);
+}
+
+/*Liturgical color changes*/
+.color_liturgy_white{
+  --liturgical-color: rgb(226, 154, 0);
+  --liturgical-color-alt: var(--liturgical-white);
+}
+
+.color_liturgy_green{
+  --liturgical-color: rgb(0, 126, 48);
+  --liturgical-color-alt: var(--liturgical-green);
+}
+
+.color_liturgy_red{
+  --liturgical-color: rgb(171, 44, 44);
+  --liturgical-color-alt: var(--liturgical-red);
+}
+
+.color_liturgy_purple{
+  --liturgical-color: rgb(97, 44, 102);
+  --liturgical-color-alt: var(--liturgical-purple);
+}
+
+.color_liturgy_pink{
+  --liturgical-color: rgb(204, 53, 166);
+  --liturgical-color-alt: var(--liturgical-pink);
+}
+
+.color_liturgy_default{
+  --liturgical-color: rgb(0, 0, 0);
+  --liturgical-color-alt: var(--liturgical-default);
+}
+
 
 html {
   overscroll-behavior: contain;
@@ -18,6 +80,8 @@ html {
 body{
   font-family: 'Inter', sans-serif;
   margin: 0px;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 input, select {
@@ -30,6 +94,8 @@ input, select {
   transition: background-color 0.24s ease 0s, box-shadow 0.24s ease 0s, border-color 0.24s ease 0s;
   font-family: 'Inter', sans-serif;
   outline: none;
+  color: var(--text-color);
+  background-color: var(--menu-color);
 }
 
 input[type="button"] {
@@ -137,13 +203,13 @@ p {
   font-size: 14px;
   opacity: .5;
   padding: 20px 10px 17px 10px;
-  border-bottom: 3px solid #F5F5F5;
+  border-bottom: 3px solid var(--alt-menu-color);
   transition: .3s opacity ease;
 }
 
 .office_choice input:checked + label {
   opacity: 1;
-  border-bottom: 3px solid #000;
+  border-bottom: 3px solid var(--text-color);
 }
 
 .office_choice label:hover {
@@ -155,14 +221,14 @@ p {
   font-family: 'Inter', sans-serif;
   font-weight: inherit;
   padding: 0px;
-  padding-right: 45px;
+  padding-right: 50px;
   height: auto;
   font-size: inherit;
   border: 0px solid #ffffff;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: url("../img/dropdown.svg") 98% / 6% no-repeat;
+  background: url("data:image/svg+xml,%3Csvg version='1.1' id='Capa_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='284.929px' height='284.929px' viewBox='0 0 284.929 284.929' style='enable-background:new 0 0 284.929 284.929;' xml:space='preserve'%3E%3Cg%3E%3Cpath d='M282.082,76.511l-14.274-14.273c-1.902-1.906-4.093-2.856-6.57-2.856c-2.471,0-4.661,0.95-6.563,2.856L142.466,174.441 L30.262,62.241c-1.903-1.906-4.093-2.856-6.567-2.856c-2.475,0-4.665,0.95-6.567,2.856L2.856,76.515C0.95,78.417,0,80.607,0,83.082 c0,2.473,0.953,4.663,2.856,6.565l133.043,133.046c1.902,1.903,4.093,2.854,6.567,2.854s4.661-0.951,6.562-2.854L282.082,89.647 c1.902-1.903,2.847-4.093,2.847-6.565C284.929,80.607,283.984,78.417,282.082,76.511z' fill='rgb(120, 120, 120)'/%3E%3C/g%3E%3C/svg%3E") 98% / 6% no-repeat;
   background-color: inherit;
   color: inherit;
 }
@@ -258,7 +324,7 @@ p {
   background-image: url("../img/polygon_purple.svg");
 }
 
-.color_liturgy_pink.office_sommaire a.anchor_selected::before {
+.color_liturgy_pink .office_sommaire a.anchor_selected::before {
   background-image: url("../img/polygon_pink.svg");
 }
 
@@ -337,7 +403,7 @@ p {
   display: none;
   position: fixed;
   top: 64px;
-  background-color: #ffffff;
+  background-color: var(--background-color);
   right: 0;
   width: 200px;
   box-shadow: 0 5px 16px 0px #0000000d;
@@ -353,13 +419,13 @@ p {
   padding: 10px;
   display: block;
   text-decoration: none;
-  color: black;
+  color: var(--text-color);
   font-weight: 400;
   border-radius: 6px;
 }
 
 .dropdown_element:hover {
-  background-color: whitesmoke;
+  background-color: var(--hover-color);
 }
 
 .dropdown_element p {
@@ -389,7 +455,7 @@ p {
 .top_bar .icon {
   display: flex;
   gap: 10px;
-  color: #000000;
+  color: var(--text-color);
   font-weight: bold;
   cursor: pointer;
   font-size: 13px;
@@ -402,6 +468,11 @@ p {
 .top_bar .icon .name, .top_bar .icon svg {
   opacity: .5;
   transition: .3s opacity ease, .3s background-color ease;
+
+}
+
+.top_bar .icon svg {
+  filter: invert(var(--filter-value));
 }
 
 .top_bar .icon:hover .name, .top_bar .icon:hover svg {
@@ -419,7 +490,7 @@ p {
 .office_choice {
   gap: 40px;
   padding: 0 20px;
-  background-color: #F5F5F5;
+  background-color: var(--alt-menu-color);
   border-bottom: 1px solid var(--border);
   position: fixed;
   top: 64px;
@@ -430,7 +501,7 @@ p {
 .top_bar {
   height: 64px;
   border-bottom: 1px solid var(--border);
-  background-color: #fff;
+  background-color: var(--background-color);
   display: flex;
   align-items: center;
   padding: 0 15px;
@@ -459,36 +530,11 @@ p {
   background-color: var(--liturgical-color);
 }
 
-/*Liturgical color changes*/
-.color_liturgy_white{
-  --liturgical-color: rgb(226, 154, 0);
-}
-
-.color_liturgy_green{
-  --liturgical-color: rgb(0, 126, 48);
-}
-
-.color_liturgy_red{
-  --liturgical-color: rgb(153, 42, 42);
-}
-
-.color_liturgy_purple{
-  --liturgical-color: rgb(97, 44, 102);
-}
-
-.color_liturgy_pink{
-  --liturgical-color: rgb(204, 53, 166);
-}
-
-.color_liturgy_default{
-  --liturgical-color: rgb(0, 0, 0);
-}
-
 .verse_number{
-  color: var(--liturgical-color);
+  color: var(--liturgical-color-alt);
   font-size: 60%;
 }
 
 .liturgical_symbol{
-  color: var(--liturgical-color);
+  color: var(--liturgical-color-alt);
 }

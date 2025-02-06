@@ -167,9 +167,11 @@ function display_office_list(offices_disponibles){
   if (offices_disponibles.length > 1) {
     $('#multiple-choice').attr('stroke', '#fc5a03');
     $('#multiple-choice').css('opacity', '.9');
+    $('#multiple-choice').css('filter', 'invert(0)');
   } else {
     $('#multiple-choice').attr('stroke', '#000000');
     $('#multiple-choice').css('opacity', '.5');
+    $('#multiple-choice').css('filter', '');
   }
   for (office of offices_disponibles){
     if (office.rang == "haut"){
@@ -195,8 +197,12 @@ function display_office_list(offices_disponibles){
 }
 
 function display_office_error(){
-  var innerHtml = "<div class=\"office_button_error\"><p>Office non diponible</p>Vérifiez la date et votre connexion internet<p></p></div>";
-  $('.office_choice').html(innerHtml);
+  //var innerHtml = "<div class=\"office_button_error\"><p>Office non disponible</p></div>";
+  $('.office_choice').html("");
+  $(".office_titre").each(function(){$(this).html("")});
+  $(".office_sommaire").each(function(){$(this).html("<ul><li><a href='.' class='anchor_selected'>Retour à la date actuelle</li></ul>")});
+  update_liturgical_color("noir");
+  $(".office_content").html("<h1>Cet office n'est pas disponible</h1><p>Si vous voyez cet écran, vous n'avez pas de connexion à internet ou vous avez sélectionné une date éloignée de plusieurs mois de la date du jour. Pour l'une de ces raisons, l'office demandé ne peut pas être affiché.</p><p>Si vous êtes connectés à internet, vous pouvez afficher un office plus proche de la date actuelle en sélectionnant une nouvelle date, ou en appuyant sur le bouton de retour qui vous ramènera à l'office le plus proche de votre heure actuelle.</p><p>Si vous n'êtes pas connectés à internet, BreF propose la consultation des offices hors ligne des 7 jours suivants la date actuelle, à la condition que ceux-ci aient été chargés auparavant en visitant l'application en étant connecté à internet.</p>");
 }
 
 function select_office(zone){
@@ -311,7 +317,8 @@ function update_office(){
         }
 		},
 		error: function(result){
-			$(".office_content").html("<br><br><h1>Office non disponible</h1><br><br><br><br><br>")
+			display_office_error();
+      //$(".office_content").html("<br><br><h1>Office non disponible</h1><br><br><br><br><br>")
 		}
 	});
 }
@@ -323,6 +330,7 @@ function update_office_credits(){
   titre = titre.concat("<h1>Informations</h1></div>")
  
   texte_final = texte_final.concat("<div class='text_part' id='credits'>");
+  sommaire = sommaire.concat("<li><a href='.'>Retour à la date actuelle</a></li>");
   sommaire = sommaire.concat("<li><a href='#credits'>Crédits</a></li>");
 
   texte_final = texte_final.concat("<h2> Crédits </h2>");

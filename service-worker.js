@@ -5,6 +5,7 @@ const LAST_UPDATE_KEY = 'last-update';
 
 const urlsToCache = [
     './',
+    './sanctoral.webmanifest',
     './index.html',
     './js/main.js',
     './js/breviaire.js',
@@ -32,6 +33,8 @@ const urlsToCache = [
     './css/freeSansBold.ttf',
     './css/freeSansBold.woff',
     './css/freeSansBold.woff2',
+    'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,0',
+    'https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap'
 ];
 
 self.addEventListener('install', (event) => {
@@ -109,17 +112,22 @@ self.addEventListener('activate', event => {
   // Fetch from network and cache the response
   function fetchAndCache(request, cache) {
     return fetch(request)
-      .then((networkResponse) => {
-        if (networkResponse.ok) {
-          cache.put(request, networkResponse.clone());  // Cache the new response
-        }
-        return networkResponse;
+      .then((response) => {
+        // If fetch is successful, cache the response
+        cache.put(request, response.clone());
+        return response;
       })
       .catch(() => {
-        // If network fails, fallback to cached data if available
-        return cache.match(request);
+        // If network request fails, return a fallback response
+        return new Response(JSON.stringify({
+          message: 'You are offline, and this resource could not be fetched.',
+        }), {
+          headers: { 'Content-Type': 'application/json' },
+          status: 503  // Service Unavailable
+        });
       });
   }
+  
   
   // Background cache update logic
   function backgroundCacheUpdate(cache, request) {

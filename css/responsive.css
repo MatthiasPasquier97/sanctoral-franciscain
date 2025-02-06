@@ -34,8 +34,8 @@ aside {
         width: 100%;
         position: fixed;
         top: 0;
-        background: #FFFFFF;
-        box-shadow: 0px 1px 0px rgba(235, 235, 235, 0.96);
+        background: var(--background-color);
+        box-shadow: 0px 1px 0px var(--shadow-color);
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -62,8 +62,8 @@ aside {
         top: 50px;
         display: block;
         height: 50px;
-        background: #FFFFFF;
-        box-shadow: 0px 1px 0px rgba(235, 235, 235, 0.96);
+        background: var(--background-color);
+        box-shadow: 0px 1px 0px var(--shadow-color);
         width: 100%;
         padding: 0 10px;
     }
@@ -100,6 +100,7 @@ aside {
 
     .menu-mobile .right svg {
         opacity: .5;
+        filter: invert(var(--filter-value));
     }
 
     .menu-mobile .right {
@@ -118,7 +119,7 @@ aside {
     }
 
     .anchor_selected {
-        background-color: #FFFFFF;
+        background-color: var(--background-color);
     }
 
     .office_sommaire a {
@@ -126,7 +127,7 @@ aside {
     }
 
     .office_sommaire a.anchor_selected {
-        color: #000000;
+        color: var(--text-color);
         border-color: var(--liturgical-color);
     }
 
@@ -164,7 +165,7 @@ aside {
       .office_choice_mob input[type="radio"]:checked+label {
 
         background-color: #c7c7c7;
-        color:black;
+        color: var(--text-color)
         /*border-bottom: 3px solid #000;*/
       }
 
@@ -186,7 +187,8 @@ aside {
         position: fixed;
         bottom: 0;
         z-index: 9999;
-        background-color: #fff;
+        background-color: var(--background-color);
+        color: var(--text-color);
         width: 100%;
         padding: 40px;
         border-radius: 12px 12px 0px 0;
@@ -230,7 +232,7 @@ aside {
 
     #menu-pop span {
         display: block;
-        color: #000;
+        color: var(--text-color);
         padding: 18px 20px;
         font-size: 16px;
         font-weight: bold;
@@ -239,7 +241,7 @@ aside {
     }
 
     #menu-pop p {
-        color: #000;
+        color: var(--text-color);
         display: block;
         padding: 5px 20px;
         font-size: 16px;
@@ -260,14 +262,14 @@ aside {
     }
 
     #menu-pop ul {
-        border-top: 1px solid #d1d1d1;
+        border-top: 1px solid var(--shadow-color);
         padding: 0;
         list-style: none;
         margin: 0;
     }
 
     #menu-pop ul li {
-        border-bottom: 1px solid #d1d1d1;
+        border-bottom: 1px solid var(--shadow-color);
     }
 
     #menu-pop ul li a {
@@ -291,6 +293,7 @@ aside {
         right: 20px;
         top: 20px;
         padding: 0px !important;
+        filter: invert(var(--filter-value));
     }
 
     .text_part{
