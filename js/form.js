@@ -50,13 +50,13 @@ $(document).ready(function(){
     zone = $("input[type='radio'][name='radio_office']:checked").val();
     var index = $("input[type='radio'][name='radio_office']:checked").index('input[name=radio_office]');
     $("input[type='radio'][name='radio_office_mob']")[index].checked=true;
-    update_office();
+    update_office(0);
   });
   $('.office_choice_mob').click(function(){
     zone = $("input[type='radio'][name='radio_office_mob']:checked").val();
     var index = $("input[type='radio'][name='radio_office_mob']:checked").index('input[name=radio_office_mob]');
     $("input[type='radio'][name='radio_office']")[index].checked=true;
-    update_office();
+    update_office(0);
   });
 
  /* $('#psaume_invitatoire_select').change(function(){
@@ -75,7 +75,7 @@ function invitatoire_update(invit_select){
   for (let i = 0; i < elements.length; i++) {
     elements[i].value = invit_select.value;
   }
-  update_office_list($('#office').val(), $('#date').val()); 
+  update_office(2);
 }
 
 
@@ -123,7 +123,7 @@ function update_office_list(office, date){
               offices_disponibles.push({"ligne1": result2.informations.ligne1.charAt(0).toUpperCase() + result2.informations.ligne1.slice(1), "ligne2": ligne2, "ligne3": "Office Romain", "zone": "romain", "rang": "bas"});
             }
             display_office_list(offices_disponibles);
-            update_office();
+            update_office(0);
           },
           error: function(result){
             display_office_error();
@@ -149,7 +149,7 @@ function update_office_list(office, date){
           index++;
         }
         display_office_list(offices_disponibles);
-        update_office();
+        update_office(1);
       },
       error: function(result){
         display_office_error();
@@ -193,7 +193,7 @@ function display_office_list(offices_disponibles){
   }
   $('.office_choice').html(innerHtml);
   $('.office_choice_mob').html(innerHtmlMob);
-  update_office();
+  update_office(0);
 }
 
 function display_office_error(){
@@ -270,7 +270,7 @@ function update_office_class(office){
 }
 
 
-function update_office(){
+function update_office(scroll=0){
   var date = $('#date').val();
   var office = $('#office').val();
   var zone = $("input[type='radio'][name='radio_office']:checked").val();
@@ -311,8 +311,25 @@ function update_office(){
         }else{
           $(".office_biographie").each(function(){$(this).html("")});
         }
-        var element_to_scroll_to = document.getElementById('firstScroll');
-        element_to_scroll_to.scrollIntoView({behavior: "instant"});
+        switch (scroll) {
+          case 0:
+            var element_to_scroll_to = document.getElementById('firstScroll');
+            if (window.scrollY < 1000) {
+              element_to_scroll_to.scrollIntoView({behavior: "instant"});
+            } else {
+              element_to_scroll_to.scrollIntoView({behavior: "smooth"});
+            }
+            break;
+          case 1:
+            var element_to_scroll_to = document.getElementById('firstScroll');
+            element_to_scroll_to.scrollIntoView({behavior: "instant"});
+            break;
+          case 2:
+            //no scroll (like for invitatoire)
+            break;
+          default:
+            break;
+        }
         update_anchors();
         update_liturgical_color(html_text.couleur);
         update_office_class(office);

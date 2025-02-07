@@ -63,6 +63,7 @@ function office_du(office, date_string, choice){
       date = date_string + "_" + choice
     }
     office["informations"] = {"titre": sanctoral[date]["titre"]}
+    office["biographie"] = sanctoral[date]["biographie"];
     return office;
   }
   if (choice == "v"){

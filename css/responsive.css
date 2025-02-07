@@ -6,14 +6,14 @@ aside {
     display: none;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 900px) {
 
     aside {
         display: block;
     }
 
     #firstScroll {
-        scroll-margin-top: 100px;
+        scroll-margin-top: 80px;
       }
 
     .text_part {

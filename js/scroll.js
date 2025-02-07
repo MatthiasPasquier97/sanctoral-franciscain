@@ -20,7 +20,7 @@ function handleScroll() {
 
 function update_anchors(){
     var docViewTop = 150;
-    if (window.matchMedia("(max-width: 767px)").matches) {
+    if (window.matchMedia("(max-width: 900px)").matches) {
         docViewTop = 100;
     }
     var docViewBottom = docViewTop + $(window).height();
