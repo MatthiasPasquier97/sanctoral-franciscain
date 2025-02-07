@@ -34,9 +34,9 @@
   --alt-menu-color: #1f1f1f;
   --hover-color: #2c2c2c;
   --liturgical-white: rgb(255, 175, 55);
-  --liturgical-green: rgb(12, 210, 109);
+  --liturgical-green: rgb(11, 193, 99);
   --liturgical-red: rgb(225, 69, 69);
-  --liturgical-purple: rgb(209, 49, 209);
+  --liturgical-purple: rgb(192, 45, 192);
   --liturgical-pink: rgb(255, 75, 255);
   --liturgical-default: rgb(217, 217, 217);
 }
@@ -376,6 +376,10 @@ p {
   text-align: justify;
   margin-top: 0px!important;
   padding-bottom: 20px;
+}
+
+.biographie h2 {
+  margin-top: 0px !important;
 }
 
 

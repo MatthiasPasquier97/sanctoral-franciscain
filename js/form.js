@@ -149,7 +149,7 @@ function update_office_list(office, date){
           index++;
         }
         display_office_list(offices_disponibles);
-        update_office(1);
+        //update_office(1);
       },
       error: function(result){
         display_office_error();
@@ -307,7 +307,7 @@ function update_office(scroll=0){
         $(".office_sommaire").each(function(){$(this).html(html_text.sommaire)});
         //this probably should be done in breviaire.js for consistency
         if (contenu_franciscain != null){
-          $(".office_biographie").each(function(){$(this).html("<div class='text_part biographie' id='biographie'>" + contenu_franciscain.biographie + "</div><hr>")});  
+          $(".office_biographie").each(function(){$(this).html("<div class='text_part biographie' id='biographie'><h2>" + contenu_franciscain.informations.titre + "</h2>" + contenu_franciscain.biographie + "</div><hr>")});  
         }else{
           $(".office_biographie").each(function(){$(this).html("")});
         }
