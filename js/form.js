@@ -311,11 +311,17 @@ function update_office(scroll=0){
         }else{
           $(".office_biographie").each(function(){$(this).html("")});
         }
+        update_anchors();
+        update_liturgical_color(html_text.couleur);
+        update_office_class(office);
         switch (scroll) {
           case 0:
             var element_to_scroll_to = document.getElementById('firstScroll');
             if (window.scrollY < 1000) {
-              element_to_scroll_to.scrollIntoView({behavior: "instant"});
+              setTimeout(function(){
+                //timeout to avoid scrolling to the wrong position on initial load
+                element_to_scroll_to.scrollIntoView({behavior: "instant"});
+              }, 10);
             } else {
               element_to_scroll_to.scrollIntoView({behavior: "smooth"});
             }
@@ -330,9 +336,6 @@ function update_office(scroll=0){
           default:
             break;
         }
-        update_anchors();
-        update_liturgical_color(html_text.couleur);
-        update_office_class(office);
         if (office == "laudes") {
           let elements = document.getElementsByClassName("psaume_invitatoire_select");
           for (let i = 0; i < elements.length; i++) {
