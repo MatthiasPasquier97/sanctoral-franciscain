@@ -115,21 +115,13 @@ async function getScreenLock() {
 
 // menu sub-menu
 $(document).ready(function() {
-  $("#plus").click(function(){
-    $(".dropdown").addClass("active");
-  });
-
-/*  $("#submenu").click(function(){
-    $(".dropdown").addClass("active");
-  });
-*/
-
   $(document).on("click", function(a) {
     if ($(a.target).is("#plus, #submenu") === false) {
       if (!(document.getElementById('menuZoom').contains(a.target))){
         $(".dropdown").removeClass("active");
       }
-
+    }else{
+      $(".dropdown").addClass("active");
     }
   });
 });

@@ -241,8 +241,8 @@ p {
 }
 
 .container_site {
-  margin-top: 135px;
-  padding-top: 55px;
+  margin-top: 10px;
+  padding-top: 190px;
   padding-bottom: 70px;
   padding-right: 60px;
   padding-left: 10px;
@@ -265,7 +265,7 @@ p {
 .container_menu_site {
   width: 30%;
   padding-left: 30px;
-  padding-top: 55px;
+  padding-top: 25px;
   margin-top: 135px;
   top: 135px;
   position: sticky;
@@ -274,7 +274,7 @@ p {
 }
 
 .office_titre h1 {
-  margin: 0;
+  margin-top: 40px;
   font-size: 20px;
 }
 .office_titre h2 {
@@ -364,14 +364,28 @@ p {
   /*font-size: 20px;*/
 }
 
+#firstScroll {
+  scroll-margin-top: 155px;
+}
+
+.biographie {
+  font-family: 'Source Serif Pro', Serif;
+  font-size: 90%;
+  line-height: 1.5;
+  text-align: justify;
+  margin-top: 0px!important;
+  padding-bottom: 20px;
+}
+
 
 .text_part {
-  scroll-margin-top: calc(155px + 30px);
+  scroll-margin-top: calc(155px + 50px);
+  margin-top: 70px;
 }
 
 .text_part h2 {
   font-family: 'Inter', sans-serif;
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
 .text_part h3 {

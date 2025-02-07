@@ -305,7 +305,14 @@ function update_office(){
 				$(".office_content").each(function(){$(this).html(html_text.texte)});
         $(".office_titre").each(function(){$(this).html(html_text.titre)});
         $(".office_sommaire").each(function(){$(this).html(html_text.sommaire)});
-        window.scrollTo(0, 0);
+        //this probably should be done in breviaire.js for consistency
+        if (contenu_franciscain != null){
+          $(".office_biographie").each(function(){$(this).html("<div class='text_part biographie' id='biographie'>" + contenu_franciscain.biographie + "</div><hr>")});  
+        }else{
+          $(".office_biographie").each(function(){$(this).html("")});
+        }
+        var element_to_scroll_to = document.getElementById('firstScroll');
+        element_to_scroll_to.scrollIntoView({behavior: "instant"});
         update_anchors();
         update_liturgical_color(html_text.couleur);
         update_office_class(office);

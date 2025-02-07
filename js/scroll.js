@@ -26,7 +26,7 @@ function update_anchors(){
     var docViewBottom = docViewTop + $(window).height();
     var firstElement = false;
     var windowScroll = window.scrollY + docViewTop;
-    var nbTextParts = $(".text_part").length/2
+    var nbTextParts = Math.ceil($(".text_part").length/2);
     $(".text_part").each(function(index){
         var elemTop = $(this).offset().top;
         var elemBottom = elemTop + $(this).height();

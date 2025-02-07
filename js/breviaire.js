@@ -258,6 +258,7 @@ function create_office_html(office, date, zone, hymne, invitatoire, contenu_aelf
   var sous_titre = ""
   if (contenu_franciscain != null) {
     sous_titre =  "<h2>" + toTitleCase(contenu_franciscain["informations"]["titre"]) + "</h2>";
+    contenu_aelf["informations"]["franciscain"] = true;
   }else {
     if (contenu_aelf["informations"]["jour_liturgique_nom"] != "de la férie") {
       sous_titre = "<h2>" + contenu_aelf["informations"]['jour_liturgique_nom'] + "</h2>"
@@ -494,6 +495,10 @@ function create_lectures_html(contenu, infos, date_obj, hymne){
 
   var sommaire = '<div class="office_sommaire" id="office_sommaire"><ul>';
 
+  if (infos["franciscain"]) {
+    sommaire = sommaire.concat("<li><a id='sommaire_bibliographie' href='#biographie'>Biographie</a></li>");
+  }
+
   var texte_final = '<div class="office_text" id="office_text">';
   texte_final = texte_final.concat('<div class="text_part" id="introduction">'+ contenu["introduction"] + "</div>");
   sommaire = sommaire.concat("<li><a href='#introduction'>Introduction</a></li>");
@@ -564,6 +569,10 @@ function create_laudes_html(contenu, infos, date_obj, hymne, invitatoire){
   titre = titre.concat(infos['ligne1'] + "</div>")
 
   var sommaire = '<div class="office_sommaire" id="office_sommaire"><ul>';
+
+  if (infos["franciscain"]) {
+    sommaire = sommaire.concat("<li><a id='sommaire_bibliographie' href='#biographie'>Biographie</a></li>");
+  }
 
   var texte_final = '<div class="office_text" id="office_text">';
   texte_final = texte_final.concat('<div class="text_part" id="introduction">'+ contenu["introduction"] + "</div>");
@@ -644,6 +653,10 @@ function create_vepres_html(contenu, infos, date_obj, hymne){
   titre = titre.concat(infos['ligne1'] + "</div>")
 
   var sommaire = '<div class="office_sommaire" id="office_sommaire"><ul>';
+
+  if (infos["franciscain"]) {
+    sommaire = sommaire.concat("<li><a id='sommaire_bibliographie' href='#biographie'>Biographie</a></li>");
+  }
 
   var texte_final = '<div class="office_text" id="office_text">';
   texte_final = texte_final.concat('<div class="text_part" id="introduction">'+ contenu["introduction"] + "</div>");
@@ -745,6 +758,10 @@ function create_petite_heure_html(contenu, infos, date_obj, hymne){
 
   var sommaire = '<div class="office_sommaire" id="office_sommaire"><ul>';
 
+  if (infos["franciscain"]) {
+    sommaire = sommaire.concat("<li><a id='sommaire_bibliographie' href='#biographie'>Biographie</a></li>");
+  }
+
   var texte_final = '<div class="office_text" id="office_text">';
   texte_final = texte_final.concat('<div class="text_part" id="introduction">'+ contenu["introduction"] + "</div>");
   sommaire = sommaire.concat("<li><a href='#introduction'>Introduction</a></li>");
@@ -790,6 +807,10 @@ function create_complies_html(contenu, infos, date_obj, hymne){
   titre = titre.concat(infos['ligne1'] + "</div>")
 
   var sommaire = '<div class="office_sommaire" id="office_sommaire"><ul>';
+
+  if (infos["franciscain"]) {
+    sommaire = sommaire.concat("<li><a class='sommaire_bibliographie' href='#biographie'>Biographie</a></li>");
+  }
 
   var texte_final = '<div class="office_text" id="office_text">';
   texte_final = texte_final.concat('<div class="text_part" id="introduction"><i><p>Nous t’adorons, très saint Seigneur Jésus-Christ, ici et dans toutes les Églises du monde entier, et nous te bénissons d’avoir racheté le monde par ta sainte Croix</p></i><br/> \n'+ contenu["introduction"] + "</div>");
