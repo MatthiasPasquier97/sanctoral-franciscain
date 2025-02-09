@@ -22,6 +22,7 @@
   --liturgical-purple: rgb(97, 44, 102);
   --liturgical-pink: rgb(204, 53, 166);
   --liturgical-default: rgb(0, 0, 0);
+  --color-scheme: light;
 }
 
 [data-theme="dark"] {
@@ -39,6 +40,7 @@
   --liturgical-purple: rgb(192, 45, 192);
   --liturgical-pink: rgb(255, 75, 255);
   --liturgical-default: rgb(217, 217, 217);
+  --color-scheme: dark;
 }
 
 /*Liturgical color changes*/
@@ -100,6 +102,10 @@ input, select {
 
 input[type="button"] {
   background-color: #ffffff;
+}
+
+input[type="date"] {
+  color-scheme: var(--color-scheme);
 }
 
 input:hover, select:hover {

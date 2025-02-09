@@ -588,7 +588,7 @@ function create_laudes_html(contenu, infos, date_obj, hymne, invitatoire){
     texte_final = texte_final.concat("<i>" + contenu["antienne_invitatoire"]["antienne_A"] + "</i>");
   }
   //just a little bit of logic to allow for psaume invitatoire change
-  texte_final = texte_final.concat("<h2><select class='psaume_invitatoire_select' onchange='invitatoire_update(this)' name='Psaume Invitatoire'><option value='23'>Psaume Invitatoire 23</option><option value='66'>Psaume Invitatoire 66</option><option value='94'>Psaume Invitatoire 94</option><option value='99'>Psaume Invitatoire 99</option></select></h2>");
+  texte_final = texte_final.concat("<h2><select class='psaume_invitatoire_select' onchange='invitatoire_update(this)' name='Psaume Invitatoire'><option value='23'>Psaume 23</option><option value='66'>Psaume 66</option><option value='94'>Psaume 94</option><option value='99'>Psaume 99</option></select></h2>");
   texte_final = texte_final.concat(psaume_invitatoire_from_reference(invitatoire) + "</div>");
   sommaire = sommaire.concat("<li><a href='#psaume_invitatoire'>Psaume " + invitatoire + "</a></li>");
 
@@ -968,7 +968,7 @@ function create_messe_html(contenu, infos, date_obj){
       var titre_loc = cardinaux[iterator["type"].split("_")[1]] + " Lecture";
 
       texte_final = texte_final.concat("<div class='text_part' id='lecture" + id + "'><h2>" + titre_loc + "</h2>");
-      texte_final = texte_final.concat("<h3>" + iterator["titre"] + "  (" + iterator["ref"] +  ")</h3>");
+      texte_final = texte_final.concat("<h3>" + (iterator["titre"] != null ? iterator["titre"] : "") + "  (" + iterator["ref"] +  ")</h3>");
       texte_final = texte_final.concat("<i>" + iterator["intro_lue"] + "</i>");
 
       texte_final = texte_final.concat(iterator["contenu"] + "</div>");
@@ -977,7 +977,7 @@ function create_messe_html(contenu, infos, date_obj){
     } else if (iterator["type"].startsWith('epitre')) {
 
       texte_final = texte_final.concat("<div class='text_part' id='lecture" + id + "'><h2>Épitre</h2>");
-      texte_final = texte_final.concat("<h3>" + iterator["titre"] + "  (" + iterator["ref"] +  ")</h3>");
+      texte_final = texte_final.concat("<h3>" + (iterator["titre"] != null ? iterator["titre"] : "") + "  (" + iterator["ref"] +  ")</h3>");
       texte_final = texte_final.concat("<i>" + iterator["intro_lue"] + "</i>");
 
       texte_final = texte_final.concat(iterator["contenu"] + "</div>");
@@ -1004,7 +1004,7 @@ function create_messe_html(contenu, infos, date_obj){
     } else if (iterator["type"].startsWith('evangile')) {
 
       texte_final = texte_final.concat("<div class='text_part' id='evangile" + id + "'><h2>Évangile</h2>");
-      texte_final = texte_final.concat("<h3>" + iterator["titre"] + "  (" + iterator["ref"] +  ")</h3>");
+      texte_final = texte_final.concat("<h3>" + (iterator["titre"] != null ? iterator["titre"] : "") + "  (" + iterator["ref"] +  ")</h3>");
 
       texte_final = texte_final.concat(iterator["verset_evangile"] != null ? "<p>" + iterator["verset_evangile"] + "</p>" : "");
 

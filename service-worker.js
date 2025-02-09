@@ -29,10 +29,10 @@ const urlsToCache = [
     './img/polygon_white.svg',
     './css/projection.css',
     './css/responsive.css',
-    './css/freeSansBold.eot',
-    './css/freeSansBold.ttf',
-    './css/freeSansBold.woff',
-    './css/freeSansBold.woff2',
+    './css/FreeSansBold.eot',
+    './css/FreeSansBold.ttf',
+    './css/FreeSansBold.woff',
+    './css/FreeSansBold.woff2',
     'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,0',
     'https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap'
 ];
