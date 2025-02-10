@@ -248,7 +248,7 @@ p {
 
 .container_site {
   margin-top: 10px;
-  padding-top: 190px;
+  padding-top: 140px;
   padding-bottom: 70px;
   padding-right: 60px;
   padding-left: 10px;
@@ -385,7 +385,7 @@ p {
 }
 
 .biographie h2 {
-  margin-top: 0px !important;
+  /*margin-top: 0px !important;*/
   text-align: left;
 }
 
