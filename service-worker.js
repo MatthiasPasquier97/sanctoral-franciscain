@@ -140,9 +140,12 @@ self.addEventListener('activate', event => {
   
           if (timeSinceLastUpdate > 24 * 60 * 60 * 1000) {  // More than 24 hours passed
             console.log('More than 24 hours since last update. Cleaning and updating cache.');
-            cleanOldAPICache(cache, 8);  // Remove old data
-            preloadFutureData(cache, 8);  // Fetch data for the next 8 days
-            cache.put(LAST_UPDATE_KEY, new Response(JSON.stringify({ timestamp: now })));  // Update timestamp
+            cleanOldAPICache(cache, 2);  // Remove old data
+            var success = preloadFutureData(cache, 8);  // Fetch data for the next 8 days
+            if (success){
+              cache.put(LAST_UPDATE_KEY, new Response(JSON.stringify({ timestamp: now })));  // Update timestamp
+            }
+            
           }
         });
       } else {
@@ -181,6 +184,7 @@ function preloadFutureData(cache, daysAhead) {
     const today = new Date();
     const offices = ['informations', 'messes', 'laudes', 'lectures', 'tierce', 'sexte', 'none', 'vepres', 'complies'];
     const zones = ['romain', 'france'];
+    var success = true;
     for (let i = 0; i < daysAhead; i++) {
         for (let j = 0; j < offices.length; j++) {
             for (let k = 0; k < zones.length; k++) {
@@ -201,7 +205,8 @@ function preloadFutureData(cache, daysAhead) {
                                 }
                             })
                             .catch((error) => {
-                                console.error(`Failed to preload data for ${formattedDate}:`, error);
+                              success = false;
+                              console.error(`Failed to preload data for ${formattedDate}:`, error);
                             });
                     } else {
                         console.log(`Data for ${formattedDate} is already cached. Skipping network request.`);
@@ -210,5 +215,6 @@ function preloadFutureData(cache, daysAhead) {
             }
         }
     }
+    return success;
 }
 
