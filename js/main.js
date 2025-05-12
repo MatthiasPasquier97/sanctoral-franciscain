@@ -159,7 +159,7 @@ $(document).ready(function() {
 });
 
 
-// PWA install prompt
+// PWA install prompt (on Chrome)
 
 let deferredEvent;
 
@@ -167,6 +167,10 @@ window.addEventListener('beforeinstallprompt', (e) => {
   // prevent the browser from displaying the default install dialog
   e.preventDefault();  
   // Stash the event so it can be triggered later when the user clicks the button
+
+  // Show the install button
+  const installButton = document.getElementById('install_button');
+  installButton.style.display = 'block';
   deferredEvent = e;
 });
 

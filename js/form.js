@@ -386,8 +386,74 @@ function update_office_credits(){
 
   texte_final = texte_final.concat("</div>");
 
+  $(".office_biographie").each(function(){$(this).html("")});
   $(".office_content").each(function(){$(this).html(texte_final)});
   $(".office_titre").each(function(){$(this).html(titre)});
+  $(".office_sommaire").each(function(){$(this).html(sommaire)});
+  window.scrollTo(0, 0);
+  update_anchors();
+  update_liturgical_color("vert");
+  update_office_class(office);
+}
+
+function update_office_consecrations(){
+  var texte_final = '<div class="office_text" id="office_text">';
+  var sommaire = '<div class="office_sommaire" id="office_sommaire"><ul>';
+  var titre = '<div class="office_titre" id="office_titre">';
+  titre = titre.concat("<h1>Consécrations à Marie</h1></div>")
+ 
+  texte_final = texte_final.concat("<div class='text_part' id='maximilien'>");
+  sommaire = sommaire.concat("<li><a href='.'>Retour à la date actuelle</a></li>");
+  sommaire = sommaire.concat("<li><a href='#maximilien'>St Maximilien-Marie Kolbe</a></li>");
+
+  texte_final = texte_final.concat("<h2> Consécration de St Maximilien-Marie Kolbe </h2>");
+  texte_final = texte_final.concat("Immaculée Conception, Reine du ciel et de la terre, Refuge des pécheurs et Mère très aimante, à qui Dieu voulut confier tout l’ordre de la Miséricorde, me voici à tes pieds, moi, pauvre pécheur.<br>");
+  texte_final = texte_final.concat("<br>Je t’en supplie, accepte mon être tout entier comme ton bien et ta propriété ; agis en moi selon ta volonté, en mon âme et mon corps, en ma vie, ma mort et mon éternité.<br>");
+  texte_final = texte_final.concat("<br>Dispose avant tout de moi comme tu le désires, pour que se réalise enfin ce qui est dit de toi : « La Femme écrasera la tête du serpent » et aussi « Toi seule vaincras les hérésies dans le monde entier ».<br>");
+  texte_final = texte_final.concat("<br>Qu’en tes mains toutes pures, si riches de miséricorde, je devienne un instrument de ton amour, capable de ranimer et d’épanouir pleinement tant d’âmes tièdes ou égarées.<br>");
+  texte_final = texte_final.concat("<br>Ainsi s’étendra sans fin le Règne du Coeur divin de Jésus. Vraiment, ta seule présence attire les grâces qui convertissent et sanctifient les âmes, puisque la Grâce jaillit du Coeur divin de Jésus sur nous tous, en passant par tes mains maternelles.<br>");
+  texte_final = texte_final.concat("<br>Amen.");
+
+  texte_final = texte_final.concat("</div>");
+
+
+
+  texte_final = texte_final.concat("<div class='text_part' id='mariemamere'>");
+  sommaire = sommaire.concat("<li><a href='#mariemamere'>Ô Marie ma Mère</a></li>");
+
+  texte_final = texte_final.concat("<h2> Ô Marie ma Mère </h2>");
+  texte_final = texte_final.concat("Ô Marie ma Mère je me donne à toi, prends-moi dans ton cœur Immaculé. Avec toi je veux aimer Jésus comme tu l'aimes. Je te consacre mon corps et mon âme, mes dons et mes biens, pour que tout en moi glorifie le Seigneur. Puisque je t'appartiens, fais de moi ce qu'il te plaira ; je suis ton enfant et je t'aime.");
+
+  texte_final = texte_final.concat("</div>");
+
+
+
+  texte_final = texte_final.concat("<div class='text_part' id='louis'>");
+  sommaire = sommaire.concat("<li><a href='#louis'>St Louis-Marie Grignion de Monfort</a></li>");
+
+  texte_final = texte_final.concat("<h2> Consécration de St Louis-Marie Grignion de Monfort </h2>");
+  texte_final = texte_final.concat("Je te choisis aujourd'hui, ô Marie, en présence de toute la Cour céleste pour ma Mère et ma Reine.<br>");
+  texte_final = texte_final.concat("<br>Je te livre et consacre, en toute soumission et amour mon corps et mon âme, mes biens intérieurs et extérieurs, et la valeur même de mes bonnes actions passées, présentes et futures, te laissant un entier et plein droit de disposer de moi et de tout ce qui m'appartient sans exception, selon ton bon plaisir, à la plus grande Gloire de Dieu dans le temps et l'éternité. <br>");
+  texte_final = texte_final.concat("<br>Amen.");
+
+  texte_final = texte_final.concat("</div>");
+
+
+
+  texte_final = texte_final.concat("<div class='text_part' id='mission'>");
+  sommaire = sommaire.concat("<li><a href='#mission'>Mission de l'Immaculée</a></li>");
+
+  texte_final = texte_final.concat("<h2> Consécration quotidienne de la Mission de l'Immaculée </h2>");
+  texte_final = texte_final.concat("Vierge Immaculée, ma mère, Marie, je renouvelle aujourd’hui et pour toujours, la consécration de tout mon être, pour que tu disposes de moi pour le salut des âmes. <br>");
+  texte_final = texte_final.concat("<br>Je te demande seulement, ô ma reine et mère de l’Église, de participer fidèlement à ta mission pour que s’établisse le règne de Jésus dans le monde. <br>");
+  texte_final = texte_final.concat("<br>Je t’offre donc, ô cœur immaculé de Marie, les prières, les actions et les sacrifices de ce jour.<br>");
+  texte_final = texte_final.concat("<br>Amen.");
+
+  texte_final = texte_final.concat("</div>");
+
+  $(".office_biographie").each(function(){$(this).html("")});
+  $(".office_content").each(function(){$(this).html(texte_final)});
+  $(".office_titre").each(function(){$(this).html("")});
   $(".office_sommaire").each(function(){$(this).html(sommaire)});
   window.scrollTo(0, 0);
   update_anchors();

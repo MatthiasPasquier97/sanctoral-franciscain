@@ -248,7 +248,7 @@ p {
 
 .container_site {
   margin-top: 10px;
-  padding-top: 140px;
+  padding-top: 130px;
   padding-bottom: 70px;
   padding-right: 60px;
   padding-left: 10px;
@@ -391,7 +391,7 @@ p {
 
 
 .text_part {
-  scroll-margin-top: calc(155px + 50px);
+  scroll-margin-top: calc(155px + 40px);
   margin-top: 60px;
 }
 

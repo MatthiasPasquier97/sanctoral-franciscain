@@ -525,7 +525,7 @@ function create_lectures_html(contenu, infos, date_obj, hymne){
   if (contenu['lecture_biblique']['texte'].includes("verse_number")) {
     texte_final = texte_final.concat(contenu['lecture_biblique']['texte']);
   } else {
-    texte_final = texte_final.concat(contenu['lecture_biblique']['texte'].replaceAll(/([0-9]([0-9]|\.)+)/g, "<span class=\"verse_number\">\$1</span>"));
+    texte_final = texte_final.concat(contenu['lecture_biblique']['texte'].replaceAll(/\b(0|[1-9][0-9]?|1[0-9]{2}|200)\b/g, "<span class=\"verse_number\">\$1</span>"));
   }
 
   sommaire = sommaire.concat("<li><a href='#lecture_biblique'>Lecture</a></li>");
