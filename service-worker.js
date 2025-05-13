@@ -2,21 +2,22 @@ const CACHE_NAME = 'bref-cache-v1';
 const API_CACHE = 'api-cache-v1';
 const API_URL = 'https://api.aelf.org/v1';
 const LAST_UPDATE_KEY = 'last-update';
+const VERSION = '2'; // Version of the service worker
 
 const urlsToCache = [
     './',
     './sanctoral.webmanifest?v=2',
-    './index.html?v=2',
-    './js/main.js?v=2',
-    './js/breviaire.js?v=2',
-    './js/form.js?v=2',
-    './js/jquery-3.6.0.js?v=2',
-    './js/missel_functions.js?v=2',
-    './js/psaumes_invitatoire.js?v=2',
-    './js/psaumes.js?v=2',
-    './js/hymnes.js?v=2',
-    './js/sanctoral_functions.js?v=2',
-    './js/scroll.js?v=2',
+    './index.html',
+    './js/main-v2.js',
+    './js/breviaire-v2.js',
+    './js/form-v2.js',
+    './js/jquery-3.6.0.js',
+    './js/missel_functions-v2.js',
+    './js/psaumes_invitatoire-v2.js',
+    './js/psaumes-v2.js',
+    './js/hymnes-v2.js',
+    './js/sanctoral_functions-v2.js',
+    './js/scroll.js',
     './img/app-icon.png',
     './img/close.svg',
     './img/dropdown.svg',
