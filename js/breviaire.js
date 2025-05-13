@@ -1,3 +1,4 @@
+
 var lectures_base = {
   "introduction": "<i><p>Nous t’adorons, très saint Seigneur Jésus-Christ, ici et dans toutes les Églises du monde entier, et nous te bénissons d’avoir racheté le monde par ta sainte Croix</p></i><br/> \n <p>V/ Dieu, viens à mon aide,\n        <br />R/ Seigneur, à notre secours.</p>\n        <p>Gloire au Père, et au Fils et au Saint-Esprit,\n        au Dieu qui est, qui était et qui vient,\n        pour les siècles des siècles.\n        Amen. (Alléluia.)</p>",
   "hymne": {
@@ -252,7 +253,7 @@ var complies_base = {
 
 var tab_mois=new Array("Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre");
 
-function create_office_html(office, date, zone, hymne, invitatoire, contenu_aelf, contenu_franciscain=null){
+function create_office_html(office, date, zone, hymne, invitatoire, contenu_aelf, contenu_franciscain=null, hymne_selected){
   var date_obj = new Date(date)
 
   var sous_titre = ""
@@ -271,27 +272,84 @@ function create_office_html(office, date, zone, hymne, invitatoire, contenu_aelf
 
   contenu_aelf["informations"]["ligne1"] = sous_titre;
 
+  //Calclul de la période liturigique, pour l'affichage de l'hymne
+  var temps_liturgique = contenu_aelf["informations"]["temps_liturgique"];
+  var semaine = contenu_aelf["informations"]["semaine"];
+  var degre = contenu_aelf["informations"]["degre"];
+  var jour_nom = contenu_aelf["informations"]["jour_liturgique_nom"];
+  var hymne_titre = contenu_aelf[office]["hymne"]["titre"];
+  var periode = "default";
+  var selection = "";
+  var hymne_unique = true;
+
+  switch (temps_liturgique) {
+    case "avent":
+      periode = "avent";
+      hymne_unique = false;
+      break;
+    case "noel":
+      if (jour_nom.includes("piphanie")) {//let's avoid any problem with accentuation
+        periode = "epiphanie";
+      } else {
+        periode = "noel";
+      }
+      break;
+    case "careme":
+      if (semaine== null) {
+        periode = "passion";
+      } else if (semaine[0]== "5"){
+        periode = "passion";
+      } else {
+        periode = "careme";
+      }
+      break;
+    case "triduum":
+      periode = "default";
+      break;
+    case "pascal":
+      periode = "pascal";
+      break;
+    default:
+      periode = "default";
+      break;
+  }
+
+    //should there be further rules, especially for feast during these liturgical periods, which may or may not have their specific hymns?
+
+
+  if (periode != "default") {
+    if (hymne_in_periode(hymne_titre, periode)) {
+      hymne_unique = false;
+      hymnes_disponibles = liste_hymnes(periode);
+      selection = "<select class='hymne_select' onchange='hymne_update(this)' name='Hymne'>";
+      for (i = 0; i < hymnes_disponibles.length; i++) {
+        selection += "<option value='" + hymnes_disponibles[i] + "'>" + hymnes_disponibles[i] + "</option>";
+      }
+      selection += "</select>";
+    }
+  }
+
   switch (office) {
     case "lectures":
-    return create_lectures_html(combine_lectures(contenu_aelf["lectures"], contenu_franciscain), contenu_aelf["informations"], date_obj, hymne);
+    return create_lectures_html(combine_lectures(contenu_aelf["lectures"], contenu_franciscain), contenu_aelf["informations"], date_obj, hymne_unique, selection, hymne_selected);
       break;
     case "laudes":
-      return create_laudes_html(combine_laudes(contenu_aelf["laudes"], contenu_franciscain), contenu_aelf["informations"], date_obj, hymne, invitatoire);
+      return create_laudes_html(combine_laudes(contenu_aelf["laudes"], contenu_franciscain), contenu_aelf["informations"], date_obj, hymne_unique, invitatoire, selection, hymne_selected);
       break;
     case "vepres":
-      return create_vepres_html(combine_vepres(contenu_aelf["vepres"], contenu_franciscain), contenu_aelf["informations"], date_obj, hymne);
+      return create_vepres_html(combine_vepres(contenu_aelf["vepres"], contenu_franciscain), contenu_aelf["informations"], date_obj, hymne_unique, selection, hymne_selected);
       break;
     case "complies": //no need to combine with another office, as complies are always the same
-      return create_complies_html(contenu_aelf["complies"], contenu_aelf["informations"], date_obj, hymne)
+      return create_complies_html(contenu_aelf["complies"], contenu_aelf["informations"], date_obj, true)
       break;
     case "tierce":
-      return create_tierce_html(combine_petite_heure(contenu_aelf["tierce"]), contenu_aelf["informations"], date_obj, hymne)
+      return create_tierce_html(combine_petite_heure(contenu_aelf["tierce"]), contenu_aelf["informations"], date_obj, true)
       break;
     case "sexte":
-      return create_sexte_html(combine_petite_heure(contenu_aelf["sexte"]), contenu_aelf["informations"], date_obj, hymne)
+      return create_sexte_html(combine_petite_heure(contenu_aelf["sexte"]), contenu_aelf["informations"], date_obj, true)
       break;
     case "none":
-      return create_none_html(combine_petite_heure(contenu_aelf["none"]), contenu_aelf["informations"], date_obj, hymne)
+      return create_none_html(combine_petite_heure(contenu_aelf["none"]), contenu_aelf["informations"], date_obj, true)
       break;
     case "messes":
       if (contenu_franciscain != null) {
@@ -485,7 +543,7 @@ function combine_petite_heure(contenu_aelf, contenu_franciscain=null){
   return contenu_final;
 }
 
-function create_lectures_html(contenu, infos, date_obj, hymne){
+function create_lectures_html(contenu, infos, date_obj, hymne, selection, hymne_selected){
   //console.log(contenu['lecture_patristique']['texte']);
 
 
@@ -507,9 +565,9 @@ function create_lectures_html(contenu, infos, date_obj, hymne){
   if (hymne) {
     texte_final = texte_final.concat("<div class='text_part' id='hymne'><h2>Hymne: " + contenu["hymne"]["titre"] + " </h2>");
     texte_final = texte_final.concat(contenu["hymne"]["texte"] + "</div>");
-
   } else {
-    texte_final = texte_final.concat("<div class='text_part' id='hymne'><h2>Hymne </h2></div>");
+    texte_final = texte_final.concat("<div class='text_part' id='hymne'><h2>Hymne:</h2><div>" + selection + "</div>");
+    texte_final = texte_final.concat(hymne_from_titre(hymne_selected) + "</div>");
   }
   sommaire = sommaire.concat("<li><a href='#hymne'>Hymne</a></li>");
 
@@ -563,7 +621,7 @@ function create_lectures_html(contenu, infos, date_obj, hymne){
   return {texte: texte_final, titre: titre, sommaire: sommaire, couleur: infos['couleur']};
 }
 
-function create_laudes_html(contenu, infos, date_obj, hymne, invitatoire){
+function create_laudes_html(contenu, infos, date_obj, hymne, invitatoire, selection, hymne_selected){
   var titre = '<div class="office_titre" id="office_titre">';
   titre = titre.concat("<h1>Laudes du " + date_obj.getDate() + " " + tab_mois[date_obj.getMonth()] + "</h1>")
   titre = titre.concat(infos['ligne1'] + "</div>")
@@ -595,9 +653,9 @@ function create_laudes_html(contenu, infos, date_obj, hymne, invitatoire){
   if (hymne) {
     texte_final = texte_final.concat("<div class='text_part' id='hymne'><h2>Hymne: " + contenu["hymne"]["titre"] + " </h2>");
     texte_final = texte_final.concat(contenu["hymne"]["texte"] + "</div>");
-
   } else {
-    texte_final = texte_final.concat("<div id='hymne'><h2>Hymne</h2></div>");
+    texte_final = texte_final.concat("<div class='text_part' id='hymne'><h2>Hymne:</h2><div>" + selection + "</div>");
+    texte_final = texte_final.concat(hymne_from_titre(hymne_selected) + "</div>");
   }
   sommaire = sommaire.concat("<li><a href='#hymne'>Hymne</a></li>");
 
@@ -646,7 +704,7 @@ function create_laudes_html(contenu, infos, date_obj, hymne, invitatoire){
   return {texte: texte_final, titre: titre, sommaire: sommaire, couleur: infos['couleur']};
 }
 
-function create_vepres_html(contenu, infos, date_obj, hymne){
+function create_vepres_html(contenu, infos, date_obj, hymne, selection, hymne_selected){
 
   var titre = '<div class="office_titre" id="office_titre">';
   titre = titre.concat("<h1>Vêpres du " + date_obj.getDate() + " " + tab_mois[date_obj.getMonth()] + "</h1>")
@@ -665,9 +723,9 @@ function create_vepres_html(contenu, infos, date_obj, hymne){
   if (hymne) {
     texte_final = texte_final.concat("<div class='text_part' id='hymne'><h2>Hymne: " + contenu["hymne"]["titre"] + " </h2>");
     texte_final = texte_final.concat(contenu["hymne"]["texte"] + "</div>");
-
   } else {
-    texte_final = texte_final.concat("<div class='text_part' id='hymne'><h2>Hymne</h2></div>");
+    texte_final = texte_final.concat("<div class='text_part' id='hymne'><h2>Hymne:</h2><div>" + selection + "</div>");
+    texte_final = texte_final.concat(hymne_from_titre(hymne_selected) + "</div>");
   }
   sommaire = sommaire.concat("<li><a href='#hymne'>Hymne</a></li>");
 
@@ -1001,6 +1059,14 @@ function create_messe_html(contenu, infos, date_obj){
 
       texte_final = texte_final.concat(iterator["contenu"] + "</div>");
       sommaire = sommaire.concat("<li><a href='#sequence" + id + "'>Séquence</a></li>");
+    } else if (iterator["type"].startsWith('entree_messianique')) {
+      texte_final = texte_final.concat("<div class='text_part' id='entree_messianique" + id + "'><h2>Entrée Messianique</h2>");
+      texte_final = texte_final.concat("<h3>" + (iterator["titre"] != null ? iterator["titre"] : "") + "  (" + iterator["ref"] +  ")</h3>");
+
+      texte_final = texte_final.concat("<i>" + iterator["intro_lue"] + "</i>");
+
+      texte_final = texte_final.concat(iterator["contenu"] + "</div><br/>");
+      sommaire = sommaire.concat("<li><a href='#entree_messianique" + id + "'>Entrée Messianique</a></li>");
     } else if (iterator["type"].startsWith('evangile')) {
 
       texte_final = texte_final.concat("<div class='text_part' id='evangile" + id + "'><h2>Évangile</h2>");

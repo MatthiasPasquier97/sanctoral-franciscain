@@ -78,6 +78,14 @@ function invitatoire_update(invit_select){
   update_office(2);
 }
 
+function hymne_update(select_element){
+  let elements = document.getElementsByClassName("hymne_select");
+  for (let i = 0; i < elements.length; i++) {
+    elements[i].value = select_element.value;
+  }
+  update_office(2);
+}
+
 
 Date.prototype.toDateInputValue = (function() {
     var local = new Date(this);
@@ -277,7 +285,7 @@ function update_office(scroll=0){
 	const hymne = true;
   let elements = document.getElementsByClassName("psaume_invitatoire_select");
 	var invitatoire = elements.length > 0 ? elements[0].value : 94;  
-  //zone = zone.split(";")[0]
+
 
 	var urlAelf = "https://api.aelf.org/v1/" + office + "/" + date + "/" + zone.split(";")[0];
 
@@ -298,9 +306,15 @@ function update_office(scroll=0){
 
 	$.ajax({url: urlAelf,
 		success: function(result){
-			//var infos = result['informations'];
-			//var textes = result[office];
-			var html_text = create_office_html(office, date, zone, hymne, invitatoire, result, contenu_franciscain);
+
+      let elements_hymne = document.getElementsByClassName("hymne_select");
+      //Si pas encore de selecteurs affiché, ou si update de type retour à zéro, on choisit l'hymne d'aelf
+      var hymne_selected = (elements_hymne.length > 0 ) ? elements_hymne[0].value : result[office].hymne.titre;
+      if (scroll == 0){ 
+        hymne_selected = result[office].hymne.titre;
+      }
+
+			var html_text = create_office_html(office, date, zone, hymne, invitatoire, result, contenu_franciscain, hymne_selected);
 
 				$(".office_content").each(function(){$(this).html(html_text.texte)});
         $(".office_titre").each(function(){$(this).html(html_text.titre)});
@@ -340,6 +354,12 @@ function update_office(scroll=0){
           let elements = document.getElementsByClassName("psaume_invitatoire_select");
           for (let i = 0; i < elements.length; i++) {
             elements[i].value = invitatoire;
+          }
+        }
+        if (office == "laudes" || office == "vepres" || office == "lectures") {
+          let elements = document.getElementsByClassName("hymne_select");
+          for (let i = 0; i < elements.length; i++) {
+            elements[i].value = hymne_aelf2bref(hymne_selected);
           }
         }
 		},
