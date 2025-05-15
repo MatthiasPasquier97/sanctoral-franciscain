@@ -410,6 +410,42 @@ function update_office_credits(){
   $(".office_content").each(function(){$(this).html(texte_final)});
   $(".office_titre").each(function(){$(this).html(titre)});
   $(".office_sommaire").each(function(){$(this).html(sommaire)});
+  $("body").removeClass("menu-open");
+  $('body').removeClass("background-open");
+  window.scrollTo(0, 0);
+  update_anchors();
+  update_liturgical_color("vert");
+  update_office_class(office);
+}
+
+
+function update_office_installation(){
+  var texte_final = '<div class="office_text" id="office_text">';
+  var sommaire = '<div class="office_sommaire" id="office_sommaire"><ul>';
+ 
+  texte_final = texte_final.concat("<div class='text_part' id='credits'>");
+  sommaire = sommaire.concat("<li><a href='.'>Retour à la date actuelle</a></li>");
+
+  texte_final = texte_final.concat("<div class='text_part' id='installation'>");
+  sommaire = sommaire.concat("<li><a href='#installation'>Installation</a></li>");
+
+  //texte_final = texte_final.concat("<h2> Installation </h2>");
+  texte_final = texte_final.concat("Pour installer cette application sur votre téléphone. <br><br>");
+  texte_final = texte_final.concat("<h3> iOS </h3>");
+  texte_final = texte_final.concat('<ul><li> Appuyer sur le bouton "Partage" (<span class="material-symbols-outlined">ios_share</span>)<li>Appuyer sur "Ajouter à l\'écran d\'accueil" (<span class="material-symbols-outlined">add_box</span>)<li>Appuyer sur "Ajouter"</ul>');
+
+  texte_final = texte_final.concat("<h3> Android </h3>");
+  texte_final = texte_final.concat('<ul><li> Appuyer sur le bouton "Plus d\'informations" (<span class="material-symbols-outlined">more_vert</span>)<li>Appuyer sur "Installer l\'application" (<span class="material-symbols-outlined">install_mobile</span>)<li>Appuyer sur "Installer"</ul>');
+
+  texte_final = texte_final.concat("</div>");
+
+
+  $(".office_biographie").each(function(){$(this).html("")});
+  $(".office_content").each(function(){$(this).html(texte_final)});
+  $(".office_titre").each(function(){$(this).html("")});
+  $(".office_sommaire").each(function(){$(this).html(sommaire)});
+  $("body").removeClass("menu-open");
+  $('body').removeClass("background-open");
   window.scrollTo(0, 0);
   update_anchors();
   update_liturgical_color("vert");
@@ -422,7 +458,7 @@ function update_office_consecrations(){
   var titre = '<div class="office_titre" id="office_titre">';
   titre = titre.concat("<h1>Consécrations à Marie</h1></div>")
  
-  texte_final = texte_final.concat("<div class='text_part' id='maximilien'>");
+  texte_final = texte_final.concat("<div class='text_part' id='maximilien' style='margin-top: 0px;'>");
   sommaire = sommaire.concat("<li><a href='.'>Retour à la date actuelle</a></li>");
   sommaire = sommaire.concat("<li><a href='#maximilien'>St Maximilien-Marie Kolbe</a></li>");
 
@@ -467,14 +503,29 @@ function update_office_consecrations(){
   texte_final = texte_final.concat("Vierge Immaculée, ma mère, Marie, je renouvelle aujourd’hui et pour toujours, la consécration de tout mon être, pour que tu disposes de moi pour le salut des âmes. <br>");
   texte_final = texte_final.concat("<br>Je te demande seulement, ô ma reine et mère de l’Église, de participer fidèlement à ta mission pour que s’établisse le règne de Jésus dans le monde. <br>");
   texte_final = texte_final.concat("<br>Je t’offre donc, ô cœur immaculé de Marie, les prières, les actions et les sacrifices de ce jour.<br>");
-  texte_final = texte_final.concat("<br>Amen.");
+
 
   texte_final = texte_final.concat("</div>");
+
+
+  texte_final = texte_final.concat("<div class='text_part' id='familles'>");
+  sommaire = sommaire.concat("<li><a href='#familles'>Consécration des familles</a></li>");
+
+  texte_final = texte_final.concat("<h2> Consécration des familles </h2>");
+  texte_final = texte_final.concat("Immaculée Conception, Reine du Ciel et de la Terre, Refuge des pécheurs et Mère très aimante, à qui Dieu voulut confier tout l'ordre de la Miséricorde, nous voici à tes pieds, nous, pauvres pécheurs.<br>");
+  texte_final = texte_final.concat("<br>En ce jour, ô Notre-Dame, nous renouvelons la Consécration de tout nous-mêmes à ton Cœur Immaculé. Nous te confions toutes nos familles et celles du monde entier, en particulier les plus fragiles, et celles qui sont persécutées à cause de leur foi. Nous te confions nos enfants, nos personnes âgées, nos malades et tous nos défunts.<br>");  
+  texte_final = texte_final.concat("<br>Fais de toutes nos familles des foyers qui s'ouvrent à l'écoute de la Parole de Dieu et à la pratique des sacrements, avec la joie de vivre dans la foi, l'espérance et la charité. Qu'elles soient ton bien et ta propriété.<br>");  
+  texte_final = texte_final.concat("<br>Agis en chacun de leurs membres selon ta volonté en leurs âmes, en leurs corps, en leurs vies, leurs morts et leur éternité. Qu'en tes mains toutes pures, si riches de miséricorde, Ils reçoivent les sept dons du Saint Esprit et tous les charismes nécessaires pour se donner à l'évangélisation du monde, dans tous les domaines de l'activité humaine.<br>");  
+  texte_final = texte_final.concat("<br>Ainsi s'étendra sans fin, le règne du Cœur Divin de Jésus. Vraiment ta seule présence attire les grâces qui convertissent et sanctifient les âmes, puisque la Grâce jaillit du Coeur Sacré de Jésus sur nous tous, en passant par tes mains maternelles.<br>");  
+  texte_final = texte_final.concat("<br>Amen.");
+
 
   $(".office_biographie").each(function(){$(this).html("")});
   $(".office_content").each(function(){$(this).html(texte_final)});
   $(".office_titre").each(function(){$(this).html("")});
   $(".office_sommaire").each(function(){$(this).html(sommaire)});
+  $("body").removeClass("menu-open");
+  $('body').removeClass("background-open");
   window.scrollTo(0, 0);
   update_anchors();
   update_liturgical_color("vert");

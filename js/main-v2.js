@@ -163,6 +163,12 @@ $(document).ready(function() {
 
 let deferredEvent;
 
+const isInAppMode = () =>
+  window.matchMedia('(display-mode: standalone)').matches ||
+  window.navigator.standalone === true ||
+  window.matchMedia('(display-mode: fullscreen)').matches ||
+  window.navigator.fullscreen === true;
+
 window.addEventListener('beforeinstallprompt', (e) => {
   // prevent the browser from displaying the default install dialog
   e.preventDefault();  
@@ -174,9 +180,22 @@ window.addEventListener('beforeinstallprompt', (e) => {
   deferredEvent = e;
 });
 
+window.addEventListener('load', () => {
+  // Check if the app is already installed
+  if (!isInAppMode()) {
+    // Hide the install button
+    if( /Android|webOS|iPhone|iPad|iPod|Opera Mini/i.test(navigator.userAgent) ) {
+      const installButton = document.getElementById('install_button');
+      installButton.style.display = 'block';
+    }
+  }
+});
+
 function install_prompt(){
   if(deferredEvent) {
     deferredEvent.prompt();
+  } else {
+    update_office_installation();
   }
 }
 

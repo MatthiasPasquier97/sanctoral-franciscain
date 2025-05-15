@@ -19,8 +19,25 @@
         "type": "image/png"
       }
     ],
-    "start_url": "index.html",
-    "display": "fullscreen",
-    "theme_color": "#353534",
-    "background_color": "#353534"
+  "start_url": "index.html",
+  "display": "fullscreen",
+  "theme_color": "#353534",
+  "background_color": "#353534",
+  "orientation": "portrait",
+  "id": "bref",
+  "dir": "ltr",
+  "lang": "fr",
+  "display_override": [
+    "fullscreen",
+    "standalone",
+    "minimal-ui",
+    "browser",
+    "window-controls-overlay"
+  ],
+  "prefer_related_applications": false,
+  "categories": [
+    "lifestyle",
+    "utilities",
+    "books"
+  ]
   }
