@@ -166,8 +166,8 @@ let deferredEvent;
 const isInAppMode = () =>
   window.matchMedia('(display-mode: standalone)').matches ||
   window.navigator.standalone === true ||
-  window.matchMedia('(display-mode: fullscreen)').matches ||
-  window.navigator.fullscreen === true;
+  /*window.matchMedia('(display-mode: fullscreen)').matches ||
+  window.navigator.fullscreen === true;*/
 
 window.addEventListener('beforeinstallprompt', (e) => {
   // prevent the browser from displaying the default install dialog
