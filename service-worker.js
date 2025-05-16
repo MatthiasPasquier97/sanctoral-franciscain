@@ -2,7 +2,7 @@ const CACHE_NAME = 'bref-cache-v1';
 const API_CACHE = 'api-cache-v1';
 const API_URL = 'https://api.aelf.org/v1';
 const LAST_UPDATE_KEY = 'last-update';
-const VERSION = '2'; // Version of the service worker
+const VERSION = '3'; // Version of the service worker
 
 const urlsToCache = [
     './',
