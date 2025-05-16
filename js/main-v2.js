@@ -183,12 +183,14 @@ window.addEventListener('beforeinstallprompt', (e) => {
 window.addEventListener('load', () => {
   // Check if the app is already installed
   if (!isInAppMode()) {
+    const installButton = document.getElementById('install_button');
+    installButton.style.display = 'block';
     // Hide the install button
-    if( /Android|webOS|iPhone|iPad|iPod|Opera Mini/i.test(navigator.userAgent) ) {
+/*    if( /Android|webOS|iPhone|iPad|iPod|Opera Mini/i.test(navigator.userAgent) ) {
       const installButton = document.getElementById('install_button');
       installButton.style.display = 'block';
     }
-  }
+*/  }
 });
 
 function install_prompt(){

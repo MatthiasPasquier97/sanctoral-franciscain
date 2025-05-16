@@ -422,9 +422,7 @@ function update_office_credits(){
 function update_office_installation(){
   var texte_final = '<div class="office_text" id="office_text">';
   var sommaire = '<div class="office_sommaire" id="office_sommaire"><ul>';
- 
-  texte_final = texte_final.concat("<div class='text_part' id='credits'>");
-  sommaire = sommaire.concat("<li><a href='.'>Retour à la date actuelle</a></li>");
+   sommaire = sommaire.concat("<li><a href='.'>Retour à la date actuelle</a></li>");
 
   texte_final = texte_final.concat("<div class='text_part' id='installation'>");
   sommaire = sommaire.concat("<li><a href='#installation'>Installation</a></li>");
