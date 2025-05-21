@@ -200,6 +200,7 @@ window.addEventListener('load', () => {
 function install_prompt(){
   if(deferredEvent) {
     deferredEvent.prompt();
+    update_office_installation();
   } else {
     update_office_installation();
   }
