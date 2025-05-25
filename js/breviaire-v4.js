@@ -273,60 +273,63 @@ function create_office_html(office, date, zone, hymne, invitatoire, contenu_aelf
   contenu_aelf["informations"]["ligne1"] = sous_titre;
 
   //Calclul de la période liturigique, pour l'affichage de l'hymne
-  var temps_liturgique = contenu_aelf["informations"]["temps_liturgique"];
-  var semaine = contenu_aelf["informations"]["semaine"];
-  var degre = contenu_aelf["informations"]["degre"];
-  var jour_nom = contenu_aelf["informations"]["jour_liturgique_nom"];
-  var hymne_titre = contenu_aelf[office]["hymne"]["titre"];
-  var periode = "default";
-  var selection = "";
-  var hymne_unique = true;
-
-  switch (temps_liturgique) {
-    case "avent":
-      periode = "avent";
-      hymne_unique = false;
-      break;
-    case "noel":
-      if (jour_nom.includes("piphanie")) {//let's avoid any problem with accentuation
-        periode = "epiphanie";
-      } else {
-        periode = "noel";
-      }
-      break;
-    case "careme":
-      if (semaine== null) {
-        periode = "passion";
-      } else if (semaine[0]== "5"){
-        periode = "passion";
-      } else {
-        periode = "careme";
-      }
-      break;
-    case "triduum":
-      periode = "default";
-      break;
-    case "pascal":
-      periode = "pascal";
-      break;
-    default:
-      periode = "default";
-      break;
-  }
-
-    //should there be further rules, especially for feast during these liturgical periods, which may or may not have their specific hymns?
-
-
-  if (periode != "default") {
-    if (hymne_in_periode(hymne_titre, periode)) {
-      hymne_unique = false;
-      hymnes_disponibles = liste_hymnes(periode);
-      selection = "<select class='hymne_select' onchange='hymne_update(this)' name='Hymne'>";
-      for (i = 0; i < hymnes_disponibles.length; i++) {
-        selection += "<option value='" + hymnes_disponibles[i] + "'>" + hymnes_disponibles[i] + "</option>";
-      }
-      selection += "</select>";
+  if (office != "messes") {
+    var temps_liturgique = contenu_aelf["informations"]["temps_liturgique"];
+    var semaine = contenu_aelf["informations"]["semaine"];
+    var degre = contenu_aelf["informations"]["degre"];
+    var jour_nom = contenu_aelf["informations"]["jour_liturgique_nom"];
+    var hymne_titre = contenu_aelf[office]["hymne"]["titre"];
+    var periode = "default";
+    var selection = "";
+    var hymne_unique = true;
+  
+    switch (temps_liturgique) {
+      case "avent":
+        periode = "avent";
+        hymne_unique = false;
+        break;
+      case "noel":
+        if (jour_nom.includes("piphanie")) {//let's avoid any problem with accentuation
+          periode = "epiphanie";
+        } else {
+          periode = "noel";
+        }
+        break;
+      case "careme":
+        if (semaine== null) {
+          periode = "passion";
+        } else if (semaine[0]== "5"){
+          periode = "passion";
+        } else {
+          periode = "careme";
+        }
+        break;
+      case "triduum":
+        periode = "default";
+        break;
+      case "pascal":
+        periode = "pascal";
+        break;
+      default:
+        periode = "default";
+        break;
     }
+  
+      //should there be further rules, especially for feast during these liturgical periods, which may or may not have their specific hymns?
+  
+  
+    if (periode != "default") {
+      if (hymne_in_periode(hymne_titre, periode)) {
+        hymne_unique = false;
+        hymnes_disponibles = liste_hymnes(periode);
+        selection = "<select class='hymne_select' onchange='hymne_update(this)' name='Hymne'>";
+        for (i = 0; i < hymnes_disponibles.length; i++) {
+          selection += "<option value='" + hymnes_disponibles[i] + "'>" + hymnes_disponibles[i] + "</option>";
+        }
+        selection += "</select>";
+      }
+    }
+  
   }
 
   switch (office) {
@@ -895,8 +898,10 @@ function create_complies_html(contenu, infos, date_obj, hymne){
 
   if (contenu["psaume_2"].length != 0) {
 
-    texte_final = texte_final.concat("<div class='text_part' id='psaume_2'><h2>Antienne: </h2>");
-    texte_final = texte_final.concat("<i>" + contenu["antienne_2"] + "</i>");
+    if (contenu["antienne_2"] != "") {
+      texte_final = texte_final.concat("<div class='text_part' id='psaume_2'><h2>Antienne: </h2>");
+      texte_final = texte_final.concat("<i>" + contenu["antienne_2"] + "</i>");
+    }
 
     texte_final = texte_final.concat("<h2> " + titre_psaume(contenu["psaume_2"]['reference']) + "</h2>");
     texte_final = texte_final.concat(contenu["psaume_2"]['texte'] + "</div>");

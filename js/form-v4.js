@@ -207,6 +207,7 @@ function display_office_list(offices_disponibles){
 function display_office_error(){
   //var innerHtml = "<div class=\"office_button_error\"><p>Office non disponible</p></div>";
   $('.office_choice').html("");
+  $(".office_biographie").each(function(){$(this).html("")});
   $(".office_titre").each(function(){$(this).html("")});
   $(".office_sommaire").each(function(){$(this).html("<ul><li><a href='.' class='anchor_selected'>Retour à la date actuelle</li></ul>")});
   update_liturgical_color("noir");
@@ -307,12 +308,15 @@ function update_office(scroll=0){
 	$.ajax({url: urlAelf,
 		success: function(result){
 
-      let elements_hymne = document.getElementsByClassName("hymne_select");
-      //Si pas encore de selecteurs affiché, ou si update de type retour à zéro, on choisit l'hymne d'aelf
-      var hymne_selected = (elements_hymne.length > 0 ) ? elements_hymne[0].value : result[office].hymne.titre;
-      if (scroll == 0){ 
-        hymne_selected = result[office].hymne.titre;
+      if (office != "messes") {
+        let elements_hymne = document.getElementsByClassName("hymne_select");
+        //Si pas encore de selecteurs affiché, ou si update de type retour à zéro, on choisit l'hymne d'aelf
+        var hymne_selected = (elements_hymne.length > 0 ) ? elements_hymne[0].value : result[office].hymne.titre;
+        if (scroll == 0){ 
+          hymne_selected = result[office].hymne.titre;
+        }
       }
+
 
 			var html_text = create_office_html(office, date, zone, hymne, invitatoire, result, contenu_franciscain, hymne_selected);
 

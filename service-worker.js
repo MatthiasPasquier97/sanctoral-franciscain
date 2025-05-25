@@ -2,15 +2,15 @@ const CACHE_NAME = 'bref-cache-v1';
 const API_CACHE = 'api-cache-v1';
 const API_URL = 'https://api.aelf.org/v1';
 const LAST_UPDATE_KEY = 'last-update';
-const VERSION = '4'; // Version of the service worker
+const VERSION = '6'; // Version of the service worker
 
 const urlsToCache = [
     './',
-    './sanctoral.webmanifest?v=2',
+    './sanctoral.webmanifest',
     './index.html',
-    './js/main-v2.js',
-    './js/breviaire-v2.js',
-    './js/form-v2.js',
+    './js/main-v4.js',
+    './js/breviaire-v4.js',
+    './js/form-v4.js',
     './js/jquery-3.6.0.js',
     './js/missel_functions-v2.js',
     './js/psaumes_invitatoire-v2.js',
@@ -28,8 +28,8 @@ const urlsToCache = [
     './img/polygon_purple.svg',
     './img/polygon_red.svg',
     './img/polygon_white.svg',
-    './css/projection.css',
-    './css/responsive.css',
+    './css/projection.css?v=1',
+    './css/responsive.css?v=1',
     './css/FreeSansBold.eot',
     './css/FreeSansBold.ttf',
     './css/FreeSansBold.woff',
@@ -104,8 +104,26 @@ self.addEventListener('activate', event => {
       );
     } else {
       // Handle non-API requests (static files)
-      event.respondWith(
+      /*event.respondWith(
         caches.match(event.request).then((response) => response || fetch(event.request))
+      );*/
+      event.respondWith(
+        caches.open(STATIC_CACHE).then((cache) =>
+          cache.match(request).then((cachedResponse) => {
+            const fetchPromise = fetch(request)
+              .then((networkResponse) => {
+                // Update the cache with the latest version
+                cache.put(request, networkResponse.clone());
+                return networkResponse;
+              })
+              .catch(() => {
+                // If the fetch fails, do nothing (we still return the cached version)
+              });
+  
+            // Return cached version immediately, and update in background
+            return cachedResponse || fetchPromise;
+          })
+        )
       );
     }
   });
