@@ -133,7 +133,8 @@ function hymne_in_periode(titre, periode){
 
 function main(){
     console.log(liste_hymnes("avent"));
-    console.log(hymne_from_titre("Esprit qui planes sur les eaux"));
+    console.log(hymne_from_titre("Debout ! Le Seigneur vient !"));
+    console.log(hymne_in_periode("Debout ! Le Seigneur vient !", "avent"));
     
 }
 
